@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071201",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "test_question",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "answerA",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "answerB",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "answerC",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "answerD",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TestQuestion",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tests",
+      "otherEntityRelationshipName": "testQuestion",
+      "relationshipName": "test",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

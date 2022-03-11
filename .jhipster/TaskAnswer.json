@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071204",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "task_answer",
+  "fields": [
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TaskAnswer",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "taskAnswer",
+      "ownerSide": true,
+      "relationshipName": "studyUser",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

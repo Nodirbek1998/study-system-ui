@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071154",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "article",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1000"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Article",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "studyUser",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "createdBy",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "updatedBy",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

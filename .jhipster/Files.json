@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071156",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "files",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fileSize",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "contentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Files",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "files",
+      "relationshipName": "createdBy",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

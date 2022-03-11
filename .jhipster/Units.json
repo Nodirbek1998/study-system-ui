@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071158",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "units",
+  "fields": [
+    {
+      "fieldName": "nameUz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameRu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Units",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subjects",
+      "otherEntityRelationshipName": "units",
+      "relationshipName": "subject",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

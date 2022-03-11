@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071200",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tests",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "EnumTest",
+      "fieldValues": "Yakuniy,Unit,Oraliq"
+    },
+    {
+      "fieldName": "deadline",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tests",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subjects",
+      "otherEntityRelationshipName": "tests",
+      "relationshipName": "subject",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

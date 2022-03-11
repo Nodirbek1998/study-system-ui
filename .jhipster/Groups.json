@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071159",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "groups",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Groups",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "group",
+      "ownerSide": true,
+      "relationshipName": "studyUser",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "subjects",
+      "otherEntityRelationshipName": "group",
+      "ownerSide": true,
+      "relationshipName": "subjects",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

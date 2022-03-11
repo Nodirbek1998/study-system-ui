@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071152",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "study_logs",
+  "fields": [
+    {
+      "fieldName": "operationName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clientIp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "host",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "actionType",
+      "fieldType": "EnumActionType",
+      "fieldValues": "Login,Logout"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "StudyLogs",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "studyLogs",
+      "relationshipName": "studyUser",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

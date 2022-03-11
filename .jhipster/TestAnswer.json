@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071202",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "test_answer",
+  "fields": [
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "right",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TestAnswer",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "studyUsers",
+      "otherEntityRelationshipName": "testAnswer",
+      "ownerSide": true,
+      "relationshipName": "studyUser",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

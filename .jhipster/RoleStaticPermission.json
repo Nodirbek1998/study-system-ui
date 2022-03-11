@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071153",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "role_static_permission",
+  "fields": [
+    {
+      "fieldName": "staticPermission",
+      "fieldType": "EnumStaticPermission",
+      "fieldValues": "Add,Delete,Update,View"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RoleStaticPermission",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "role",
+      "otherEntityRelationshipName": "roleStaticPermission",
+      "relationshipName": "role",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

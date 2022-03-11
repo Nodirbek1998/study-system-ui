@@ -1,0 +1,44 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071157",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "subjects",
+  "fields": [
+    {
+      "fieldName": "nameUz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameRu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Subjects",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "groups",
+      "otherEntityRelationshipName": "subjects",
+      "ownerSide": false,
+      "relationshipName": "group",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

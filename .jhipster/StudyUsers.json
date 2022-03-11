@@ -1,0 +1,76 @@
+{
+  "applications": "*",
+  "changelogDate": "20220311071150",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "study_users",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "StudyUsers",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "role",
+      "otherEntityRelationshipName": "studyUsers",
+      "relationshipName": "role",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "groups",
+      "otherEntityRelationshipName": "studyUser",
+      "ownerSide": false,
+      "relationshipName": "group",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "testAnswer",
+      "otherEntityRelationshipName": "studyUser",
+      "ownerSide": false,
+      "relationshipName": "testAnswer",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "taskAnswer",
+      "otherEntityRelationshipName": "studyUser",
+      "ownerSide": false,
+      "relationshipName": "taskAnswer",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
