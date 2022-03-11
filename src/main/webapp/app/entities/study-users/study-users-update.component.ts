@@ -84,7 +84,7 @@ export default class StudyUsersUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A StudyUsers is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.studyUsers.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -103,7 +103,7 @@ export default class StudyUsersUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A StudyUsers is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.studyUsers.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

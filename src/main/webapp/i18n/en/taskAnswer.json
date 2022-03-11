@@ -1,0 +1,26 @@
+{
+  "studysystemApp": {
+    "taskAnswer": {
+      "home": {
+        "title": "Task Answers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Answer",
+        "createOrEditLabel": "Create or edit a Task Answer",
+        "notFound": "No Task Answers found"
+      },
+      "created": "A new Task Answer is created with identifier {{ param }}",
+      "updated": "A Task Answer is updated with identifier {{ param }}",
+      "deleted": "A Task Answer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Answer {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Answer"
+      },
+      "id": "ID",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "studyUser": "Study User"
+    }
+  }
+}

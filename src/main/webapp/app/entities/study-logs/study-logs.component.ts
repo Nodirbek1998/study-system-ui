@@ -72,7 +72,7 @@ export default class StudyLogs extends Vue {
     this.studyLogsService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A StudyLogs is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.studyLogs.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

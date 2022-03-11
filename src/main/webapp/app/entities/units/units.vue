@@ -1,10 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="UnitsHeading">
-      <span id="units-heading">Units</span>
+      <span v-text="$t('studysystemApp.units.home.title')" id="units-heading">Units</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span v-text="$t('studysystemApp.units.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'UnitsCreate' }" custom v-slot="{ navigate }">
           <button
@@ -14,44 +15,45 @@
             class="btn btn-primary jh-create-entity create-units"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Units </span>
+            <span v-text="$t('studysystemApp.units.home.createLabel')"> Create a new Units </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && units && units.length === 0">
-      <span>No units found</span>
+      <span v-text="$t('studysystemApp.units.home.notFound')">No units found</span>
     </div>
     <div class="table-responsive" v-if="units && units.length > 0">
       <table class="table table-striped" aria-describedby="units">
         <thead>
           <tr>
             <th scope="row" v-on:click="changeOrder('id')">
-              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+              <span v-text="$t('global.field.id')">ID</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nameUz')">
-              <span>Name Uz</span>
+              <span v-text="$t('studysystemApp.units.nameUz')">Name Uz</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nameUz'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nameRu')">
-              <span>Name Ru</span>
+              <span v-text="$t('studysystemApp.units.nameRu')">Name Ru</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nameRu'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('nameEn')">
-              <span>Name En</span>
+              <span v-text="$t('studysystemApp.units.nameEn')">Name En</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nameEn'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('createdAt')">
-              <span>Created At</span>
+              <span v-text="$t('studysystemApp.units.createdAt')">Created At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('updatedAt')">
-              <span>Updated At</span>
+              <span v-text="$t('studysystemApp.units.updatedAt')">Updated At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'updatedAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('subject.id')">
-              <span>Subject</span>
+              <span v-text="$t('studysystemApp.units.subject')">Subject</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'subject.id'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
@@ -77,13 +79,13 @@
                 <router-link :to="{ name: 'UnitsView', params: { unitsId: units.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'UnitsEdit', params: { unitsId: units.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                   </button>
                 </router-link>
                 <b-button
@@ -94,7 +96,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
                 </b-button>
               </div>
             </td>
@@ -104,18 +106,23 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="studysystemApp.units.delete.question" data-cy="unitsDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="studysystemApp.units.delete.question" data-cy="unitsDeleteDialogHeading" v-text="$t('entity.delete.title')"
+          >Confirm delete operation</span
+        ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-units-heading">Are you sure you want to delete this Units?</p>
+        <p id="jhi-delete-units-heading" v-text="$t('studysystemApp.units.delete.question', { id: removeId })">
+          Are you sure you want to delete this Units?
+        </p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.cancel')" v-on:click="closeDialog()">Cancel</button>
         <button
           type="button"
           class="btn btn-primary"
           id="jhi-confirm-delete-units"
           data-cy="entityConfirmDeleteButton"
+          v-text="$t('entity.action.delete')"
           v-on:click="removeUnits()"
         >
           Delete

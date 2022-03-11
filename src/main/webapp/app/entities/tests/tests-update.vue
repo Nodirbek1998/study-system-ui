@@ -2,14 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.tests.home.createOrEditLabel" data-cy="TestsCreateUpdateHeading">Create or edit a Tests</h2>
+        <h2
+          id="studysystemApp.tests.home.createOrEditLabel"
+          data-cy="TestsCreateUpdateHeading"
+          v-text="$t('studysystemApp.tests.home.createOrEditLabel')"
+        >
+          Create or edit a Tests
+        </h2>
         <div>
           <div class="form-group" v-if="tests.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="tests.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="tests-name">Name</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.tests.name')" for="tests-name">Name</label>
             <input
               type="text"
               class="form-control"
@@ -21,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="tests-status">Status</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.tests.status')" for="tests-status">Status</label>
             <select
               class="form-control"
               name="status"
@@ -30,11 +36,18 @@
               id="tests-status"
               data-cy="status"
             >
-              <option v-for="enumTest in enumTestValues" :key="enumTest" v-bind:value="enumTest">{{ enumTest }}</option>
+              <option
+                v-for="enumTest in enumTestValues"
+                :key="enumTest"
+                v-bind:value="enumTest"
+                v-bind:label="$t('studysystemApp.EnumTest.' + enumTest)"
+              >
+                {{ enumTest }}
+              </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="tests-deadline">Deadline</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.tests.deadline')" for="tests-deadline">Deadline</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -62,7 +75,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="tests-subject">Subject</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.tests.subject')" for="tests-subject">Subject</label>
             <select class="form-control" id="tests-subject" data-cy="subject" name="subject" v-model="tests.subject">
               <option v-bind:value="null"></option>
               <option
@@ -77,7 +90,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -86,7 +99,7 @@
             :disabled="$v.tests.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

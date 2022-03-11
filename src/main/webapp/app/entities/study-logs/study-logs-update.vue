@@ -2,14 +2,22 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.studyLogs.home.createOrEditLabel" data-cy="StudyLogsCreateUpdateHeading">Create or edit a StudyLogs</h2>
+        <h2
+          id="studysystemApp.studyLogs.home.createOrEditLabel"
+          data-cy="StudyLogsCreateUpdateHeading"
+          v-text="$t('studysystemApp.studyLogs.home.createOrEditLabel')"
+        >
+          Create or edit a StudyLogs
+        </h2>
         <div>
           <div class="form-group" v-if="studyLogs.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="studyLogs.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-operationName">Operation Name</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.operationName')" for="study-logs-operationName"
+              >Operation Name</label
+            >
             <input
               type="text"
               class="form-control"
@@ -21,7 +29,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-clientIp">Client Ip</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.clientIp')" for="study-logs-clientIp">Client Ip</label>
             <input
               type="text"
               class="form-control"
@@ -33,7 +41,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-host">Host</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.host')" for="study-logs-host">Host</label>
             <input
               type="text"
               class="form-control"
@@ -45,7 +53,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-createdAt">Created At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.createdAt')" for="study-logs-createdAt"
+              >Created At</label
+            >
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -73,7 +83,9 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-actionType">Action Type</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.actionType')" for="study-logs-actionType"
+              >Action Type</label
+            >
             <select
               class="form-control"
               name="actionType"
@@ -82,13 +94,20 @@
               id="study-logs-actionType"
               data-cy="actionType"
             >
-              <option v-for="enumActionType in enumActionTypeValues" :key="enumActionType" v-bind:value="enumActionType">
+              <option
+                v-for="enumActionType in enumActionTypeValues"
+                :key="enumActionType"
+                v-bind:value="enumActionType"
+                v-bind:label="$t('studysystemApp.EnumActionType.' + enumActionType)"
+              >
                 {{ enumActionType }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-logs-studyUser">Study User</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyLogs.studyUser')" for="study-logs-studyUser"
+              >Study User</label
+            >
             <select class="form-control" id="study-logs-studyUser" data-cy="studyUser" name="studyUser" v-model="studyLogs.studyUser">
               <option v-bind:value="null"></option>
               <option
@@ -105,7 +124,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -114,7 +133,7 @@
             :disabled="$v.studyLogs.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

@@ -51,7 +51,7 @@ export default class TaskUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Task is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.task.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -70,7 +70,7 @@ export default class TaskUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Task is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.task.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

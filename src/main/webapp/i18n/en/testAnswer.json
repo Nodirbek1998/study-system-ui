@@ -1,0 +1,27 @@
+{
+  "studysystemApp": {
+    "testAnswer": {
+      "home": {
+        "title": "Test Answers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Test Answer",
+        "createOrEditLabel": "Create or edit a Test Answer",
+        "notFound": "No Test Answers found"
+      },
+      "created": "A new Test Answer is created with identifier {{ param }}",
+      "updated": "A Test Answer is updated with identifier {{ param }}",
+      "deleted": "A Test Answer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Test Answer {{ id }}?"
+      },
+      "detail": {
+        "title": "Test Answer"
+      },
+      "id": "ID",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "right": "Right",
+      "studyUser": "Study User"
+    }
+  }
+}

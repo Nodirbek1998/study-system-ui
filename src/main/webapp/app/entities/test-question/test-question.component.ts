@@ -72,7 +72,7 @@ export default class TestQuestion extends Vue {
     this.testQuestionService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A TestQuestion is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.testQuestion.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

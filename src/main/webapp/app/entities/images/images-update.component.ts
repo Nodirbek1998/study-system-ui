@@ -59,7 +59,7 @@ export default class ImagesUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Images is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.images.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -78,7 +78,7 @@ export default class ImagesUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Images is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.images.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

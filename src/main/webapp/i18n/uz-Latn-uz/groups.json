@@ -1,0 +1,28 @@
+{
+  "studysystemApp": {
+    "groups": {
+      "home": {
+        "title": "Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Groups qo`shish",
+        "createOrEditLabel": "Groupsni tahrirlash",
+        "notFound": "No Groups found"
+      },
+      "created": "Groups {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Groups saqlandi",
+      "deleted": "{{ param }}- Groups o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Groupsni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Groups"
+      },
+      "id": "ID",
+      "name": "Name",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "studyUser": "Study User",
+      "subjects": "Subjects"
+    }
+  }
+}

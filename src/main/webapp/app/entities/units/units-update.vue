@@ -2,14 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.units.home.createOrEditLabel" data-cy="UnitsCreateUpdateHeading">Create or edit a Units</h2>
+        <h2
+          id="studysystemApp.units.home.createOrEditLabel"
+          data-cy="UnitsCreateUpdateHeading"
+          v-text="$t('studysystemApp.units.home.createOrEditLabel')"
+        >
+          Create or edit a Units
+        </h2>
         <div>
           <div class="form-group" v-if="units.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="units.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-nameUz">Name Uz</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.nameUz')" for="units-nameUz">Name Uz</label>
             <input
               type="text"
               class="form-control"
@@ -21,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-nameRu">Name Ru</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.nameRu')" for="units-nameRu">Name Ru</label>
             <input
               type="text"
               class="form-control"
@@ -33,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-nameEn">Name En</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.nameEn')" for="units-nameEn">Name En</label>
             <input
               type="text"
               class="form-control"
@@ -45,7 +51,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-createdAt">Created At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.createdAt')" for="units-createdAt">Created At</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -73,7 +79,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-updatedAt">Updated At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.updatedAt')" for="units-updatedAt">Updated At</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -101,7 +107,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="units-subject">Subject</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.units.subject')" for="units-subject">Subject</label>
             <select class="form-control" id="units-subject" data-cy="subject" name="subject" v-model="units.subject">
               <option v-bind:value="null"></option>
               <option
@@ -116,7 +122,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -125,7 +131,7 @@
             :disabled="$v.units.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

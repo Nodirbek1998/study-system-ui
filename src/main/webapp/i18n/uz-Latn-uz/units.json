@@ -1,0 +1,29 @@
+{
+  "studysystemApp": {
+    "units": {
+      "home": {
+        "title": "Units",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Units qo`shish",
+        "createOrEditLabel": "Unitsni tahrirlash",
+        "notFound": "No Units found"
+      },
+      "created": "Units {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Units saqlandi",
+      "deleted": "{{ param }}- Units o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Unitsni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Units"
+      },
+      "id": "ID",
+      "nameUz": "Name Uz",
+      "nameRu": "Name Ru",
+      "nameEn": "Name En",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "subject": "Subject"
+    }
+  }
+}

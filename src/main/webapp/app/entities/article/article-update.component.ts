@@ -63,7 +63,7 @@ export default class ArticleUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Article is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.article.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -82,7 +82,7 @@ export default class ArticleUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Article is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.article.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

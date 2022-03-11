@@ -1,0 +1,28 @@
+{
+  "studysystemApp": {
+    "images": {
+      "home": {
+        "title": "Images",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Images qo`shish",
+        "createOrEditLabel": "Imagesni tahrirlash",
+        "notFound": "No Images found"
+      },
+      "created": "Images {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Images saqlandi",
+      "deleted": "{{ param }}- Images o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Imagesni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Images"
+      },
+      "id": "ID",
+      "name": "Name",
+      "imageSize": "Image Size",
+      "contentType": "Content Type",
+      "createdAt": "Created At",
+      "studyUser": "Study User"
+    }
+  }
+}

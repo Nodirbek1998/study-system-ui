@@ -72,7 +72,7 @@ export default class Task extends Vue {
     this.taskService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Task is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.task.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

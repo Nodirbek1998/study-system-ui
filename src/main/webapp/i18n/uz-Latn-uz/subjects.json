@@ -1,0 +1,29 @@
+{
+  "studysystemApp": {
+    "subjects": {
+      "home": {
+        "title": "Subjects",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Subjects qo`shish",
+        "createOrEditLabel": "Subjectsni tahrirlash",
+        "notFound": "No Subjects found"
+      },
+      "created": "Subjects {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Subjects saqlandi",
+      "deleted": "{{ param }}- Subjects o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Subjectsni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Subjects"
+      },
+      "id": "ID",
+      "nameUz": "Name Uz",
+      "nameRu": "Name Ru",
+      "nameEn": "Name En",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "group": "Group"
+    }
+  }
+}

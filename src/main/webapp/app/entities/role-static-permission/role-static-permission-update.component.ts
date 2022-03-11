@@ -58,7 +58,7 @@ export default class RoleStaticPermissionUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A RoleStaticPermission is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.roleStaticPermission.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -77,7 +77,7 @@ export default class RoleStaticPermissionUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A RoleStaticPermission is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.roleStaticPermission.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

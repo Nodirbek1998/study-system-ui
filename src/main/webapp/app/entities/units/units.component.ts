@@ -72,7 +72,7 @@ export default class Units extends Vue {
     this.unitsService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Units is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.units.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

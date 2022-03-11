@@ -2,14 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.role.home.createOrEditLabel" data-cy="RoleCreateUpdateHeading">Create or edit a Role</h2>
+        <h2
+          id="studysystemApp.role.home.createOrEditLabel"
+          data-cy="RoleCreateUpdateHeading"
+          v-text="$t('studysystemApp.role.home.createOrEditLabel')"
+        >
+          Create or edit a Role
+        </h2>
         <div>
           <div class="form-group" v-if="role.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="role.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="role-nameUz">Name Uz</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.role.nameUz')" for="role-nameUz">Name Uz</label>
             <input
               type="text"
               class="form-control"
@@ -21,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="role-nameRu">Name Ru</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.role.nameRu')" for="role-nameRu">Name Ru</label>
             <input
               type="text"
               class="form-control"
@@ -33,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="role-nameEn">Name En</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.role.nameEn')" for="role-nameEn">Name En</label>
             <input
               type="text"
               class="form-control"
@@ -47,7 +53,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -56,7 +62,7 @@
             :disabled="$v.role.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

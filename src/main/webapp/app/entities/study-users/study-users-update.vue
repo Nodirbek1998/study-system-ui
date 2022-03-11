@@ -2,14 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.studyUsers.home.createOrEditLabel" data-cy="StudyUsersCreateUpdateHeading">Create or edit a StudyUsers</h2>
+        <h2
+          id="studysystemApp.studyUsers.home.createOrEditLabel"
+          data-cy="StudyUsersCreateUpdateHeading"
+          v-text="$t('studysystemApp.studyUsers.home.createOrEditLabel')"
+        >
+          Create or edit a StudyUsers
+        </h2>
         <div>
           <div class="form-group" v-if="studyUsers.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="studyUsers.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-fullName">Full Name</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.fullName')" for="study-users-fullName">Full Name</label>
             <input
               type="text"
               class="form-control"
@@ -21,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-age">Age</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.age')" for="study-users-age">Age</label>
             <input
               type="number"
               class="form-control"
@@ -33,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-phone">Phone</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.phone')" for="study-users-phone">Phone</label>
             <input
               type="text"
               class="form-control"
@@ -45,7 +51,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-email">Email</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.email')" for="study-users-email">Email</label>
             <input
               type="text"
               class="form-control"
@@ -57,7 +63,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-username">Username</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.username')" for="study-users-username">Username</label>
             <input
               type="text"
               class="form-control"
@@ -69,7 +75,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-password">Password</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.password')" for="study-users-password">Password</label>
             <input
               type="text"
               class="form-control"
@@ -81,7 +87,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-createdAt">Created At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.createdAt')" for="study-users-createdAt"
+              >Created At</label
+            >
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -109,7 +117,9 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-updatedAt">Updated At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.updatedAt')" for="study-users-updatedAt"
+              >Updated At</label
+            >
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -137,7 +147,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="study-users-role">Role</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.role')" for="study-users-role">Role</label>
             <select class="form-control" id="study-users-role" data-cy="role" name="role" v-model="studyUsers.role">
               <option v-bind:value="null"></option>
               <option
@@ -152,7 +162,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -161,7 +171,7 @@
             :disabled="$v.studyUsers.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

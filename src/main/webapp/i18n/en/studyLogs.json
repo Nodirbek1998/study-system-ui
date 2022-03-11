@@ -1,0 +1,29 @@
+{
+  "studysystemApp": {
+    "studyLogs": {
+      "home": {
+        "title": "Study Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Study Logs",
+        "createOrEditLabel": "Create or edit a Study Logs",
+        "notFound": "No Study Logs found"
+      },
+      "created": "A new Study Logs is created with identifier {{ param }}",
+      "updated": "A Study Logs is updated with identifier {{ param }}",
+      "deleted": "A Study Logs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Study Logs {{ id }}?"
+      },
+      "detail": {
+        "title": "Study Logs"
+      },
+      "id": "ID",
+      "operationName": "Operation Name",
+      "clientIp": "Client Ip",
+      "host": "Host",
+      "createdAt": "Created At",
+      "actionType": "Action Type",
+      "studyUser": "Study User"
+    }
+  }
+}

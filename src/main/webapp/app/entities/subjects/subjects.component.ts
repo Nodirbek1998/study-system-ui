@@ -72,7 +72,7 @@ export default class Subjects extends Vue {
     this.subjectsService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Subjects is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.subjects.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

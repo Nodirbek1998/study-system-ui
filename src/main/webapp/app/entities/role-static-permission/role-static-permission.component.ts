@@ -72,7 +72,7 @@ export default class RoleStaticPermission extends Vue {
     this.roleStaticPermissionService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A RoleStaticPermission is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.roleStaticPermission.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

@@ -1,0 +1,27 @@
+{
+  "studysystemApp": {
+    "testAnswer": {
+      "home": {
+        "title": "Test Answers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Test Answer qo`shish",
+        "createOrEditLabel": "Test Answerni tahrirlash",
+        "notFound": "No Test Answers found"
+      },
+      "created": "Test Answer {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Test Answer saqlandi",
+      "deleted": "{{ param }}- Test Answer o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Test Answerni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Test Answer"
+      },
+      "id": "ID",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "right": "Right",
+      "studyUser": "Study User"
+    }
+  }
+}

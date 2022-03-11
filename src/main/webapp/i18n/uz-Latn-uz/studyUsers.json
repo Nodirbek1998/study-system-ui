@@ -1,0 +1,35 @@
+{
+  "studysystemApp": {
+    "studyUsers": {
+      "home": {
+        "title": "Study Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Study Users qo`shish",
+        "createOrEditLabel": "Study Usersni tahrirlash",
+        "notFound": "No Study Users found"
+      },
+      "created": "Study Users {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Study Users saqlandi",
+      "deleted": "{{ param }}- Study Users o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Study Usersni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Study Users"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "age": "Age",
+      "phone": "Phone",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "role": "Role",
+      "group": "Group",
+      "testAnswer": "Test Answer",
+      "taskAnswer": "Task Answer"
+    }
+  }
+}

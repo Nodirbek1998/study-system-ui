@@ -72,7 +72,7 @@ export default class Groups extends Vue {
     this.groupsService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Groups is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.groups.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

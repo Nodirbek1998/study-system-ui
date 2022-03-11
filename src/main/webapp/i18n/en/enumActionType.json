@@ -1,0 +1,9 @@
+{
+  "studysystemApp": {
+    "EnumActionType": {
+      "null": "",
+      "Login": "Login",
+      "Logout": "Logout"
+    }
+  }
+}

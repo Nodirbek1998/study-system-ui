@@ -1,0 +1,30 @@
+{
+  "studysystemApp": {
+    "testQuestion": {
+      "home": {
+        "title": "Test Questions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Test Question qo`shish",
+        "createOrEditLabel": "Test Questionni tahrirlash",
+        "notFound": "No Test Questions found"
+      },
+      "created": "Test Question {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Test Question saqlandi",
+      "deleted": "{{ param }}- Test Question o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Test Questionni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Test Question"
+      },
+      "id": "ID",
+      "name": "Name",
+      "level": "Level",
+      "answerA": "Answer A",
+      "answerB": "Answer B",
+      "answerC": "Answer C",
+      "answerD": "Answer D",
+      "test": "Test"
+    }
+  }
+}

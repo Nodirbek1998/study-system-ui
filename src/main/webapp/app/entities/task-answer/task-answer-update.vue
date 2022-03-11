@@ -2,14 +2,22 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.taskAnswer.home.createOrEditLabel" data-cy="TaskAnswerCreateUpdateHeading">Create or edit a TaskAnswer</h2>
+        <h2
+          id="studysystemApp.taskAnswer.home.createOrEditLabel"
+          data-cy="TaskAnswerCreateUpdateHeading"
+          v-text="$t('studysystemApp.taskAnswer.home.createOrEditLabel')"
+        >
+          Create or edit a TaskAnswer
+        </h2>
         <div>
           <div class="form-group" v-if="taskAnswer.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="taskAnswer.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-answer-createdAt">Created At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.taskAnswer.createdAt')" for="task-answer-createdAt"
+              >Created At</label
+            >
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -37,7 +45,9 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-answer-updatedAt">Updated At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.taskAnswer.updatedAt')" for="task-answer-updatedAt"
+              >Updated At</label
+            >
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -65,7 +75,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label for="task-answer-studyUser">Study User</label>
+            <label v-text="$t('studysystemApp.taskAnswer.studyUser')" for="task-answer-studyUser">Study User</label>
             <select
               class="form-control"
               id="task-answer-studyUsers"
@@ -87,7 +97,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -96,7 +106,7 @@
             :disabled="$v.taskAnswer.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

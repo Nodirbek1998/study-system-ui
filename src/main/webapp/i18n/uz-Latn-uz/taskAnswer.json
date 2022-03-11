@@ -1,0 +1,26 @@
+{
+  "studysystemApp": {
+    "taskAnswer": {
+      "home": {
+        "title": "Task Answers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Task Answer qo`shish",
+        "createOrEditLabel": "Task Answerni tahrirlash",
+        "notFound": "No Task Answers found"
+      },
+      "created": "Task Answer {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Task Answer saqlandi",
+      "deleted": "{{ param }}- Task Answer o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Task Answerni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Task Answer"
+      },
+      "id": "ID",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "studyUser": "Study User"
+    }
+  }
+}

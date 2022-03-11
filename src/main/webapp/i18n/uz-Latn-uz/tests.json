@@ -1,0 +1,27 @@
+{
+  "studysystemApp": {
+    "tests": {
+      "home": {
+        "title": "Tests",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Tests qo`shish",
+        "createOrEditLabel": "Testsni tahrirlash",
+        "notFound": "No Tests found"
+      },
+      "created": "Tests {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Tests saqlandi",
+      "deleted": "{{ param }}- Tests o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Testsni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Tests"
+      },
+      "id": "ID",
+      "name": "Name",
+      "status": "Status",
+      "deadline": "Deadline",
+      "subject": "Subject"
+    }
+  }
+}

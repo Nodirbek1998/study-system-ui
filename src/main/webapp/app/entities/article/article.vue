@@ -1,10 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ArticleHeading">
-      <span id="article-heading">Articles</span>
+      <span v-text="$t('studysystemApp.article.home.title')" id="article-heading">Articles</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span v-text="$t('studysystemApp.article.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'ArticleCreate' }" custom v-slot="{ navigate }">
           <button
@@ -14,46 +15,49 @@
             class="btn btn-primary jh-create-entity create-article"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Article </span>
+            <span v-text="$t('studysystemApp.article.home.createLabel')"> Create a new Article </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && articles && articles.length === 0">
-      <span>No articles found</span>
+      <span v-text="$t('studysystemApp.article.home.notFound')">No articles found</span>
     </div>
     <div class="table-responsive" v-if="articles && articles.length > 0">
       <table class="table table-striped" aria-describedby="articles">
         <thead>
           <tr>
             <th scope="row" v-on:click="changeOrder('id')">
-              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+              <span v-text="$t('global.field.id')">ID</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('name')">
-              <span>Name</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
+              <span v-text="$t('studysystemApp.article.name')">Name</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('text')">
-              <span>Text</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'text'"></jhi-sort-indicator>
+              <span v-text="$t('studysystemApp.article.text')">Text</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'text'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('createdAt')">
-              <span>Created At</span>
+              <span v-text="$t('studysystemApp.article.createdAt')">Created At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('updatedAt')">
-              <span>Updated At</span>
+              <span v-text="$t('studysystemApp.article.updatedAt')">Updated At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'updatedAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('studyUser.id')">
-              <span>Study User</span>
+              <span v-text="$t('studysystemApp.article.studyUser')">Study User</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'studyUser.id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('createdBy.id')">
-              <span>Created By</span>
+              <span v-text="$t('studysystemApp.article.createdBy')">Created By</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdBy.id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('updatedBy.id')">
-              <span>Updated By</span>
+              <span v-text="$t('studysystemApp.article.updatedBy')">Updated By</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'updatedBy.id'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
@@ -94,13 +98,13 @@
                 <router-link :to="{ name: 'ArticleView', params: { articleId: article.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'ArticleEdit', params: { articleId: article.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                   </button>
                 </router-link>
                 <b-button
@@ -111,7 +115,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
                 </b-button>
               </div>
             </td>
@@ -121,18 +125,23 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="studysystemApp.article.delete.question" data-cy="articleDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="studysystemApp.article.delete.question" data-cy="articleDeleteDialogHeading" v-text="$t('entity.delete.title')"
+          >Confirm delete operation</span
+        ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-article-heading">Are you sure you want to delete this Article?</p>
+        <p id="jhi-delete-article-heading" v-text="$t('studysystemApp.article.delete.question', { id: removeId })">
+          Are you sure you want to delete this Article?
+        </p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.cancel')" v-on:click="closeDialog()">Cancel</button>
         <button
           type="button"
           class="btn btn-primary"
           id="jhi-confirm-delete-article"
           data-cy="entityConfirmDeleteButton"
+          v-text="$t('entity.action.delete')"
           v-on:click="removeArticle()"
         >
           Delete

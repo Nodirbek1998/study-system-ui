@@ -1,0 +1,25 @@
+{
+  "studysystemApp": {
+    "roleStaticPermission": {
+      "home": {
+        "title": "Role Static Permissions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Role Static Permission qo`shish",
+        "createOrEditLabel": "Role Static Permissionni tahrirlash",
+        "notFound": "No Role Static Permissions found"
+      },
+      "created": "Role Static Permission {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Role Static Permission saqlandi",
+      "deleted": "{{ param }}- Role Static Permission o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Role Static Permissionni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Role Static Permission"
+      },
+      "id": "ID",
+      "staticPermission": "Static Permission",
+      "role": "Role"
+    }
+  }
+}

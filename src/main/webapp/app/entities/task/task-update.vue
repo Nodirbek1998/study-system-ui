@@ -2,14 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.task.home.createOrEditLabel" data-cy="TaskCreateUpdateHeading">Create or edit a Task</h2>
+        <h2
+          id="studysystemApp.task.home.createOrEditLabel"
+          data-cy="TaskCreateUpdateHeading"
+          v-text="$t('studysystemApp.task.home.createOrEditLabel')"
+        >
+          Create or edit a Task
+        </h2>
         <div>
           <div class="form-group" v-if="task.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="task.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-topic">Topic</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.task.topic')" for="task-topic">Topic</label>
             <input
               type="text"
               class="form-control"
@@ -21,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-createdAt">Created At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.task.createdAt')" for="task-createdAt">Created At</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -49,7 +55,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-updatedAt">Updated At</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.task.updatedAt')" for="task-updatedAt">Updated At</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -77,7 +83,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="task-deadline">Deadline</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.task.deadline')" for="task-deadline">Deadline</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -107,7 +113,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -116,7 +122,7 @@
             :disabled="$v.task.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

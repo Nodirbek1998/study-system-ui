@@ -1,44 +1,46 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="TaskHeading">
-      <span id="task-heading">Tasks</span>
+      <span v-text="$t('studysystemApp.task.home.title')" id="task-heading">Tasks</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon> <span>Refresh List</span>
+          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+          <span v-text="$t('studysystemApp.task.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'TaskCreate' }" custom v-slot="{ navigate }">
           <button @click="navigate" id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-task">
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Create a new Task </span>
+            <span v-text="$t('studysystemApp.task.home.createLabel')"> Create a new Task </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && tasks && tasks.length === 0">
-      <span>No tasks found</span>
+      <span v-text="$t('studysystemApp.task.home.notFound')">No tasks found</span>
     </div>
     <div class="table-responsive" v-if="tasks && tasks.length > 0">
       <table class="table table-striped" aria-describedby="tasks">
         <thead>
           <tr>
             <th scope="row" v-on:click="changeOrder('id')">
-              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
+              <span v-text="$t('global.field.id')">ID</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('topic')">
-              <span>Topic</span>
+              <span v-text="$t('studysystemApp.task.topic')">Topic</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'topic'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('createdAt')">
-              <span>Created At</span>
+              <span v-text="$t('studysystemApp.task.createdAt')">Created At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('updatedAt')">
-              <span>Updated At</span>
+              <span v-text="$t('studysystemApp.task.updatedAt')">Updated At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'updatedAt'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('deadline')">
-              <span>Deadline</span>
+              <span v-text="$t('studysystemApp.task.deadline')">Deadline</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'deadline'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
@@ -58,13 +60,13 @@
                 <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">View</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'TaskEdit', params: { taskId: task.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Edit</span>
+                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                   </button>
                 </router-link>
                 <b-button
@@ -75,7 +77,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Delete</span>
+                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
                 </b-button>
               </div>
             </td>
@@ -85,18 +87,23 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="studysystemApp.task.delete.question" data-cy="taskDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="studysystemApp.task.delete.question" data-cy="taskDeleteDialogHeading" v-text="$t('entity.delete.title')"
+          >Confirm delete operation</span
+        ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-task-heading">Are you sure you want to delete this Task?</p>
+        <p id="jhi-delete-task-heading" v-text="$t('studysystemApp.task.delete.question', { id: removeId })">
+          Are you sure you want to delete this Task?
+        </p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.cancel')" v-on:click="closeDialog()">Cancel</button>
         <button
           type="button"
           class="btn btn-primary"
           id="jhi-confirm-delete-task"
           data-cy="entityConfirmDeleteButton"
+          v-text="$t('entity.action.delete')"
           v-on:click="removeTask()"
         >
           Delete

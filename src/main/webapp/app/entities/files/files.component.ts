@@ -72,7 +72,7 @@ export default class Files extends Vue {
     this.filesService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Files is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.files.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

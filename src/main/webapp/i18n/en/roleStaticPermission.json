@@ -1,0 +1,25 @@
+{
+  "studysystemApp": {
+    "roleStaticPermission": {
+      "home": {
+        "title": "Role Static Permissions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Role Static Permission",
+        "createOrEditLabel": "Create or edit a Role Static Permission",
+        "notFound": "No Role Static Permissions found"
+      },
+      "created": "A new Role Static Permission is created with identifier {{ param }}",
+      "updated": "A Role Static Permission is updated with identifier {{ param }}",
+      "deleted": "A Role Static Permission is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Role Static Permission {{ id }}?"
+      },
+      "detail": {
+        "title": "Role Static Permission"
+      },
+      "id": "ID",
+      "staticPermission": "Static Permission",
+      "role": "Role"
+    }
+  }
+}

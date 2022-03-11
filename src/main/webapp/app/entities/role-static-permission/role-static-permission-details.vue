@@ -3,17 +3,19 @@
     <div class="col-8">
       <div v-if="roleStaticPermission">
         <h2 class="jh-entity-heading" data-cy="roleStaticPermissionDetailsHeading">
-          <span>RoleStaticPermission</span> {{ roleStaticPermission.id }}
+          <span v-text="$t('studysystemApp.roleStaticPermission.detail.title')">RoleStaticPermission</span> {{ roleStaticPermission.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span>Static Permission</span>
+            <span v-text="$t('studysystemApp.roleStaticPermission.staticPermission')">Static Permission</span>
           </dt>
           <dd>
-            <span>{{ roleStaticPermission.staticPermission }}</span>
+            <span v-text="$t('studysystemApp.EnumStaticPermission.' + roleStaticPermission.staticPermission)">{{
+              roleStaticPermission.staticPermission
+            }}</span>
           </dd>
           <dt>
-            <span>Role</span>
+            <span v-text="$t('studysystemApp.roleStaticPermission.role')">Role</span>
           </dt>
           <dd>
             <div v-if="roleStaticPermission.role">
@@ -24,7 +26,7 @@
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
         </button>
         <router-link
           v-if="roleStaticPermission.id"
@@ -33,7 +35,7 @@
           v-slot="{ navigate }"
         >
           <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
           </button>
         </router-link>
       </div>

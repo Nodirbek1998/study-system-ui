@@ -1,0 +1,35 @@
+{
+  "studysystemApp": {
+    "studyUsers": {
+      "home": {
+        "title": "Study Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Study Users",
+        "createOrEditLabel": "Create or edit a Study Users",
+        "notFound": "No Study Users found"
+      },
+      "created": "A new Study Users is created with identifier {{ param }}",
+      "updated": "A Study Users is updated with identifier {{ param }}",
+      "deleted": "A Study Users is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Study Users {{ id }}?"
+      },
+      "detail": {
+        "title": "Study Users"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "age": "Age",
+      "phone": "Phone",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "role": "Role",
+      "group": "Group",
+      "testAnswer": "Test Answer",
+      "taskAnswer": "Task Answer"
+    }
+  }
+}

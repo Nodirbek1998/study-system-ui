@@ -2,16 +2,20 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.testQuestion.home.createOrEditLabel" data-cy="TestQuestionCreateUpdateHeading">
+        <h2
+          id="studysystemApp.testQuestion.home.createOrEditLabel"
+          data-cy="TestQuestionCreateUpdateHeading"
+          v-text="$t('studysystemApp.testQuestion.home.createOrEditLabel')"
+        >
           Create or edit a TestQuestion
         </h2>
         <div>
           <div class="form-group" v-if="testQuestion.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="testQuestion.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-name">Name</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.name')" for="test-question-name">Name</label>
             <input
               type="text"
               class="form-control"
@@ -23,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-level">Level</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.level')" for="test-question-level">Level</label>
             <input
               type="number"
               class="form-control"
@@ -35,7 +39,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-answerA">Answer A</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.answerA')" for="test-question-answerA"
+              >Answer A</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -47,7 +53,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-answerB">Answer B</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.answerB')" for="test-question-answerB"
+              >Answer B</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -59,7 +67,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-answerC">Answer C</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.answerC')" for="test-question-answerC"
+              >Answer C</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -71,7 +81,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-answerD">Answer D</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.answerD')" for="test-question-answerD"
+              >Answer D</label
+            >
             <input
               type="checkbox"
               class="form-check"
@@ -83,7 +95,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="test-question-test">Test</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.testQuestion.test')" for="test-question-test">Test</label>
             <select class="form-control" id="test-question-test" data-cy="test" name="test" v-model="testQuestion.test">
               <option v-bind:value="null"></option>
               <option
@@ -98,7 +110,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -107,7 +119,7 @@
             :disabled="$v.testQuestion.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

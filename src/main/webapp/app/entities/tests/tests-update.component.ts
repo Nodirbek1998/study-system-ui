@@ -60,7 +60,7 @@ export default class TestsUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Tests is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.tests.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -79,7 +79,7 @@ export default class TestsUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Tests is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.tests.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

@@ -2,40 +2,42 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div v-if="studyLogs">
-        <h2 class="jh-entity-heading" data-cy="studyLogsDetailsHeading"><span>StudyLogs</span> {{ studyLogs.id }}</h2>
+        <h2 class="jh-entity-heading" data-cy="studyLogsDetailsHeading">
+          <span v-text="$t('studysystemApp.studyLogs.detail.title')">StudyLogs</span> {{ studyLogs.id }}
+        </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span>Operation Name</span>
+            <span v-text="$t('studysystemApp.studyLogs.operationName')">Operation Name</span>
           </dt>
           <dd>
             <span>{{ studyLogs.operationName }}</span>
           </dd>
           <dt>
-            <span>Client Ip</span>
+            <span v-text="$t('studysystemApp.studyLogs.clientIp')">Client Ip</span>
           </dt>
           <dd>
             <span>{{ studyLogs.clientIp }}</span>
           </dd>
           <dt>
-            <span>Host</span>
+            <span v-text="$t('studysystemApp.studyLogs.host')">Host</span>
           </dt>
           <dd>
             <span>{{ studyLogs.host }}</span>
           </dd>
           <dt>
-            <span>Created At</span>
+            <span v-text="$t('studysystemApp.studyLogs.createdAt')">Created At</span>
           </dt>
           <dd>
             <span>{{ studyLogs.createdAt }}</span>
           </dd>
           <dt>
-            <span>Action Type</span>
+            <span v-text="$t('studysystemApp.studyLogs.actionType')">Action Type</span>
           </dt>
           <dd>
-            <span>{{ studyLogs.actionType }}</span>
+            <span v-text="$t('studysystemApp.EnumActionType.' + studyLogs.actionType)">{{ studyLogs.actionType }}</span>
           </dd>
           <dt>
-            <span>Study User</span>
+            <span v-text="$t('studysystemApp.studyLogs.studyUser')">Study User</span>
           </dt>
           <dd>
             <div v-if="studyLogs.studyUser">
@@ -46,7 +48,7 @@
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span> Back</span>
+          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>
         </button>
         <router-link
           v-if="studyLogs.id"
@@ -55,7 +57,7 @@
           v-slot="{ navigate }"
         >
           <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span> Edit</span>
+            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.edit')"> Edit</span>
           </button>
         </router-link>
       </div>

@@ -72,7 +72,7 @@ export default class Role extends Vue {
     this.roleService()
       .delete(this.removeId)
       .then(() => {
-        const message = 'A Role is deleted with identifier ' + this.removeId;
+        const message = this.$t('studysystemApp.role.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

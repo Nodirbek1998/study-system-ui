@@ -1,0 +1,29 @@
+{
+  "studysystemApp": {
+    "studyLogs": {
+      "home": {
+        "title": "Study Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Study Logs qo`shish",
+        "createOrEditLabel": "Study Logsni tahrirlash",
+        "notFound": "No Study Logs found"
+      },
+      "created": "Study Logs {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Study Logs saqlandi",
+      "deleted": "{{ param }}- Study Logs o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Study Logsni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Study Logs"
+      },
+      "id": "ID",
+      "operationName": "Operation Name",
+      "clientIp": "Client Ip",
+      "host": "Host",
+      "createdAt": "Created At",
+      "actionType": "Action Type",
+      "studyUser": "Study User"
+    }
+  }
+}

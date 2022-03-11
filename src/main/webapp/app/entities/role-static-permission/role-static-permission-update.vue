@@ -2,16 +2,25 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="studysystemApp.roleStaticPermission.home.createOrEditLabel" data-cy="RoleStaticPermissionCreateUpdateHeading">
+        <h2
+          id="studysystemApp.roleStaticPermission.home.createOrEditLabel"
+          data-cy="RoleStaticPermissionCreateUpdateHeading"
+          v-text="$t('studysystemApp.roleStaticPermission.home.createOrEditLabel')"
+        >
           Create or edit a RoleStaticPermission
         </h2>
         <div>
           <div class="form-group" v-if="roleStaticPermission.id">
-            <label for="id">ID</label>
+            <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="roleStaticPermission.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="role-static-permission-staticPermission">Static Permission</label>
+            <label
+              class="form-control-label"
+              v-text="$t('studysystemApp.roleStaticPermission.staticPermission')"
+              for="role-static-permission-staticPermission"
+              >Static Permission</label
+            >
             <select
               class="form-control"
               name="staticPermission"
@@ -27,13 +36,16 @@
                 v-for="enumStaticPermission in enumStaticPermissionValues"
                 :key="enumStaticPermission"
                 v-bind:value="enumStaticPermission"
+                v-bind:label="$t('studysystemApp.EnumStaticPermission.' + enumStaticPermission)"
               >
                 {{ enumStaticPermission }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="role-static-permission-role">Role</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.roleStaticPermission.role')" for="role-static-permission-role"
+              >Role</label
+            >
             <select class="form-control" id="role-static-permission-role" data-cy="role" name="role" v-model="roleStaticPermission.role">
               <option v-bind:value="null"></option>
               <option
@@ -50,7 +62,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
           </button>
           <button
             type="submit"
@@ -59,7 +71,7 @@
             :disabled="$v.roleStaticPermission.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
           </button>
         </div>
       </form>

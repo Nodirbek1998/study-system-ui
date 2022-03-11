@@ -1,0 +1,30 @@
+{
+  "studysystemApp": {
+    "article": {
+      "home": {
+        "title": "Articles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Article qo`shish",
+        "createOrEditLabel": "Articleni tahrirlash",
+        "notFound": "No Articles found"
+      },
+      "created": "Article {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Article saqlandi",
+      "deleted": "{{ param }}- Article o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Articleni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Article"
+      },
+      "id": "ID",
+      "name": "Name",
+      "text": "Text",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "studyUser": "Study User",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

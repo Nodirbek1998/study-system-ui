@@ -1,0 +1,28 @@
+{
+  "studysystemApp": {
+    "files": {
+      "home": {
+        "title": "Files",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Yangi Files qo`shish",
+        "createOrEditLabel": "Filesni tahrirlash",
+        "notFound": "No Files found"
+      },
+      "created": "Files {{ param }} bilan qo`shildi",
+      "updated": "{{ param }}- Files saqlandi",
+      "deleted": "{{ param }}- Files o`chirildi",
+      "delete": {
+        "question": "{{ id }}- Filesni o`chirmoqchimisiz? "
+      },
+      "detail": {
+        "title": "Files"
+      },
+      "id": "ID",
+      "name": "Name",
+      "fileSize": "File Size",
+      "contentType": "Content Type",
+      "createdAt": "Created At",
+      "createdBy": "Created By"
+    }
+  }
+}

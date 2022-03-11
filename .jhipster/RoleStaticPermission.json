@@ -1,6 +1,6 @@
 {
   "applications": "*",
-  "changelogDate": "20220311071153",
+  "changelogDate": "20220311131318",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "role_static_permission",

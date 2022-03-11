@@ -59,7 +59,7 @@ export default class FilesUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Files is updated with identifier ' + param.id;
+          const message = this.$t('studysystemApp.files.updated', { param: param.id });
           return this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -78,7 +78,7 @@ export default class FilesUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = 'A Files is created with identifier ' + param.id;
+          const message = this.$t('studysystemApp.files.created', { param: param.id });
           this.$root.$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',
