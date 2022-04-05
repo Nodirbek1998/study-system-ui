@@ -1,0 +1,103 @@
+import { Component, Inject, Vue, Watch } from 'vue-property-decorator';
+import LoginService from '@/account/login.service';
+import AccountService from '@/account/account.service';
+import TranslationService from '@/locale/translation.service';
+import {mapGetters} from "vuex";
+import {IRouteStatistic, RouteStatistic} from "@/shared/model/statistic.route";
+
+@Component({
+  computed: {
+    ...mapGetters({
+
+    }),
+  },
+})
+export default class JhiSideBar extends Vue {
+  @Inject('loginService')
+  private loginService: () => LoginService;
+  @Inject('translationService') private translationService: () => TranslationService;
+
+  @Inject('accountService') private accountService: () => AccountService;
+  public version = VERSION ? 'v' + VERSION : '';
+  private currentLanguage = this.$store.getters.currentLanguage;
+  private languages: any = this.$store.getters.languages;
+  private hasAnyAuthorityValue = false;
+  private isStatistics: IRouteStatistic = new RouteStatistic();
+
+  public isCollapseInternalMenu1 = false;
+  public isCollapseInternalMenu2 = false;
+
+
+  created() {
+    this.translationService().refreshTranslation(this.currentLanguage);
+  }
+
+
+  @Watch('$route', { immediate: true, deep: true })
+  onUrlChange(newVal, oldValue) {
+    // if (oldValue && oldValue.name === 'CreateDocumentComponent') {
+    //   this.getInternalCountSideBar();
+    // }
+    this.isStatistics.main = newVal && newVal.path.includes('/home');
+    this.isStatistics.subject = newVal && newVal.path.includes('/subject');
+    this.isStatistics.admin = newVal && newVal.path.includes('/admin');
+
+  }
+
+
+  public get currentUserDisplayName(): string {
+    return this.$store.getters.account ? this.$store.getters.account.displayName : '';
+  }
+
+
+  public subIsActive(input) {
+    const paths = Array.isArray(input) ? input : [input];
+    return paths.some(path => {
+      return this.$route.path.indexOf(path) === 0; // current path starts with this path string
+    });
+  }
+
+  public changeLanguage(newLanguage: string): void {
+    this.translationService().refreshTranslation(newLanguage);
+  }
+
+  public isActiveLanguage(key: string): boolean {
+    return key === this.$store.getters.currentLanguage;
+  }
+
+  public logout(): void {
+    localStorage.removeItem('jhi-authenticationToken');
+    sessionStorage.removeItem('jhi-authenticationToken');
+    this.$store.commit('logout');
+    this.$router.push('/login');
+  }
+
+  public openLogin(): void {
+    this.loginService().openLogin((<any>this).$root);
+  }
+
+  public get authenticated(): boolean {
+    return this.$store.getters.authenticated;
+  }
+
+  public hasAnyAuthority(authorities: any): boolean {
+    this.accountService()
+      .hasAnyAuthorityAndCheckAuth(authorities)
+      .then(value => {
+        this.hasAnyAuthorityValue = value;
+      });
+    return this.hasAnyAuthorityValue;
+  }
+
+  public get swaggerEnabled(): boolean {
+    return this.$store.getters.activeProfiles.indexOf('swagger') > -1;
+  }
+
+  public get inProduction(): boolean {
+    return this.$store.getters.activeProfiles.indexOf('prod') > -1;
+  }
+
+  public get openAPIEnabled(): boolean {
+    return this.$store.getters.activeProfiles.indexOf('api-docs') > -1;
+  }
+}
