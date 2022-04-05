@@ -19,7 +19,71 @@
       },
       "id": "ID",
       "staticPermission": "Static Permission",
-      "role": "Role"
+      "role": "Role",
+      "status": "Status",
+      "roleGroups": {
+        "navbar": "Navbar",
+        "subject": "Subjects",
+        "article": "Article",
+        "group": "Groups",
+        "units": "Units",
+        "test": "Test",
+        "task": "Task"
+      },
+      "roleList": {
+        "NavbarMain": "Navbar home",
+        "NavbarEntity": "Navbar admin",
+        "NavbarSubject": "Navbar subject",
+        "NavbarAdmin": "Navbar ",
+
+        "RoleAdd": "Role add",
+        "RoleUpdate": "Role update",
+        "RoleView": "Role view",
+        "RoleDelete": "Role delete",
+
+        "Admin" : "Admin",
+
+        "RoleStaticPermissionView": "Role static permission view",
+
+        "FilesView": "File view",
+        "FilesAdd": "File add",
+        "FilesUpdate": "File update",
+        "FilesDelete": "File delete",
+
+        "StudyLogsView": "Study logs view",
+
+        "ArticleAdd":  "Article add",
+        "ArticleUpdate": "Article update",
+        "ArticleDelete": "Article delete",
+        "ArticleView": "Article view",
+
+        "SubjectsAdd":  "Subjects add",
+        "SubjectsUpdate": "Subjects update",
+        "SubjectsView": "Subjects view",
+        "SubjectsDelete": "Subjects delete",
+
+        "UnitsAdd": "Units add",
+        "UnitsUpdate": "Units update",
+        "UnitsDelete": "Units delete",
+        "UnitsView": "Units view",
+
+        "GroupsAdd": "Groups add",
+        "GroupsUpdate": "Groups update",
+        "GroupsDelete": "Groups delete",
+        "GroupsView": "Groups view",
+
+        "TestsAdd": "Tests add",
+        "TestsUpdate": "Tests update",
+        "TestsDelete": "Tests delete",
+        "TestsView": "Tests view",
+
+        "TaskAdd": "Task add",
+        "TaskUpdate": "Task update",
+        "TaskDelete": "Task delete",
+        "TaskView": "Task view",
+
+        "HistoryView": "History view"
+      }
     }
   }
 }

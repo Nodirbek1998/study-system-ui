@@ -25,6 +25,35 @@ export default class StudyUsers extends Vue {
 
   public isFetching = false;
 
+  public fields = [
+    {key:'id', label:'Id', class: 'text-truncate'},
+    {key:'firstName', label:'firstName', class: 'text-truncate'},
+    {key:'lastName', label:'lastName', class: 'text-truncate'},
+    {key:'age', label:'age', class: 'text-truncate'},
+    {key:'email', label:'email', class: 'text-truncate'},
+    {key:'phone', label:'phone', class: 'text-truncate'},
+    { key: 'action', label: 'Action', class: 'text-right' },
+  ];
+
+  public tableOptions = {
+    striped: true,
+    bordered: false,
+    borderless: false,
+    outlined: false,
+    small: false,
+    hover: false,
+    dark: false,
+    fixed: false,
+    footClone: false,
+    headVariant: null,
+    tableVariant: '',
+    noCollapse: false,
+    responsive: true,
+    selectable: true,
+    selectMode: 'single',
+    stickyHeader: true,
+  };
+
   public mounted(): void {
     this.retrieveAllStudyUserss();
   }
@@ -117,4 +146,13 @@ export default class StudyUsers extends Vue {
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
+
+  public onClickEdit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'StudyUserEdit', params: { studyUsersId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
+  }
+
 }

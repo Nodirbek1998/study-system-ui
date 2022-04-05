@@ -5,11 +5,12 @@ import { ITaskAnswer } from '@/shared/model/task-answer.model';
 
 export interface IStudyUsers {
   id?: number;
-  fullName?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   age?: number | null;
   phone?: string | null;
   email?: string | null;
-  username?: string | null;
+  login?: string | null;
   password?: string | null;
   createdAt?: Date | null;
   updatedAt?: Date | null;
@@ -22,11 +23,12 @@ export interface IStudyUsers {
 export class StudyUsers implements IStudyUsers {
   constructor(
     public id?: number,
-    public fullName?: string | null,
+    public firstName?: string | null,
+    public lastName?: string | null,
     public age?: number | null,
     public phone?: string | null,
     public email?: string | null,
-    public username?: string | null,
+    public login?: string | null,
     public password?: string | null,
     public createdAt?: Date | null,
     public updatedAt?: Date | null,

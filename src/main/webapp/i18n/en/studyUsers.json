@@ -18,7 +18,8 @@
         "title": "Study Users"
       },
       "id": "ID",
-      "fullName": "Full Name",
+      "firstName": "First name",
+      "lastName": "Last name",
       "age": "Age",
       "phone": "Phone",
       "email": "Email",

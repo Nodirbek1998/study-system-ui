@@ -4,9 +4,14 @@ import { IRoleStaticPermission } from '@/shared/model/role-static-permission.mod
 
 import RoleStaticPermissionService from './role-static-permission.service';
 import AlertService from '@/shared/alert/alert.service';
+import DualListBox from 'dual-listbox-vue';
+import 'dual-listbox-vue/dist/dual-listbox.css';
 
 @Component({
   mixins: [Vue2Filters.mixin],
+  components: {
+    DualListBox,
+  },
 })
 export default class RoleStaticPermission extends Vue {
   @Inject('roleStaticPermissionService') private roleStaticPermissionService: () => RoleStaticPermissionService;
@@ -20,101 +25,160 @@ export default class RoleStaticPermission extends Vue {
   public propOrder = 'id';
   public reverse = false;
   public totalItems = 0;
+  public allSource = [];
+  public source = [];
+  public destination = [];
+  public userRoles = [];
+  public currentRoleId = 0;
 
   public roleStaticPermissions: IRoleStaticPermission[] = [];
 
   public isFetching = false;
 
   public mounted(): void {
-    this.retrieveAllRoleStaticPermissions();
+    this.getAllPermissions();
+    this.getUserRoles();
   }
 
-  public clear(): void {
-    this.page = 1;
-    this.retrieveAllRoleStaticPermissions();
+  public onChangeList({ source, destination }) {
+    let addPermissions = [];
+    let deletedPermissions = [];
+    if (this.destination == null || this.destination.length === 0) {
+      addPermissions = destination;
+    } else {
+      deletedPermissions = this.destination.filter(x => destination.filter(second => second.code === x.code).length === 0);
+      addPermissions = destination.filter(x => this.destination.filter(second => second.code === x.code).length === 0);
+    }
+
+    this.source = source;
+    this.destination = destination;
+
+    this.addRolePermissions(addPermissions);
+    this.deleteRolePermissions(deletedPermissions);
   }
 
-  public retrieveAllRoleStaticPermissions(): void {
+  public getAllPermissions(): void {
     this.isFetching = true;
-    const paginationQuery = {
-      page: this.page - 1,
-      size: this.itemsPerPage,
-      sort: this.sort(),
-    };
+    (<any>this.$root).showLoader(true);
     this.roleStaticPermissionService()
-      .retrieve(paginationQuery)
+      .getAllPermissions()
       .then(
         res => {
-          this.roleStaticPermissions = res.data;
-          this.totalItems = Number(res.headers['x-total-count']);
-          this.queryCount = this.totalItems;
-          this.isFetching = false;
+          (<any>this.$root).showLoader(false);
+          const newSource = [];
+          res.data.forEach(item => {
+            newSource.push({ name: item, code: item });
+          });
+
+          this.allSource = newSource;
+          this.source = newSource;
         },
         err => {
+          (<any>this.$root).showLoader(false);
+          (<any>this.$root).toastFailed(err);
           this.isFetching = false;
-          this.alertService().showHttpError(this, err.response);
         }
       );
   }
 
-  public handleSyncList(): void {
-    this.clear();
-  }
-
-  public prepareRemove(instance: IRoleStaticPermission): void {
-    this.removeId = instance.id;
-    if (<any>this.$refs.removeEntity) {
-      (<any>this.$refs.removeEntity).show();
-    }
-  }
-
-  public removeRoleStaticPermission(): void {
+  public getUserRoles(): void {
+    (<any>this.$root).showLoader(true);
+    this.isFetching = true;
     this.roleStaticPermissionService()
-      .delete(this.removeId)
-      .then(() => {
-        const message = this.$t('studysystemApp.roleStaticPermission.deleted', { param: this.removeId });
-        this.$bvToast.toast(message.toString(), {
-          toaster: 'b-toaster-top-center',
-          title: 'Info',
-          variant: 'danger',
-          solid: true,
-          autoHideDelay: 5000,
-        });
-        this.removeId = null;
-        this.retrieveAllRoleStaticPermissions();
-        this.closeDialog();
-      })
-      .catch(error => {
-        this.alertService().showHttpError(this, error.response);
+      .getUserRoles()
+      .then(
+        res => {
+          this.userRoles = res.data;
+        },
+        err => {
+          (<any>this.$root).showLoader(false);
+          (<any>this.$root).toastFailed(err);
+          this.isFetching = false;
+        }
+      );
+  }
+
+  public onChangeRole(roleId): void {
+    this.getRolePermissionsById(roleId);
+  }
+
+  public getRolePermissionsById(roleId): void {
+    this.isFetching = true;
+    (<any>this.$root).showLoader(true);
+    this.roleStaticPermissionService()
+      .getRolePermissionsById(roleId)
+      .then(
+        res => {
+          (<any>this.$root).showLoader(false);
+          const newDestination = [];
+          res.data.forEach(item => {
+            newDestination.push({ name: item.staticPermission, code: item.staticPermission });
+          });
+
+          this.destination = newDestination;
+          this.currentRoleId = roleId;
+          this.filterRolePermissions();
+          this.isFetching = false;
+        },
+        err => {
+          (<any>this.$root).showLoader(false);
+          this.isFetching = false;
+        }
+      )
+      .catch(err => {
+        (<any>this.$root).showLoader(false);
+        (<any>this.$root).toastError(err.toString());
       });
   }
 
-  public sort(): Array<any> {
-    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
-    if (this.propOrder !== 'id') {
-      result.push('id');
+  public addRolePermissions(rolePermissions): void {
+    if (rolePermissions === null) {
+      return;
     }
-    return result;
+    rolePermissions.forEach(rolePermission => {
+      this.isFetching = true;
+      (<any>this.$root).showLoader(true);
+      this.roleStaticPermissionService()
+        .addRolePermissions({ staticPermission: rolePermission.code, roleId: this.currentRoleId })
+        .then(
+          res => {
+            (<any>this.$root).showLoader(false);
+            this.isFetching = false;
+          },
+          err => {
+            (<any>this.$root).showLoader(false);
+            this.isFetching = false;
+          }
+        );
+    });
   }
 
-  public loadPage(page: number): void {
-    if (page !== this.previousPage) {
-      this.previousPage = page;
-      this.transition();
+  public deleteRolePermissions(rolePermissions): void {
+    if (rolePermissions === null) {
+      return;
     }
+
+    rolePermissions.forEach(rolePermission => {
+      this.isFetching = true;
+      this.roleStaticPermissionService()
+        .deleteRolePermissions({ staticPermission: rolePermission.code, roleId: this.currentRoleId })
+        .then(
+          res => {
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+          }
+        );
+    });
   }
 
-  public transition(): void {
-    this.retrieveAllRoleStaticPermissions();
-  }
-
-  public changeOrder(propOrder): void {
-    this.propOrder = propOrder;
-    this.reverse = !this.reverse;
-    this.transition();
-  }
-
-  public closeDialog(): void {
-    (<any>this.$refs.removeEntity).hide();
+  public filterRolePermissions(): void {
+    if (this.destination.length > 0) {
+      const difference = this.allSource.filter(x => this.destination.filter(second => second.code === x.code).length === 0);
+      this.source = difference;
+    } else {
+      this.source = this.allSource;
+    }
   }
 }

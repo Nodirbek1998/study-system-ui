@@ -11,3 +11,5 @@ eg $input-color: red;
 @import '~bootstrap-vue/src/index.scss';
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
+@import 'components/core';
+@import 'pages/core';

@@ -4,7 +4,7 @@ import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
 import { IStudyUsers } from '@/shared/model/study-users.model';
 
-const baseApiUrl = 'api/study-users';
+const baseApiUrl = 'api/admin/users';
 
 export default class StudyUsersService {
   public find(id: number): Promise<IStudyUsers> {
@@ -62,7 +62,7 @@ export default class StudyUsersService {
   public update(entity: IStudyUsers): Promise<IStudyUsers> {
     return new Promise<IStudyUsers>((resolve, reject) => {
       axios
-        .put(`${baseApiUrl}/${entity.id}`, entity)
+        .put(`${baseApiUrl}`, entity)
         .then(res => {
           resolve(res.data);
         })

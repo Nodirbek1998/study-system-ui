@@ -19,7 +19,69 @@
       },
       "id": "ID",
       "staticPermission": "Static Permission",
-      "role": "Role"
+      "role": "Role",
+      "status": "Holat",
+      "roleGroups": {
+        "navbar": "Navbar",
+        "subject": "Fanlar",
+        "article": "Maqola",
+        "group": "Guruh",
+        "units": "DarsLik",
+        "test": "Test",
+        "task": "Vazifa"
+      },
+      "roleList": {
+        "NavbarMain": "Navbar uy",
+        "NavbarEntity": "Navbar admin",
+        "NavbarSubject": "Navbar fanlar",
+        "NavbarAdmin": "Navbar ",
+
+        "RoleAdd": "Role qo'shish",
+        "RoleUpdate": "Role o'zgartirish",
+        "RoleView": "Role ko'rish",
+        "RoleDelete": "Role o'chirish",
+        "Admin" : "Admin",
+        "RoleStaticPermissionView": "Role static permission ko'rish",
+
+        "FilesView": "File ko'rish",
+        "FilesAdd": "File qo'shish",
+        "FilesUpdate": "File o'zgartirish",
+        "FilesDelete": "File o'chirish",
+
+        "StudyLogsView": "Study logs ko'rish",
+
+        "ArticleAdd":  "Article qo'shish",
+        "ArticleUpdate": "Article o'zgartirish",
+        "ArticleDelete": "Article o'chirish",
+        "ArticleView": "Article ko'rish",
+
+        "SubjectsAdd":  "Fanlar qo'shish",
+        "SubjectsUpdate": "Fanlar o'zgartirish",
+        "SubjectsView": "Fanlar ko'rish",
+        "SubjectsDelete": "Fanlar o'chirish",
+
+        "UnitsAdd": "Mavzu qo'shish",
+        "UnitsUpdate": "Mavzu o'zgartirish",
+        "UnitsDelete": "Mavzu o'chirish",
+        "UnitsView": "Mavzu ko'rish",
+
+        "GroupsAdd": "Guruh qo'shish",
+        "GroupsUpdate": "Guruh o'zgartirish",
+        "GroupsDelete": "Guruh o'chirish",
+        "GroupsView": "Guruh ko'rish",
+
+        "TestsAdd": "Tests qo'shish",
+        "TestsUpdate": "Tests o'zgartirish",
+        "TestsDelete": "Tests o'chirish",
+        "TestsView": "Tests ko'rish",
+
+        "TaskAdd": "Vazifa qo'shish",
+        "TaskUpdate": "Vazifa o'zgartirish",
+        "TaskDelete": "Vazifa o'chirish",
+        "TaskView": "Vazifa ko'rish",
+
+        "HistoryView": "Tarix ko'rish"
+      }
     }
   }
 }

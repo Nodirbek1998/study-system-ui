@@ -1,9 +1,11 @@
-import { Authority } from '@/shared/security/authority';
-/* tslint:disable */
-// prettier-ignore
-
-// jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
+const HomePage = () => import('@/pages/home/HomePage.vue');
 
 export default [
-  // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
-]
+  {
+    path: '/home',
+    alias: '/',
+    name: 'HomePage',
+    component: HomePage,
+    // meta: { authorities: [Authority.USER, Authority.ADMIN] },
+  },
+];

@@ -25,6 +25,33 @@ export default class Role extends Vue {
 
   public isFetching = false;
 
+  public fields = [
+    {key:'id', label:'Id', class: 'text-truncate'},
+    {key:'nameUz',label:'nameUz', class: 'text-truncate'},
+    {key:'nameRu',label:'nameRu', class: 'text-truncate'},
+    {key:'nameEu',label:'nameEn', class: 'text-truncate'},
+    { key: 'action', label: 'Action', class: 'text-right' },
+  ]
+
+  public tableOptions = {
+    striped: true,
+    bordered: false,
+    borderless: false,
+    outlined: false,
+    small: false,
+    hover: false,
+    dark: false,
+    fixed: false,
+    footClone: false,
+    headVariant: null,
+    tableVariant: '',
+    noCollapse: false,
+    responsive: true,
+    selectable: true,
+    selectMode: 'single',
+    stickyHeader: true,
+  };
+
   public mounted(): void {
     this.retrieveAllRoles();
   }
@@ -68,6 +95,22 @@ export default class Role extends Vue {
     }
   }
 
+
+  public onClickEdit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'RoleEdit', params: { roleId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
+  }
+
+  public onAddGroupPermit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'RoleStaticPermissionEdit', params: { roleStaticPermissionId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
+  }
   public removeRole(): void {
     this.roleService()
       .delete(this.removeId)

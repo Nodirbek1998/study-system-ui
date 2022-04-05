@@ -15,15 +15,27 @@
             <input type="text" class="form-control" id="id" name="id" v-model="studyUsers.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.fullName')" for="study-users-fullName">Full Name</label>
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.firstName')" for="study-users-firstName">Full Name</label>
             <input
               type="text"
               class="form-control"
               name="fullName"
-              id="study-users-fullName"
+              id="study-users-firstName"
               data-cy="fullName"
-              :class="{ valid: !$v.studyUsers.fullName.$invalid, invalid: $v.studyUsers.fullName.$invalid }"
-              v-model="$v.studyUsers.fullName.$model"
+              :class="{ valid: !$v.studyUsers.firstName.$invalid, invalid: $v.studyUsers.firstName.$invalid }"
+              v-model="$v.studyUsers.firstName.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.lastName')" for="study-users-lastName">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="fullName"
+              id="study-users-lastName"
+              data-cy="fullName"
+              :class="{ valid: !$v.studyUsers.lastName.$invalid, invalid: $v.studyUsers.lastName.$invalid }"
+              v-model="$v.studyUsers.lastName.$model"
             />
           </div>
           <div class="form-group">
@@ -70,82 +82,82 @@
               name="username"
               id="study-users-username"
               data-cy="username"
-              :class="{ valid: !$v.studyUsers.username.$invalid, invalid: $v.studyUsers.username.$invalid }"
-              v-model="$v.studyUsers.username.$model"
+              :class="{ valid: !$v.studyUsers.login.$invalid, invalid: $v.studyUsers.login.$invalid }"
+              v-model="$v.studyUsers.login.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.password')" for="study-users-password">Password</label>
-            <input
-              type="text"
-              class="form-control"
-              name="password"
-              id="study-users-password"
-              data-cy="password"
-              :class="{ valid: !$v.studyUsers.password.$invalid, invalid: $v.studyUsers.password.$invalid }"
-              v-model="$v.studyUsers.password.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.createdAt')" for="study-users-createdAt"
-              >Created At</label
-            >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="study-users-createdAt"
-                  v-model="$v.studyUsers.createdAt.$model"
-                  name="createdAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="study-users-createdAt"
-                data-cy="createdAt"
-                type="text"
-                class="form-control"
-                name="createdAt"
-                :class="{ valid: !$v.studyUsers.createdAt.$invalid, invalid: $v.studyUsers.createdAt.$invalid }"
-                v-model="$v.studyUsers.createdAt.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.updatedAt')" for="study-users-updatedAt"
-              >Updated At</label
-            >
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="study-users-updatedAt"
-                  v-model="$v.studyUsers.updatedAt.$model"
-                  name="updatedAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="study-users-updatedAt"
-                data-cy="updatedAt"
-                type="text"
-                class="form-control"
-                name="updatedAt"
-                :class="{ valid: !$v.studyUsers.updatedAt.$invalid, invalid: $v.studyUsers.updatedAt.$invalid }"
-                v-model="$v.studyUsers.updatedAt.$model"
-              />
-            </b-input-group>
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.password')" for="study-users-password">Password</label>-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              class="form-control"-->
+<!--              name="password"-->
+<!--              id="study-users-password"-->
+<!--              data-cy="password"-->
+<!--              :class="{ valid: !$v.studyUsers.password.$invalid, invalid: $v.studyUsers.password.$invalid }"-->
+<!--              v-model="$v.studyUsers.password.$model"-->
+<!--            />-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.createdAt')" for="study-users-createdAt"-->
+<!--              >Created At</label-->
+<!--            >-->
+<!--            <b-input-group class="mb-3">-->
+<!--              <b-input-group-prepend>-->
+<!--                <b-form-datepicker-->
+<!--                  aria-controls="study-users-createdAt"-->
+<!--                  v-model="$v.studyUsers.createdAt.$model"-->
+<!--                  name="createdAt"-->
+<!--                  class="form-control"-->
+<!--                  :locale="currentLanguage"-->
+<!--                  button-only-->
+<!--                  today-button-->
+<!--                  reset-button-->
+<!--                  close-button-->
+<!--                >-->
+<!--                </b-form-datepicker>-->
+<!--              </b-input-group-prepend>-->
+<!--              <b-form-input-->
+<!--                id="study-users-createdAt"-->
+<!--                data-cy="createdAt"-->
+<!--                type="text"-->
+<!--                class="form-control"-->
+<!--                name="createdAt"-->
+<!--                :class="{ valid: !$v.studyUsers.createdAt.$invalid, invalid: $v.studyUsers.createdAt.$invalid }"-->
+<!--                v-model="$v.studyUsers.createdAt.$model"-->
+<!--              />-->
+<!--            </b-input-group>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.updatedAt')" for="study-users-updatedAt"-->
+<!--              >Updated At</label-->
+<!--            >-->
+<!--            <b-input-group class="mb-3">-->
+<!--              <b-input-group-prepend>-->
+<!--                <b-form-datepicker-->
+<!--                  aria-controls="study-users-updatedAt"-->
+<!--                  v-model="$v.studyUsers.updatedAt.$model"-->
+<!--                  name="updatedAt"-->
+<!--                  class="form-control"-->
+<!--                  :locale="currentLanguage"-->
+<!--                  button-only-->
+<!--                  today-button-->
+<!--                  reset-button-->
+<!--                  close-button-->
+<!--                >-->
+<!--                </b-form-datepicker>-->
+<!--              </b-input-group-prepend>-->
+<!--              <b-form-input-->
+<!--                id="study-users-updatedAt"-->
+<!--                data-cy="updatedAt"-->
+<!--                type="text"-->
+<!--                class="form-control"-->
+<!--                name="updatedAt"-->
+<!--                :class="{ valid: !$v.studyUsers.updatedAt.$invalid, invalid: $v.studyUsers.updatedAt.$invalid }"-->
+<!--                v-model="$v.studyUsers.updatedAt.$model"-->
+<!--              />-->
+<!--            </b-input-group>-->
+<!--          </div>-->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('studysystemApp.studyUsers.role')" for="study-users-role">Role</label>
             <select class="form-control" id="study-users-role" data-cy="role" name="role" v-model="studyUsers.role">

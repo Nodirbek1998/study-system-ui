@@ -8,9 +8,9 @@
         "createOrEditLabel": "Study Usersni tahrirlash",
         "notFound": "No Study Users found"
       },
-      "created": "Study Users {{ param }} bilan qo`shildi",
-      "updated": "{{ param }}- Study Users saqlandi",
-      "deleted": "{{ param }}- Study Users o`chirildi",
+      "created": "Foydalanuvchi qo'shish",
+      "updated": "O'zgartirish",
+      "deleted": "O'chirish",
       "delete": {
         "question": "{{ id }}- Study Usersni o`chirmoqchimisiz? "
       },
@@ -18,18 +18,19 @@
         "title": "Study Users"
       },
       "id": "ID",
-      "fullName": "Full Name",
-      "age": "Age",
-      "phone": "Phone",
+      "firstName": "Ism",
+      "lastName": "Familiya",
+      "age": "Yoshi",
+      "phone": "Telefon nomer",
       "email": "Email",
       "username": "Username",
-      "password": "Password",
+      "password": "Parol",
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "role": "Role",
       "group": "Group",
-      "testAnswer": "Test Answer",
-      "taskAnswer": "Task Answer"
+      "testAnswer": "Test Javob",
+      "taskAnswer": "Vazifa Javob"
     }
   }
 }

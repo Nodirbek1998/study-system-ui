@@ -20,7 +20,8 @@
       "id": "ID",
       "nameUz": "Name Uz",
       "nameRu": "Name Ru",
-      "nameEn": "Name En"
+      "nameEn": "Name En",
+      "addRole": "Add static permission"
     }
   }
 }

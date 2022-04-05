@@ -36,24 +36,24 @@
           <dd>
             <span>{{ studyUsers.username }}</span>
           </dd>
-          <dt>
-            <span v-text="$t('studysystemApp.studyUsers.password')">Password</span>
-          </dt>
-          <dd>
-            <span>{{ studyUsers.password }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('studysystemApp.studyUsers.createdAt')">Created At</span>
-          </dt>
-          <dd>
-            <span>{{ studyUsers.createdAt }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('studysystemApp.studyUsers.updatedAt')">Updated At</span>
-          </dt>
-          <dd>
-            <span>{{ studyUsers.updatedAt }}</span>
-          </dd>
+<!--          <dt>-->
+<!--            <span v-text="$t('studysystemApp.studyUsers.password')">Password</span>-->
+<!--          </dt>-->
+<!--          <dd>-->
+<!--            <span>{{ studyUsers.password }}</span>-->
+<!--          </dd>-->
+<!--          <dt>-->
+<!--            <span v-text="$t('studysystemApp.studyUsers.createdAt')">Created At</span>-->
+<!--          </dt>-->
+<!--          <dd>-->
+<!--            <span>{{ studyUsers.createdAt }}</span>-->
+<!--          </dd>-->
+<!--          <dt>-->
+<!--            <span v-text="$t('studysystemApp.studyUsers.updatedAt')">Updated At</span>-->
+<!--          </dt>-->
+<!--          <dd>-->
+<!--            <span>{{ studyUsers.updatedAt }}</span>-->
+<!--          </dd>-->
           <dt>
             <span v-text="$t('studysystemApp.studyUsers.role')">Role</span>
           </dt>

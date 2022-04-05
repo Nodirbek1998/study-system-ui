@@ -1,81 +1,80 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2
-          id="studysystemApp.roleStaticPermission.home.createOrEditLabel"
-          data-cy="RoleStaticPermissionCreateUpdateHeading"
-          v-text="$t('studysystemApp.roleStaticPermission.home.createOrEditLabel')"
-        >
-          Create or edit a RoleStaticPermission
-        </h2>
-        <div>
-          <div class="form-group" v-if="roleStaticPermission.id">
-            <label for="id" v-text="$t('global.field.id')">ID</label>
-            <input type="text" class="form-control" id="id" name="id" v-model="roleStaticPermission.id" readonly />
-          </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('studysystemApp.roleStaticPermission.staticPermission')"
-              for="role-static-permission-staticPermission"
-              >Static Permission</label
+  <div>
+    <b-card-group deck>
+      <b-card class="card-document pb-lg-5">
+<!--        <h3 class="page-title mb-4 mt-2 text-capitalize" id="" v-text="translationService().chooseLangLabelFromObj(edoDtRole)">Edo Dt Role Static Permissions</h3>-->
+
+        <b-row>
+          <div class="col-6" style="padding-right: 35px;">
+            <b-form-group
+              label-size="sm"
+              :label="$t('studysystemApp.roleStaticPermission.status')"
+              label-for="filter-status"
+              label-class="filter-label"
             >
-            <select
-              class="form-control"
-              name="staticPermission"
-              :class="{
-                valid: !$v.roleStaticPermission.staticPermission.$invalid,
-                invalid: $v.roleStaticPermission.staticPermission.$invalid,
-              }"
-              v-model="$v.roleStaticPermission.staticPermission.$model"
-              id="role-static-permission-staticPermission"
-              data-cy="staticPermission"
-            >
-              <option
-                v-for="enumStaticPermission in enumStaticPermissionValues"
-                :key="enumStaticPermission"
-                v-bind:value="enumStaticPermission"
-                v-bind:label="$t('studysystemApp.EnumStaticPermission.' + enumStaticPermission)"
+              <b-form-select
+                class="form-control"
+                name="status"
+                id="filter-status"
+                @change="filterSource($event)"
               >
-                {{ enumStaticPermission }}
-              </option>
-            </select>
+                <b-form-select-option value="" label=""></b-form-select-option>
+                <b-form-select-option
+                  v-for="(category, index) in Object.keys(sourceByCategory)"
+                  :value="category"
+                  :key="index"
+                  :label="$t('studysystemApp.roleStaticPermission.roleGroups.' + category)"
+                >
+                  {{ category }}
+                </b-form-select-option>
+
+              </b-form-select>
+            </b-form-group>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.roleStaticPermission.role')" for="role-static-permission-role"
-              >Role</label
+
+          <div class="col-6" style="padding-left: 38px;">
+            <b-form-group
+              label-size="sm"
+              :label="$t('studysystemApp.roleStaticPermission.status')"
+              label-for="filter-status"
+              label-class="filter-label"
             >
-            <select class="form-control" id="role-static-permission-role" data-cy="role" name="role" v-model="roleStaticPermission.role">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="
-                  roleStaticPermission.role && roleOption.id === roleStaticPermission.role.id ? roleStaticPermission.role : roleOption
-                "
-                v-for="roleOption in roles"
-                :key="roleOption.id"
+              <b-form-select
+                class="form-control"
+                name="status"
+                id="filter-status"
+                @change="filterDestination($event)"
               >
-                {{ roleOption.id }}
-              </option>
-            </select>
+                <b-form-select-option value="" label=""></b-form-select-option>
+                <b-form-select-option
+                  v-for="(category, index) in Object.keys(destinationByCategory)"
+                  :value="category"
+                  :key="index"
+                  :label="$t('studysystemApp.roleStaticPermission.roleGroups.' + category)"
+                >
+                  {{ category }}
+                </b-form-select-option>
+
+              </b-form-select>
+            </b-form-group>
           </div>
+        </b-row>
+
+
+        <DualListBox
+          :source="source"
+          :destination="destination"
+          label="name"
+          @onChangeList="onChangeList"
+        />
+
+        <div class="role-submit">
+          <b-button class="text-center" :disabled="!isChanging"
+                    @click="submitRoles" variant="primary">{{$t('entity.action.submit')}}</b-button>
         </div>
-        <div>
-          <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
-          </button>
-          <button
-            type="submit"
-            id="save-entity"
-            data-cy="entityCreateSaveButton"
-            :disabled="$v.roleStaticPermission.$invalid || isSaving"
-            class="btn btn-primary"
-          >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
-          </button>
-        </div>
-      </form>
-    </div>
+      </b-card>
+    </b-card-group>
+
   </div>
 </template>
 <script lang="ts" src="./role-static-permission-update.component.ts"></script>

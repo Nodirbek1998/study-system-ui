@@ -19,14 +19,13 @@ import StudyUsersService from './study-users.service';
 
 const validations: any = {
   studyUsers: {
-    fullName: {},
+    firstName: {},
+    lastName: {},
     age: {},
     phone: {},
     email: {},
-    username: {},
+    login: {},
     password: {},
-    createdAt: {},
-    updatedAt: {},
   },
 };
 

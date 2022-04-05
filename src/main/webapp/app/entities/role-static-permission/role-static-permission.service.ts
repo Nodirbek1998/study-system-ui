@@ -84,4 +84,69 @@ export default class RoleStaticPermissionService {
         });
     });
   }
+
+  public getAllPermissions(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get('/api/static-permissions')
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public getUserRoles(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get('/api/roles')
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public getRolePermissionsById(roleId): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`/api/role-static-permissions?roleId=${roleId}&size=1000`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public addRolePermissions(staticPermissionDto: IRoleStaticPermission): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .post(`/api/role-static-permissions`, staticPermissionDto)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public deleteRolePermissions(staticPermissionDto: IRoleStaticPermission): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .delete(`/api/role-static-permissions`, { data: staticPermissionDto })
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }
