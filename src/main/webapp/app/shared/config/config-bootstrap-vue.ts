@@ -24,6 +24,27 @@ import {
   BFormDatepicker,
   BInputGroup,
   BInputGroupPrepend,
+  BTab,
+  BTabs,
+  BCardText,
+  BNav,
+  BPopover,
+  BInputGroupAppend,
+  BDropdownForm,
+  BFormSelect,
+  BFormSelectOption,
+  BListGroup,
+  BListGroupItem,
+  BCard,
+  BCardGroup,
+  BButtonGroup,
+  BFormTextarea,
+  BIcon,
+  BToast,
+  BToaster,
+  BFormCheckboxGroup,
+  BSpinner,
+  BEmbed,
 } from 'bootstrap-vue';
 
 export function initBootstrapVue(vue) {
@@ -45,6 +66,7 @@ export function initBootstrapVue(vue) {
   vue.component('b-form-input', BFormInput);
   vue.component('b-form-group', BFormGroup);
   vue.component('b-form-checkbox', BFormCheckbox);
+  vue.component('b-form-checkbox-group', BFormCheckboxGroup);
   vue.component('b-collapse', BCollapse);
   vue.component('b-nav-item', BNavItem);
   vue.component('b-nav-item-dropdown', BNavItemDropdown);
@@ -53,4 +75,25 @@ export function initBootstrapVue(vue) {
   vue.component('b-form-datepicker', BFormDatepicker);
   vue.component('b-input-group', BInputGroup);
   vue.component('b-input-group-prepend', BInputGroupPrepend);
+  vue.component('b-tabs', BTabs);
+  vue.component('b-tab', BTab);
+  vue.component('b-card-text', BCardText);
+  vue.component('b-nav', BNav);
+  vue.component('b-popover', BPopover);
+  vue.component('b-input-group-append', BInputGroupAppend);
+  vue.component('b-dropdown-form', BDropdownForm);
+  vue.component('b-form-select', BFormSelect);
+  vue.component('b-form-select-option', BFormSelectOption);
+  vue.component('b-list-group', BListGroup);
+  vue.component('b-list-group-item', BListGroupItem);
+  vue.component('b-card', BCard);
+  vue.component('b-card-group', BCardGroup);
+  vue.component('b-button-group', BButtonGroup);
+  vue.component('b-form-textarea', BFormTextarea);
+  vue.component('b-icon', BIcon);
+  vue.component('b-toast', BToast);
+  vue.component('b-toaster', BToaster);
+  vue.component('b-progress', BProgress);
+  vue.component('b-spinner', BSpinner);
+  vue.component('b-embed', BEmbed);
 }
