@@ -2,29 +2,29 @@
   "studysystemApp": {
     "article": {
       "home": {
-        "title": "Articles",
+        "title": "Maqolalar",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Yangi Article qo`shish",
-        "createOrEditLabel": "Articleni tahrirlash",
-        "notFound": "No Articles found"
+        "createLabel": "Yangi maqolalar qo`shish",
+        "createOrEditLabel": "Maqolalarni tahrirlash",
+        "notFound": "Maqolalar topilmadi"
       },
-      "created": "Article {{ param }} bilan qo`shildi",
-      "updated": "{{ param }}- Article saqlandi",
-      "deleted": "{{ param }}- Article o`chirildi",
+      "created": "Maqolalar bilan qo`shildi",
+      "updated": "Maqolalar maqolalar saqlandi",
+      "deleted": "Maqolalar o`chirildi",
       "delete": {
-        "question": "{{ id }}- Articleni o`chirmoqchimisiz? "
+        "question": "{{ id }}- Maqolalarni o`chirmoqchimisiz? "
       },
       "detail": {
-        "title": "Article"
+        "title": "Maqolalar"
       },
       "id": "ID",
-      "name": "Name",
+      "name": "Nomi",
       "text": "Text",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
+      "createdAt": "Yaratilgan vaqt",
+      "updatedAt": "O'zgartirilgan vaqt",
       "studyUser": "Study User",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By"
+      "createdBy": "Yaratgan foydalanuvchi",
+      "updatedBy": "O'zgartirgan foydalanuvchi"
     }
   }
 }
