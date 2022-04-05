@@ -7,12 +7,17 @@ Component.registerHooks([
 ]);
 import Router, { RouteConfig } from 'vue-router';
 
-const Home = () => import('@/core/home/home.vue');
 const Error = () => import('@/core/error/error.vue');
 import account from '@/router/account';
 import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
+import home from "@/router/home";
+
+
+const MainLayout = () => import('@/main-layout.vue');
+const Login = () => import('@/pages/auth/auth.page2.vue');
+
 
 Vue.use(Router);
 
@@ -21,9 +26,21 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'MainLayout',
+      component: MainLayout,
+      children: [
+        ...pages,
+        ...account,
+        entities,
+        ...admin,
+        ...home
+      ]
     },
     {
       path: '/forbidden',
@@ -37,10 +54,6 @@ const router = new Router({
       component: Error,
       meta: { error404: true }
     },
-    ...account,
-    ...admin,
-    entities,
-    ...pages
   ]
 });
 

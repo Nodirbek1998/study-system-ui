@@ -3,11 +3,9 @@ import LoginService from '@/account/login.service';
 import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
 
-import EntitiesMenu from '@/entities/entities-menu.vue';
 
 @Component({
   components: {
-    'entities-menu': EntitiesMenu,
   },
 })
 export default class JhiNavbar extends Vue {
@@ -40,14 +38,11 @@ export default class JhiNavbar extends Vue {
     return key === this.$store.getters.currentLanguage;
   }
 
-  public logout(): Promise<any> {
+  public logout(): void {
     localStorage.removeItem('jhi-authenticationToken');
     sessionStorage.removeItem('jhi-authenticationToken');
     this.$store.commit('logout');
-    if (this.$route.path !== '/') {
-      return this.$router.push('/');
-    }
-    return Promise.resolve(this.$router.currentRoute);
+    this.$router.push('/login');
   }
 
   public openLogin(): void {
@@ -65,10 +60,6 @@ export default class JhiNavbar extends Vue {
         this.hasAnyAuthorityValues[authorities] = value;
       });
     return this.hasAnyAuthorityValues[authorities] ?? false;
-  }
-
-  public get openAPIEnabled(): boolean {
-    return this.$store.getters.activeProfiles.indexOf('api-docs') > -1;
   }
 
   public get inProduction(): boolean {
