@@ -6,7 +6,7 @@ import { setupAxiosInterceptors } from '@/shared/config/axios-interceptor';
 
 import App from './app.vue';
 import Vue2Filters from 'vue2-filters';
-import { ToastPlugin } from 'bootstrap-vue';
+import ModalPlugin, { BootstrapVueIcons } from 'bootstrap-vue';
 import router from './router';
 import * as config from './shared/config/config';
 import * as bootstrapVueConfig from './shared/config/config-bootstrap-vue';
@@ -27,6 +27,7 @@ import AlertService from './shared/alert/alert.service';
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
+import ArticleService from "@/entities/article/article.service";
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -37,11 +38,15 @@ config.initVueApp(Vue);
 config.initFortAwesome(Vue);
 bootstrapVueConfig.initBootstrapVue(Vue);
 Vue.use(Vue2Filters);
-Vue.use(ToastPlugin);
+Vue.use(ModalPlugin);
+// Vue.use(DatePicker);
+Vue.use(BootstrapVueIcons);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
+
+Vue.prototype.$can = (...args) => accountService.canAuth(args);
 const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
 
@@ -73,6 +78,100 @@ const vue = new Vue({
   components: { App },
   template: '<App/>',
   router,
+  methods: {
+    showLoader(show?: boolean, type?: any) {
+      this.isShowLoader = show;
+    },
+    toastSuccess(text): void {
+      const title = this.$t('toast.successTitle');
+      this.$bvToast.toast(text, {
+        title: '' + title,
+        variant: 'success',
+        solid: true,
+      });
+    },
+    toastWarning(text): void {
+      const title = this.$t('toast.warningTitle');
+      this.$bvToast.toast(text, {
+        title: '' + title,
+        variant: 'warning',
+        solid: true,
+      });
+    },
+    toastError(text, titleStr?: string): void {
+      const title = titleStr || this.$t('toast.errorTitle');
+      this.$bvToast.toast(text, {
+        title: '' + title,
+        variant: 'danger',
+        solid: true,
+      });
+    },
+
+    toastFailed(err?: any): void {
+      // Create a ID with a incremented count
+      const elList = [];
+      if (err && err.response && err.response.data) {
+        const dataResponse = err.response.data;
+        const hch = this.$createElement;
+        elList.push(hch('p', {}, dataResponse.title));
+        if (dataResponse.fieldErrors && dataResponse.fieldErrors.length > 0) {
+          dataResponse.fieldErrors.forEach(fe => {
+            const hch2 = this.$createElement;
+            elList.push(hch2('p', {}, fe.field + ' - ' + fe.message));
+          });
+        } else if (dataResponse.detail) {
+          const h = this.$createElement;
+
+          elList.push(h('p', {}, dataResponse.detail));
+        } else if (err.message) {
+          const h = this.$createElement;
+
+          elList.push(h('p', {}, err.message.toString()));
+        }
+      } else if (err && err.message) {
+        const h = this.$createElement;
+
+        elList.push(h('p', {}, err.message.toString()));
+      } else {
+        const h = this.$createElement;
+
+        elList.push(h('p', {}, err.toString()));
+      }
+
+      const title = this.$t('toast.errorTitle');
+      this.$bvToast.toast(elList, {
+        title: '' + title,
+        variant: 'danger',
+        solid: true,
+      });
+    },
+    toastInfo(text): void {
+      const title = this.$t('toast.infoTitle');
+      this.$bvToast.toast(text, {
+        title: '' + title,
+        variant: 'info',
+        solid: true,
+      });
+    },
+    toastNotification(content, id, url, notification): void {
+      const title = content;
+      this.$bvToast.toast(notification.message, {
+        title: title,
+        id: id.toString(),
+        variant: 'info',
+        solid: true,
+        href: url,
+      });
+    },
+
+    hasPermission(roles): boolean {
+      if (Array.isArray(roles)) {
+      } else if (typeof roles === 'string') {
+      }
+
+      return true;
+    },
+  },
   provide: {
     loginService: () => loginService,
     activateService: () => new ActivateService(),
@@ -82,7 +181,7 @@ const vue = new Vue({
     configurationService: () => new ConfigurationService(),
     logsService: () => new LogsService(),
     metricsService: () => new MetricsService(),
-
+    articleService: () => new ArticleService(),
     translationService: () => translationService,
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
