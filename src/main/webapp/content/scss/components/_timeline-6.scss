@@ -1,0 +1,81 @@
+// White color
+$white: #ffffff !default;
+//$font-size-base: 0.8rem;
+//$line-height-base: 1;
+// Timeline 6
+$timeline-6-config: (
+  label-width: 50px,
+  bar-width: 40px,
+  badge-size: 13px,
+  bar-border-width: 3px,
+  border-color: $white,
+) !default;
+$gray-200: #ebedf3 !default;
+$gray-800: #3f4254 !default;
+$dark-75: $gray-800 !default; // Custom variable
+//
+// Timeline 6
+//
+
+.timeline.timeline-6 {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 181px;
+    width: 3px;
+    top: 0;
+    bottom: 0;
+    background-color: $gray-200;
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1.7rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-label {
+      width: 180px;
+      flex-shrink: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      color: $dark-75;
+    }
+
+    .timeline-badge {
+      flex-shrink: 0;
+      background: white;
+      width: 13px;
+      height: 13px;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+      margin-top: 1px;
+      margin-left: -0.5rem;
+      padding: 3px !important;
+      border: 6px solid $white !important;
+
+      span {
+        display: block;
+        border-radius: 100%;
+        width: 6px;
+        height: 6px;
+        background-color: $gray-200;
+      }
+    }
+
+    .timeline-content {
+      flex-grow: 1;
+    }
+  }
+}

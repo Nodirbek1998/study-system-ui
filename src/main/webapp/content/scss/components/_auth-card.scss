@@ -1,0 +1,20 @@
+.card {
+  &-auth {
+    width: 420px;
+
+
+    .logo {
+      width: 180px;
+    }
+
+    .card-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    a {
+      box-shadow: none !important;
+      outline: none;
+    }
+  }
+}

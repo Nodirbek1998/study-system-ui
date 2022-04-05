@@ -1,0 +1,135 @@
+@import '../variables';
+
+.page-auth {
+  height: 100%;
+  background: center no-repeat theme-color(primary) !important;
+  background-size: cover !important;
+
+  .lang-switcher {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+}
+
+.page-auth-2 {
+  background-color: white !important;
+
+  .custom-row {
+    display: flex;
+    justify-content: stretch;
+  }
+  .right-panel {
+    flex-grow: 1;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .left-panel {
+    min-width: 34%;
+    max-width: 34%;
+    .login-container {
+      padding: 60px 0px;
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+
+      .login-header {
+        div {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 70px;
+        }
+      }
+
+      .login-content {
+        padding-bottom: 80px;
+        .vs__dropdown-toggle {
+          background-color: #f2f2f2;
+        }
+
+        form input {
+          background-color: #f2f2f2;
+        }
+      }
+
+      .login-footer {
+        max-width: 22ch;
+        font-size: 12px;
+        margin: 0 auto;
+      }
+
+      & > div:first-child {
+        color: #1d5891;
+        h2 {
+          margin-top: 3rem;
+          font-size: 50px;
+        }
+        h4 {
+          font-size: 24px;
+          font-weight: bolder;
+          margin: auto 12px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1124px) {
+  .page-auth-2 {
+    .left-panel {
+      min-width: 48%;
+      max-width: 48%;
+      .login-container {
+        padding: 60px 0px;
+        max-width: 340px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+
+        .login-header {
+          padding-top: 30px;
+          div {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+          }
+        }
+
+        .login-content {
+          padding-bottom: 80px;
+        }
+
+        .login-footer {
+          max-width: 22ch;
+          font-size: 12px;
+          margin: 0 auto;
+        }
+
+        form input {
+          background-color: #f2f2f2;
+        }
+
+        & > div:first-child {
+          color: #1d5891;
+          h2 {
+            margin-top: 2rem;
+            font-size: 42px;
+          }
+          h4 {
+            font-size: 18px;
+            font-weight: bolder;
+            margin: auto 12px;
+          }
+        }
+      }
+    }
+  }
+}

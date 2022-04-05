@@ -1,0 +1,74 @@
+@import '../variables';
+
+.b-calendar {
+  &-nav {
+    //display: none !important;
+    .btn {
+      color: white;
+    }
+  }
+
+  color: #1d3461;
+
+  &-grid {
+    border: none;
+    box-shadow: none !important;
+
+    &-caption {
+      text-align: right !important;
+      margin-bottom: 28px;
+      background-color: rgba(255, 255, 255, 0.17);
+      padding: 9px 15px !important;
+      color: #fff;
+      font-weight: 500 !important;
+    }
+
+    &-weekdays {
+      border: none !important;
+      margin-bottom: 10px;
+      color: #fff;
+
+      small {
+        font-weight: bold;
+      }
+    }
+
+    &-body {
+      .btn {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        height: 27px !important;
+        padding: 7px 0 !important;
+        color: #fff !important;
+        font-weight: bold;
+
+        &.active {
+          background-color: #fff !important;
+          color: #000 !important;
+        }
+
+        &:hover {
+          background-color: #fff;
+          color: #000 !important;
+        }
+
+        &-outline-primary {
+          background-color: #ffc107;
+          //color: #e96439 !important;
+
+          &:hover {
+            background-color: #e96439;
+            color: #fff !important;
+          }
+        }
+        &.btn-light {
+          color: theme-color(primary) !important;
+        }
+      }
+    }
+
+    &-help {
+      display: none !important;
+    }
+  }
+}

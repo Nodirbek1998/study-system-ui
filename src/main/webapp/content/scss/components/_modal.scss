@@ -1,0 +1,135 @@
+@import '../variables';
+
+#user-add-modal {
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #f2f2f2;
+
+    .halo-tree {
+      padding-left: 10px;
+
+      li {
+        &::before {
+          border-left: 1px solid #437db6;
+        }
+
+        &::after {
+          border-top: 1px solid #437db6;
+        }
+      }
+
+      .inputCheck {
+        top: 2px;
+        left: 5px;
+        border-radius: 100%;
+        border: 3px solid theme-color(primary);
+
+        &::after {
+          display: none !important;
+        }
+
+        &.box-checked,
+        &.box-halfchecked {
+          background: theme-color(primary);
+        }
+      }
+
+      .node-title {
+        font-size: 16px;
+        padding-left: 30px;
+        color: theme-color(primary);
+        font-weight: bold;
+        position: relative;
+
+        &:hover,
+        &:focus {
+          background: transparent;
+        }
+
+        &::before {
+          content: '';
+          display: block;
+          width: 15px;
+          height: 12px;
+          position: absolute;
+          left: 6px;
+          top: 5px;
+        }
+      }
+
+      .halo-tree {
+        padding-left: 16px;
+
+        .node-title {
+          padding-left: 24px;
+
+          &::before {
+            width: 11px;
+            height: 16px;
+            top: 3px;
+          }
+        }
+      }
+
+      li:after {
+        top: 15px !important;
+      }
+
+      & > li.first-node:before {
+        top: 15px;
+      }
+
+      li:before {
+        top: -10px;
+      }
+
+      .node-selected {
+        background: transparent;
+        border: none;
+      }
+    }
+
+    .card-selected-users {
+      h5 {
+        font-size: 16px;
+        font-weight: 500;
+        color: theme-color(primary);
+        margin-top: 5px;
+        padding-bottom: 12px;
+      }
+
+      .list-unstyled {
+        padding-top: 0;
+        margin-bottom: 10px;
+
+        &-item {
+          color: theme-color(primary);
+          position: relative;
+          padding-left: 40px;
+
+          &::before {
+            content: '';
+            display: block;
+            width: 11px;
+            height: 16px;
+            position: absolute;
+            top: 3px;
+            left: 22px;
+          }
+
+          .user-index {
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+}

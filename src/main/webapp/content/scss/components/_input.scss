@@ -1,0 +1,150 @@
+@import '../variables';
+
+.form-group {
+  .mx-icon-calendar {
+    color: theme-color(primary);
+  }
+
+  label,
+  legend {
+    color: #7f8fa4;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-control {
+    min-height: 45px;
+    border-radius: 0;
+    color: #354052;
+    border: 1px solid #cbd4e0;
+    box-shadow: none;
+
+    &[readonly='readonly'],
+    &[disabled='disabled'] {
+      background-color: #fff;
+    }
+  }
+}
+
+.report-create-page {
+  .form-group {
+    margin-bottom: 0px;
+    .bv-no-focus-ring {
+      min-height: 68px !important;
+      .invalid-feedback {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.create-internal-document-page {
+  .form-group {
+    margin-bottom: 0px;
+    .bv-no-focus-ring {
+      min-height: 68px !important;
+      .invalid-feedback {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.input-group:focus-within {
+  color: #495057;
+  background-color: #fff;
+  border-color: #86aed6;
+  outline: 0;
+  box-shadow: none;
+}
+
+.login-input-form {
+  .form-group {
+    .form-control:focus {
+      border-color: #86aed6;
+    }
+  }
+
+  .input-group {
+    border: 1px solid #cbd4e0;
+    border-radius: 0;
+
+    .form-control {
+      min-height: 45px;
+      border: none;
+    }
+
+    .form-control:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    .input-group-text {
+      border: none;
+      background-color: #f2f2f2;
+      color: #6c757dbf;
+    }
+  }
+  .input-group:focus-within {
+    border-color: #86aed6;
+    box-shadow: none !important;
+  }
+}
+
+.input-group {
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: rgba(134, 174, 214, 0);
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.custom-select,
+.view-attachments {
+  border-radius: 1px;
+  color: #354052;
+  min-height: 40px;
+  //border: 0 solid #ced4da;
+}
+
+select.custom-select {
+  min-height: 45px;
+  border-radius: 0;
+  color: #354052;
+  border: 1px solid #cbd4e0;
+  box-shadow: none;
+}
+
+.view-attachments {
+  padding: 15px;
+  min-height: 40px;
+}
+.custom-file-label {
+  min-height: 45px;
+}
+
+.custom-file-label {
+  height: 59px;
+  display: flex;
+  align-items: center;
+  border: none;
+  font-size: 16px;
+
+  &::after {
+    height: 59px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    color: theme-color(primary);
+  }
+}
+
+.page .b-form-tags.disabled {
+  background-color: white;
+}
+
+.page .b-form-tags.custom-form-tag {
+  height: 102px !important;
+}

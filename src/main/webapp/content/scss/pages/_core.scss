@@ -1,0 +1,96 @@
+@import 'auth';
+@import 'home';
+//@import 'create-doc';
+//@import 'view-doc';
+//@import 'library';
+//@import 'hr';
+//@import 'hr/dashboard';
+//@import 'user-select';
+//@import 'view-task';
+@import '../variables';
+
+.page {
+  padding: 30px;
+  background-color: #f7f8fa;
+  height: 100%;
+  min-height: 500px;
+  overflow: auto;
+
+  .page-title {
+    margin: 0 auto 5px;
+    //display: table;
+    text-align: left;
+    color: #11141a;
+    //border-bottom: 2px solid #88173d;
+    //text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.16);
+  }
+
+  .page-sub-title {
+    text-align: left;
+    color: #7f8fa4;
+    //text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.16);
+  }
+
+  &-create-document {
+    .card {
+      border: none;
+      //box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.16);
+
+      &-pdf {
+        background-color: #f7f8fa !important;
+        color: #fff;
+
+        object {
+          height: calc(100vh - 130px);
+        }
+      }
+
+      form {
+        .form-title {
+          display: table;
+          margin: 0 auto 15px;
+          padding-bottom: 5px;
+          text-align: center;
+          color: theme-color(primary);
+          //border-bottom: 2px solid #88173d;
+          //text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.16);
+        }
+
+        .mx-icon-calendar {
+          color: theme-color(primary);
+        }
+
+        textarea {
+          overflow: auto !important;
+          max-height: 60px;
+        }
+
+        .custom-file {
+          &-label {
+            border: none;
+            background-color: transparent;
+            &::after {
+              background-color: theme-color(primary);
+              color: #fff;
+            }
+          }
+        }
+
+        .v-select {
+          .vs__dropdown-toggle {
+            border-color: theme-color(primary);
+            color: theme-color(primary);
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-header {
+  .close {
+    color: white;
+    font-size: 40pt;
+    padding: 0 25px 1px 1px;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../variables';
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border: 0 solid theme-color(primary-hover);
+}
+::-webkit-scrollbar-thumb {
+  background: theme-color(primary);
+  border: 1px solid theme-color(primary-hover);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme-color(primary-hover);
+}
