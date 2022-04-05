@@ -6,6 +6,7 @@ export interface AccountStateStorable {
   authenticated: boolean;
   ribbonOnProfiles: string;
   activeProfiles: string;
+  menuCollapse: string,
 }
 
 export const defaultAccountState: AccountStateStorable = {
@@ -14,6 +15,7 @@ export const defaultAccountState: AccountStateStorable = {
   authenticated: false,
   ribbonOnProfiles: '',
   activeProfiles: '',
+  menuCollapse: '',
 };
 
 export const accountStore: Module<AccountStateStorable, any> = {
@@ -24,6 +26,7 @@ export const accountStore: Module<AccountStateStorable, any> = {
     authenticated: state => state.authenticated,
     activeProfiles: state => state.activeProfiles,
     ribbonOnProfiles: state => state.ribbonOnProfiles,
+    menuCollapse: state => state.menuCollapse,
   },
   mutations: {
     authenticate(state) {
@@ -44,6 +47,13 @@ export const accountStore: Module<AccountStateStorable, any> = {
     },
     setRibbonOnProfiles(state, ribbon) {
       state.ribbonOnProfiles = ribbon;
+    },
+    setMenuCollapse(state) {
+      if (!state.menuCollapse) {
+        state.menuCollapse = 'active';
+      } else {
+        state.menuCollapse = '';
+      }
     },
   },
 };
