@@ -26,7 +26,7 @@ export default class MainLayout extends Vue {
     return this.$store.getters.authenticated;
   }
   created(): void {
-    const token = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+    const token = localStorage.getItem('jwt-token') || sessionStorage.getItem('jwt-token');
     if (!token) {
       this.$router.push({ name: 'Login' });
     }

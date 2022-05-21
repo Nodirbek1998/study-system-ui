@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const TIMEOUT = 1000000;
 const onRequestSuccess = config => {
-  const token = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+  const token = localStorage.getItem('jwt-token') || sessionStorage.getItem('jwt-token');
   if (token) {
     if (!config.headers) {
       config.headers = {};

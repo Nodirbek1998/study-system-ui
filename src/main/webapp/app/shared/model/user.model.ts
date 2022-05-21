@@ -12,6 +12,8 @@ export interface IUser {
   lastModifiedBy?: string;
   lastModifiedDate?: Date;
   password?: string;
+  label?: string;
+  checked?: boolean;
 }
 
 export class User implements IUser {
@@ -28,6 +30,8 @@ export class User implements IUser {
     public createdDate?: Date,
     public lastModifiedBy?: string,
     public lastModifiedDate?: Date,
-    public password?: string
+    public password?: string,
+    public label?: string,
+    public checked?: boolean
   ) {}
 }

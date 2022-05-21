@@ -22,12 +22,14 @@ import RegisterService from './account/register/register.service';
 import UserManagementService from './admin/user-management/user-management.service';
 import LoginService from './account/login.service';
 import AccountService from './account/account.service';
+import GroupsService from './entities/groups/groups.service';
 import AlertService from './shared/alert/alert.service';
 
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
 import ArticleService from "@/entities/article/article.service";
+import UserRoleService from "@/entities/study-users/modal/user-role.service";
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -186,6 +188,8 @@ const vue = new Vue({
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
     alertService: () => new AlertService(),
+    groupsService: () => new GroupsService(),
+    userRoleService: () => new UserRoleService(),
   },
   i18n,
   store,

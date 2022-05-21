@@ -10,6 +10,7 @@ import { ISubjects } from '@/shared/model/subjects.model';
 
 import { IGroups, Groups } from '@/shared/model/groups.model';
 import GroupsService from './groups.service';
+import OpenUserSelect from '@/entities/grops/select-user/user-select-modal.vue';
 
 const validations: any = {
   groups: {
@@ -21,6 +22,9 @@ const validations: any = {
 
 @Component({
   validations,
+  components:{
+    OpenUserSelect
+  }
 })
 export default class GroupsUpdate extends Vue {
   @Inject('groupsService') private groupsService: () => GroupsService;
@@ -37,6 +41,16 @@ export default class GroupsUpdate extends Vue {
   public subjects: ISubjects[] = [];
   public isSaving = false;
   public currentLanguage = '';
+  public page = 1;
+  public previousPage = 1;
+  public itemsPerPage = 20;
+  public reverse = false;
+  public propOrder = 'id';
+  public isShowUserModal = false;
+
+  public userSelectModalTitle = '';
+  public currentUserType = 1;
+  public modalSelectedUsers = [];
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -118,13 +132,18 @@ export default class GroupsUpdate extends Vue {
   }
 
   public initRelationships(): void {
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
     this.studyUsersService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(res => {
         this.studyUsers = res.data;
       });
     this.subjectsService()
-      .retrieve()
+      .retrieve(paginationQuery)
       .then(res => {
         this.subjects = res.data;
       });
@@ -136,4 +155,17 @@ export default class GroupsUpdate extends Vue {
     }
     return option;
   }
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public hideUserModal(isShow): void {
+    this.isShowUserModal = isShow;
+  }
+
 }

@@ -26,103 +26,15 @@
               v-model="$v.groups.name.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.groups.createdAt')" for="groups-createdAt">Created At</label>
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="groups-createdAt"
-                  v-model="$v.groups.createdAt.$model"
-                  name="createdAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="groups-createdAt"
-                data-cy="createdAt"
-                type="text"
-                class="form-control"
-                name="createdAt"
-                :class="{ valid: !$v.groups.createdAt.$invalid, invalid: $v.groups.createdAt.$invalid }"
-                v-model="$v.groups.createdAt.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.groups.updatedAt')" for="groups-updatedAt">Updated At</label>
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="groups-updatedAt"
-                  v-model="$v.groups.updatedAt.$model"
-                  name="updatedAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="groups-updatedAt"
-                data-cy="updatedAt"
-                type="text"
-                class="form-control"
-                name="updatedAt"
-                :class="{ valid: !$v.groups.updatedAt.$invalid, invalid: $v.groups.updatedAt.$invalid }"
-                v-model="$v.groups.updatedAt.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label v-text="$t('studysystemApp.groups.studyUser')" for="groups-studyUser">Study User</label>
-            <select
-              class="form-control"
-              id="groups-studyUsers"
-              data-cy="studyUser"
-              multiple
-              name="studyUser"
-              v-if="groups.studyUsers !== undefined"
-              v-model="groups.studyUsers"
-            >
-              <option
-                v-bind:value="getSelected(groups.studyUsers, studyUsersOption)"
-                v-for="studyUsersOption in studyUsers"
-                :key="studyUsersOption.id"
-              >
-                {{ studyUsersOption.id }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label v-text="$t('studysystemApp.groups.subjects')" for="groups-subjects">Subjects</label>
-            <select
-              class="form-control"
-              id="groups-subjects"
-              data-cy="subjects"
-              multiple
-              name="subjects"
-              v-if="groups.subjects !== undefined"
-              v-model="groups.subjects"
-            >
-              <option
-                v-bind:value="getSelected(groups.subjects, subjectsOption)"
-                v-for="subjectsOption in subjects"
-                :key="subjectsOption.id"
-              >
-                {{ subjectsOption.id }}
-              </option>
-            </select>
-          </div>
         </div>
+        <user-select-modal
+          :is-show="isShowUserModal"
+          @hideUserModel="hideUserModal"
+          @selectedUserFromModal="selectedUserFromModal"
+          :title="userSelectModalTitle"
+          :user-type="currentUserType"
+          :selectedUsers="modalSelectedUsers"
+        ></user-select-modal>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>

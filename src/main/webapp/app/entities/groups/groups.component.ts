@@ -25,16 +25,44 @@ export default class Groups extends Vue {
 
   public isFetching = false;
 
+  public fields = [
+    {key:'id', label:'Id', class: 'text-truncate'},
+    {key:'name',label:'name', class: 'text-truncate'},
+    {key:'createdAt',label:'createdAt', class: 'text-truncate'},
+    {key:'updatedAt',label:'updatedAt', class: 'text-truncate'},
+    { key: 'action', label: 'Action', class: 'text-right' },
+  ]
+
+  public tableOptions = {
+    striped: true,
+    bordered: false,
+    borderless: false,
+    outlined: false,
+    small: false,
+    hover: false,
+    dark: false,
+    fixed: false,
+    footClone: false,
+    headVariant: null,
+    tableVariant: '',
+    noCollapse: false,
+    responsive: true,
+    selectable: true,
+    selectMode: 'single',
+    stickyHeader: true,
+  };
+
+
   public mounted(): void {
-    this.retrieveAllGroupss();
+    this.retrieveAllGroups();
   }
 
   public clear(): void {
     this.page = 1;
-    this.retrieveAllGroupss();
+    this.retrieveAllGroups();
   }
 
-  public retrieveAllGroupss(): void {
+  public retrieveAllGroups(): void {
     this.isFetching = true;
     const paginationQuery = {
       page: this.page - 1,
@@ -81,7 +109,7 @@ export default class Groups extends Vue {
           autoHideDelay: 5000,
         });
         this.removeId = null;
-        this.retrieveAllGroupss();
+        this.retrieveAllGroups();
         this.closeDialog();
       })
       .catch(error => {
@@ -105,7 +133,7 @@ export default class Groups extends Vue {
   }
 
   public transition(): void {
-    this.retrieveAllGroupss();
+    this.retrieveAllGroups();
   }
 
   public changeOrder(propOrder): void {
@@ -116,5 +144,13 @@ export default class Groups extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public onClickEdit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'GroupsEdit', params: { groupsId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
   }
 }

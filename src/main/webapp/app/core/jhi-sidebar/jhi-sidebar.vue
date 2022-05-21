@@ -3,16 +3,20 @@
         <b-navbar-brand to="/" :class="$store.getters.menuCollapse" style='background-color: white;'>
             <img src="content/images/logo_tatu.png" alt="" width='50px' height='50px'/>
         </b-navbar-brand>
-      <b-list-group class="sidebar-links" >
+
+      <b-list-group class="sidebar-links" v-if="isStatistics.group">
+
+      </b-list-group>
+      <b-list-group class="sidebar-links" v-if="isStatistics.admin">
         <b-list-group-item to="/admin/users" v-if="isStatistics.admin" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.studyUsers')">Study Users</span>
         </b-list-group-item>
-        <b-list-group-item to="/admin/role" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item to="/admin/role" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.role')">Role</span>
         </b-list-group-item>
-        <b-list-group-item  to="/admin/study-logs" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item  to="/admin/study-logs" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.studyLogs')">Study Logs</span>
         </b-list-group-item>
@@ -20,7 +24,7 @@
 <!--          <font-awesome-icon icon="asterisk" />-->
 <!--          <span v-text="$t('global.menu.entities.roleStaticPermission')">Role Static Permission</span>-->
 <!--        </b-list-group-item>-->
-        <b-list-group-item  to="/admin/article" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item  to="/admin/article" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.article')">Article</span>
         </b-list-group-item>
@@ -34,7 +38,7 @@
 <!--          <font-awesome-icon icon="asterisk" />-->
 <!--          <span v-text="$t('global.menu.entities.files')">Files</span>-->
 <!--        </b-list-group-item>-->
-        <b-list-group-item to="/admin/subjects" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item to="/admin/subjects" exact exact-active-class="active">
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.subjects')">Subjects</span>
         </b-list-group-item>
@@ -42,11 +46,11 @@
 <!--          <font-awesome-icon icon="asterisk" />-->
 <!--          <span v-text="$t('global.menu.entities.units')">Units</span>-->
 <!--        </b-list-group-item>-->
-        <b-list-group-item to="/admin/groups" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item to="/admin/groups" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.groups')">Groups</span>
         </b-list-group-item>
-        <b-list-group-item to="/admin/tests" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item to="/admin/tests" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.tests')">Tests</span>
         </b-list-group-item>
@@ -58,7 +62,7 @@
 <!--          <font-awesome-icon icon="asterisk" />-->
 <!--          <span v-text="$t('global.menu.entities.testAnswer')">Test Answer</span>-->
 <!--        </b-list-group-item>-->
-        <b-list-group-item to="/admin/task" exact exact-active-class="active" v-if="isStatistics.admin">
+        <b-list-group-item to="/admin/task" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.task')">Task</span>
         </b-list-group-item>

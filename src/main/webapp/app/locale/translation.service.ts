@@ -12,6 +12,11 @@ export default class TranslationService {
     this.i18n = i18n;
   }
 
+  public getCurrentLanguage(): string {
+    return this.store.getters.currentLanguage;
+  }
+
+
   public refreshTranslation(newLanguage: string) {
     let currentLanguage = this.store.getters.currentLanguage;
     currentLanguage = newLanguage ? newLanguage : 'en';
@@ -34,5 +39,19 @@ export default class TranslationService {
     this.store.commit('currentLanguage', lang);
     axios.defaults.headers.common['Accept-Language'] = lang;
     document.querySelector('html').setAttribute('lang', lang);
+  }
+
+  public chooseLangLabelFromObj(obj): string {
+    if (obj) {
+      const locale = this.getCurrentLanguage();
+      if (locale.startsWith('uz')) {
+        return obj['nameUz'];
+      } else if (locale.startsWith('en')) {
+        return obj['nameEn'];
+      } else {
+        return obj['nameRu'];
+      }
+    }
+    return '';
   }
 }

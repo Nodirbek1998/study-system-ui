@@ -8,9 +8,9 @@
         "createOrEditLabel": "Create or edit a Study Users",
         "notFound": "No Study Users found"
       },
-      "created": "A new Study Users is created with identifier {{ param }}",
-      "updated": "A Study Users is updated with identifier {{ param }}",
-      "deleted": "A Study Users is deleted with identifier {{ param }}",
+      "created": "Create",
+      "updated": "Update",
+      "deleted": "Delete",
       "delete": {
         "question": "Are you sure you want to delete Study Users {{ id }}?"
       },

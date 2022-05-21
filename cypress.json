@@ -13,7 +13,7 @@
   "retries": 2,
   "env": {
     "authenticationUrl": "/api/authenticate",
-    "jwtStorageName": "jhi-authenticationToken"
+    "jwtStorageName": "jwt-token"
   },
   "experimentalSessionSupport": true
 }

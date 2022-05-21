@@ -13,8 +13,8 @@ export default class StudyUsersDetails extends Vue {
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if (to.params.studyUsersId) {
-        vm.retrieveStudyUsers(to.params.studyUsersId);
+      if (to.params.usersId) {
+        vm.retrieveStudyUsers(to.params.usersId);
       }
     });
   }

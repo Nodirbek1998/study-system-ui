@@ -41,6 +41,7 @@ export default class JhiSideBar extends Vue {
     this.isStatistics.main = newVal && newVal.path.includes('/home');
     this.isStatistics.subject = newVal && newVal.path.includes('/subject');
     this.isStatistics.admin = newVal && newVal.path.includes('/admin');
+    this.isStatistics.group = newVal && newVal.path.includes('/groups');
 
   }
 
@@ -66,8 +67,8 @@ export default class JhiSideBar extends Vue {
   }
 
   public logout(): void {
-    localStorage.removeItem('jhi-authenticationToken');
-    sessionStorage.removeItem('jhi-authenticationToken');
+    localStorage.removeItem('jwt-token');
+    sessionStorage.removeItem('jwt-token');
     this.$store.commit('logout');
     this.$router.push('/login');
   }

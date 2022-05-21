@@ -26,14 +26,13 @@ export default class LoginForm extends Vue {
         if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
           const jwt = bearerToken.slice(7, bearerToken.length);
           if (this.rememberMe) {
-            localStorage.setItem('jhi-authenticationToken', jwt);
+            localStorage.setItem('jwt-token', jwt);
           } else {
-            sessionStorage.setItem('jhi-authenticationToken', jwt);
+            sessionStorage.setItem('jwt-token', jwt);
           }
         }
         this.authenticationError = false;
         this.$root.$emit('bv::hide::modal', 'login-page');
-        console.log("csdccd");
         this.accountService().retrieveAccount();
       })
       .catch(() => {

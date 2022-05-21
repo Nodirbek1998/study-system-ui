@@ -13,6 +13,7 @@ import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
 import home from "@/router/home";
+import groups from '@/router/groups';
 
 
 const MainLayout = () => import('@/main-layout.vue');
@@ -39,7 +40,8 @@ const router = new Router({
         ...account,
         entities,
         ...admin,
-        ...home
+        ...home,
+        ...groups
       ]
     },
     {

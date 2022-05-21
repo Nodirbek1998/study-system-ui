@@ -110,7 +110,7 @@ export default class AccountService {
   }
   public hasAnyAuthorityAndCheckAuth(authorities: any): Promise<boolean> {
     if (!this.authenticated || !this.userAuthorities) {
-      const token = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+      const token = localStorage.getItem('jwt-token') || sessionStorage.getItem('jwt-token');
       if (!this.isFetching && !this.currentUser && !this.store.getters.logon && token) {
         return this.retrieveAccount();
       } else {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="page page-internal">
     <h2 id="page-heading" data-cy="StudyUsersHeading">
       <span v-text="$t('studysystemApp.studyUsers.home.title')" id="study-users-heading">Study Users</span>
       <div class="d-flex justify-content-end">
@@ -24,6 +24,13 @@
     <div class="alert alert-warning" v-if="!isFetching && studyUsers && studyUsers.length === 0">
       <span v-text="$t('studysystemApp.studyUsers.home.notFound')">No studyUsers found</span>
     </div>
+
+    <add-role-component
+      :is-show="isShowRoleModal"
+      @hideRoleModel="hideUserModal"
+      :userId="selectedUserId"
+      :selectUserName="selectedUserName">
+    </add-role-component>
     <div class="table-wrapper" >
       <b-table
         ref="selectTable"
@@ -40,6 +47,7 @@
         :fields="fields"
         :items="studyUsers"
         @sort-changed="changeOrder"
+        @row-dblclicked="onSelectRowDbClick"
       >
         <template #table-busy>
           <div class="text-center text-danger my-2">
@@ -77,13 +85,17 @@
               <template #button-content>
                   <font-awesome-icon class="icon" icon="ellipsis-v" size="xs"/>
               </template>
+              <b-dropdown-item @click="onDependRole(row.item)" class="action-dropdown-item">
+                  <font-awesome-icon icon="download" class="mr-2"></font-awesome-icon>
+                  {{ $t('hr.manageUser') }}
+              </b-dropdown-item>
                <b-dropdown-item  class="action-dropdown-item" @click="onClickEdit(row.item.id)">
                   <font-awesome-icon class="icon mr-1" icon="edit"/>
-                  {{$t('studysystemApp.role.updated')}}
+                  {{$t('studysystemApp.studyUsers.updated')}}
                 </b-dropdown-item>
                 <b-dropdown-item  class="action-dropdown-item" @click="prepareRemove(row.item.id)">
                   <font-awesome-icon class="icon mr-1" icon="trash"/>
-                  {{$t('studysystemApp.role.deleted')}}
+                  {{$t('studysystemApp.studyUsers.deleted')}}
                 </b-dropdown-item>
             </b-dropdown>
           </span>

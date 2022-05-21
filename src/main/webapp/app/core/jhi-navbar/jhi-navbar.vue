@@ -6,12 +6,18 @@
               <b-nav-item class='sidebar-collapse' @click="$store.commit('setMenuCollapse')">
                   <font-awesome-icon class='mr-1' icon='bars' />
               </b-nav-item>
-              <b-nav-item to="/home" exact>
+              <b-nav-item to="/home"  active-class='active'>
                   <span>
                     <font-awesome-icon icon="home" />
                     <span v-text="$t('global.menu.home')">Home</span>
                   </span>
               </b-nav-item>
+            <b-nav-item to="/groups" active-class='active'>
+                  <span>
+                    <font-awesome-icon icon="user-group" />
+                    <span v-text="$t('global.menu.entities.groups')">Groups</span>
+                  </span>
+            </b-nav-item>
               <b-nav-item class='navbar-no-dropdown-menu' to='/admin' v-if="$can('NavbarAdmin', 'admin')" key='internal'  active-class='active' >
                   <font-awesome-icon class='mr-1' icon='th-large' />
                   {{ $t('global.menu.admin.main') }}

@@ -50,62 +50,6 @@
               v-model="$v.subjects.nameEn.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.subjects.createdAt')" for="subjects-createdAt">Created At</label>
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="subjects-createdAt"
-                  v-model="$v.subjects.createdAt.$model"
-                  name="createdAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="subjects-createdAt"
-                data-cy="createdAt"
-                type="text"
-                class="form-control"
-                name="createdAt"
-                :class="{ valid: !$v.subjects.createdAt.$invalid, invalid: $v.subjects.createdAt.$invalid }"
-                v-model="$v.subjects.createdAt.$model"
-              />
-            </b-input-group>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.subjects.updatedAt')" for="subjects-updatedAt">Updated At</label>
-            <b-input-group class="mb-3">
-              <b-input-group-prepend>
-                <b-form-datepicker
-                  aria-controls="subjects-updatedAt"
-                  v-model="$v.subjects.updatedAt.$model"
-                  name="updatedAt"
-                  class="form-control"
-                  :locale="currentLanguage"
-                  button-only
-                  today-button
-                  reset-button
-                  close-button
-                >
-                </b-form-datepicker>
-              </b-input-group-prepend>
-              <b-form-input
-                id="subjects-updatedAt"
-                data-cy="updatedAt"
-                type="text"
-                class="form-control"
-                name="updatedAt"
-                :class="{ valid: !$v.subjects.updatedAt.$invalid, invalid: $v.subjects.updatedAt.$invalid }"
-                v-model="$v.subjects.updatedAt.$model"
-              />
-            </b-input-group>
-          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

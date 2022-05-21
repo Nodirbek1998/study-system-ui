@@ -18,6 +18,8 @@ export interface IStudyUsers {
   groups?: IGroups[] | null;
   testAnswers?: ITestAnswer[] | null;
   taskAnswers?: ITaskAnswer[] | null;
+  label?: string;
+  checked?: boolean;
 }
 
 export class StudyUsers implements IStudyUsers {
@@ -35,6 +37,8 @@ export class StudyUsers implements IStudyUsers {
     public role?: IRole | null,
     public groups?: IGroups[] | null,
     public testAnswers?: ITestAnswer[] | null,
-    public taskAnswers?: ITaskAnswer[] | null
+    public taskAnswers?: ITaskAnswer[] | null,
+    public label?: string,
+    public checked?: boolean
   ) {}
 }

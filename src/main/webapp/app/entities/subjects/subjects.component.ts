@@ -25,6 +25,34 @@ export default class Subjects extends Vue {
 
   public isFetching = false;
 
+  public fields = [
+    {key:'id', label:'Id', class: 'text-truncate'},
+    {key:'nameUz',label:'nameUz', class: 'text-truncate'},
+    {key:'nameRu',label:'nameRu', class: 'text-truncate'},
+    {key:'nameEn',label:'nameEn', class: 'text-truncate'},
+    { key: 'action', label: 'Action', class: 'text-right' },
+  ]
+
+  public tableOptions = {
+    striped: true,
+    bordered: false,
+    borderless: false,
+    outlined: false,
+    small: false,
+    hover: false,
+    dark: false,
+    fixed: false,
+    footClone: false,
+    headVariant: null,
+    tableVariant: '',
+    noCollapse: false,
+    responsive: true,
+    selectable: true,
+    selectMode: 'single',
+    stickyHeader: true,
+  };
+
+
   public mounted(): void {
     this.retrieveAllSubjectss();
   }
@@ -116,5 +144,13 @@ export default class Subjects extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public onClickEdit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'SubjectsEdit', params: { subjectsId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
   }
 }

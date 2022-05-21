@@ -4,9 +4,13 @@ import { IStudyUsers } from '@/shared/model/study-users.model';
 
 import StudyUsersService from './study-users.service';
 import AlertService from '@/shared/alert/alert.service';
+import AddRoleComponent from '@/entities/study-users/modal/add-role.vue';
 
 @Component({
   mixins: [Vue2Filters.mixin],
+  components: {
+    AddRoleComponent
+  }
 })
 export default class StudyUsers extends Vue {
   @Inject('studyUsersService') private studyUsersService: () => StudyUsersService;
@@ -20,6 +24,9 @@ export default class StudyUsers extends Vue {
   public propOrder = 'id';
   public reverse = false;
   public totalItems = 0;
+  public isShowRoleModal = false;
+  public selectedUserId = -1;
+  public selectedUserName = '';
 
   public studyUsers: IStudyUsers[] = [];
 
@@ -153,6 +160,25 @@ export default class StudyUsers extends Vue {
     } else {
       (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
     }
+  }
+
+  public onSelectRowDbClick(row): void {
+    this.$router.push({ name: 'StudyUserView', params: { usersId: row.id } });
+  }
+
+
+  public onDependRole(selectedRow): void {
+    if (selectedRow) {
+      this.selectedUserId = selectedRow.id;
+      this.selectedUserName = selectedRow.login;
+      this.isShowRoleModal = !this.isShowRoleModal;
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
+  }
+
+  public hideUserModal(isShow): void {
+    this.isShowRoleModal = isShow;
   }
 
 }

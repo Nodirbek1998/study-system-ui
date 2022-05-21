@@ -158,4 +158,41 @@ export default class JhiDataUtils extends Vue {
     });
     return links;
   }
+
+  public removeAllElements(arr): object[] {
+    if (arr && arr.length > 0) {
+      arr.splice(0, arr.length);
+      return arr;
+    } else {
+      return [];
+    }
+  }
+
+  public removeItemOnce(arr, value): object[] {
+    const index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
+
+  public removeItemWithIndexes(arr, indexes): object[] {
+    if (!indexes || indexes.length === 0) {
+      return arr;
+    }
+    const newArray = [];
+    if (arr && arr.length > 0) {
+      arr.forEach((value, index) => {
+        if (!indexes.includes(index)) {
+          newArray.push(value);
+        }
+      });
+    }
+    // indexes.forEach(index => {
+    //   if (index > -1) {
+    //     arr.splice(index, 1);
+    //   }
+    // });
+    return newArray;
+  }
 }
