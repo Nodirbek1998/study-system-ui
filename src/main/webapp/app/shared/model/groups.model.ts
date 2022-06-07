@@ -8,6 +8,7 @@ export interface IGroups {
   updatedAt?: Date | null;
   studyUsers?: IStudyUsers[] | null;
   subjects?: ISubjects[] | null;
+  usersNameList?: string[];
 }
 
 export class Groups implements IGroups {
@@ -17,6 +18,7 @@ export class Groups implements IGroups {
     public createdAt?: Date | null,
     public updatedAt?: Date | null,
     public studyUsers?: IStudyUsers[] | null,
-    public subjects?: ISubjects[] | null
+    public subjects?: ISubjects[] | null,
+    public usersNameList?: string[]
   ) {}
 }

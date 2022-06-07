@@ -7,14 +7,13 @@ import AlertService from '@/shared/alert/alert.service';
 import StudyUsersService from '@/entities/study-users/study-users.service';
 import { IStudyUsers } from '@/shared/model/study-users.model';
 
-import { IArticle, Article } from '@/shared/model/article.model';
-import ArticleService from './article.service';
-import ImagesService from "@/entities/images/images.service";
+import ReminderService from "@/entities/reminder/reminder.service";
+import {IReminder, Reminder} from "@/shared/model/reminder.model";
 
 const validations: any = {
-  article: {
-    name: {},
-    text: {
+  reminder: {
+    title: {},
+    body: {
       maxLength: maxLength(1000),
     },
     createdAt: {},
@@ -26,22 +25,20 @@ const validations: any = {
   validations,
 })
 export default class ArticleUpdate extends Vue {
-  @Inject('articleService') private articleService: () => ArticleService;
+  @Inject('reminderService') private reminderService: () => ReminderService;
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('studyUsersService') private studyUsersService: () => StudyUsersService;
-  @Inject('imagesService') private imagesService: () => ImagesService;
 
-  public article: IArticle = new Article();
+  public reminder: IReminder = new Reminder();
 
   public studyUsers: IStudyUsers[] = [];
   public isSaving = false;
   public currentLanguage = '';
-  public uploadDocument = null;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if (to.params.articleId) {
-        vm.retrieveArticle(to.params.articleId);
+      if (to.params.reminderId) {
+        vm.retrieveArticle(to.params.reminderId);
       }
       vm.initRelationships();
     });
@@ -59,9 +56,9 @@ export default class ArticleUpdate extends Vue {
 
   public save(): void {
     this.isSaving = true;
-    if (this.article.id) {
-      this.articleService()
-        .update(this.article)
+    if (this.reminder.id) {
+      this.reminderService()
+        .update(this.reminder)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
@@ -79,8 +76,8 @@ export default class ArticleUpdate extends Vue {
           this.alertService().showHttpError(this, error.response);
         });
     } else {
-      this.articleService()
-        .create(this.article)
+      this.reminderService()
+        .create(this.reminder)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
@@ -101,10 +98,10 @@ export default class ArticleUpdate extends Vue {
   }
 
   public retrieveArticle(articleId): void {
-    this.articleService()
+    this.reminderService()
       .find(articleId)
       .then(res => {
-        this.article = res;
+        this.reminder = res;
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
@@ -123,28 +120,4 @@ export default class ArticleUpdate extends Vue {
       });
   }
 
-  public onChangeAttachment(event): void {
-    let file = null;
-    if (event && event.target.files && event.target.files[0]) {
-      file = event.target.files[0];
-    }
-    if (!file) {
-      return;
-    }
-    this.imagesService()
-      .uploadImage(file,1)
-      .then(res => {
-        (<any>this.$root).showLoader(false);
-        console.log(res);
-        this.article.imagesDTO = res;
-      })
-      .catch(err => {
-        (<any>this.$root).showLoader(false);
-        (<any>this.$root).toastFailed(err);
-      });
-  }
-
-  // public get currentUserImage(imageId): string {
-  //   return this.imagesService().getCurrUserAvatarUrl(imageId);
-  // }
 }

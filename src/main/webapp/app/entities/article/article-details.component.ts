@@ -33,4 +33,15 @@ export default class ArticleDetails extends Vue {
   public previousState() {
     this.$router.go(-1);
   }
+
+  public get imageUrl(): string {
+    let makeUrl = '/api/images/' + 0;
+
+    if (this.article && this.article.imagesDTO) {
+      if (this.article.imagesDTO.id) {
+        makeUrl = '/api/images/' + this.article.imagesDTO.id;
+      }
+    }
+    return makeUrl;
+  }
 }

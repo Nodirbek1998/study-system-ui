@@ -2,13 +2,13 @@
   <div class="page">
     <div class="row h-100">
       <div class="col-6">
-        <div v-if="article">
+        <div v-if="reminder">
           <b-card class='head-card'>
             <div class='row'>
               <div class='col-12'>
                <span
-                 v-if='article.name'
-                 v-html='article.name'
+                 v-if='reminder.title'
+                 v-html='reminder.title'
                ></span>
               </div>
             </div>
@@ -17,20 +17,21 @@
             <div class='row'>
               <div class='col-12'>
                <span
-                 v-if='article.text'
-                 v-html='article.text'
+                 v-if='reminder.body'
+                 v-html='reminder.body'
                ></span>
               </div>
             </div>
           </b-card>
         </div>
       </div>
-      <div class="col-6">
-        <img style="width: 100%" class="img-fluid"  :src="imageUrl">
-      </div>
     </div>
   </div>
-
 </template>
 
-<script lang="ts" src="./article-details.component.ts"></script>
+<script lang="ts" src="./reminder-details.component.ts">
+</script>
+
+<style scoped>
+
+</style>

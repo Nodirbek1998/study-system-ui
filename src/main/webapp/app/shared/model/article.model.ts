@@ -1,4 +1,5 @@
 import { IStudyUsers } from '@/shared/model/study-users.model';
+import {IImages} from "@/shared/model/images.model";
 
 export interface IArticle {
   id?: number;
@@ -9,6 +10,8 @@ export interface IArticle {
   studyUser?: IStudyUsers | null;
   createdBy?: IStudyUsers | null;
   updatedBy?: IStudyUsers | null;
+  imagesDTO?: IImages | null;
+  imagesId?: number | null;
 }
 
 export class Article implements IArticle {
@@ -20,6 +23,8 @@ export class Article implements IArticle {
     public updatedAt?: Date | null,
     public studyUser?: IStudyUsers | null,
     public createdBy?: IStudyUsers | null,
-    public updatedBy?: IStudyUsers | null
+    public updatedBy?: IStudyUsers | null,
+    public imagesDTO?: IImages | null,
+    public imagesId?: number | null
   ) {}
 }

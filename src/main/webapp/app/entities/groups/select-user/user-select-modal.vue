@@ -59,25 +59,6 @@
                                               :placeholder="$t('approval.userSelect.search')"></b-form-input>
                             </b-input-group>
                         </div>
-                        <div class="col-7 pl-0">
-                            <department-select
-                                v-if="!Branch"
-                                :is-multi="true"
-                                :item-values="selectDepartmentId"
-                                               :list="departments"
-                                               @onChangeDepartment="val => selectDepartmentId = val"
-                            />
-                            <v-select
-                                v-if="Branch"
-                                id="user-select-department-select"
-                                v-model="selectDepartmentId"
-                                :options="branches"
-                                :placeholder="Branch ? $t('hr.staff.job.branch') : $t('approval.userSelect.chooseDepartment')"
-                                :reduce="item => item.id"
-                                multiple
-                                label="label"
-                            ></v-select>
-                        </div>
                     </div>
                 </div>
                 <b-card-group deck class="row user-select-card pt-0">
@@ -93,35 +74,14 @@
                                     @change="setActiveClassToCard(user.id, !user.checked)"
                                     v-model="user.checked"
                                 ></b-form-checkbox>
-                                <b-avatar class="avatar"
-                                          :src="$imageUrl(user.imageUrl)">
-                                </b-avatar>
 
                                 <div class="row p-2">
                                     <span class="font-weight-bold col-12 text-truncate" style="max-width: 200px;">
-                                        {{ user.displayName }}
+                                        {{ user.firstName }}
                                     </span>
-                                    <small class="col-12 text-truncate">{{ user.departmentName }}</small>
-                                    <small class="col-12 text-truncate">{{ user.positionName }}</small>
-                                    <small class="col-4 pr-2 pl-2 text-truncate text-white cursor-pointer vacation-status"
-                                           :id="'user-select-popover-target-'+ user.id"
-                                           v-html="getStatusName(user.status)"
-                                           v-if="user.isVacation && user.isVacation > 0"
-                                    ></small>
-                                    <b-popover :target="'user-select-popover-target-'+ user.id"
-                                               triggers="click"
-                                               size="lg"
-                                               @shown="onShown(user.id)"
-                                               v-if="user.isVacation && user.isVacation > 0"
-                                               placement="top">
-                                        <user-vacation-popup-components
-                                            :selectedUser="vacationData"
-                                            :status="user.status"
-                                            :isVacationPopoverLoading="isVacationPopoverLoading"
-                                        ></user-vacation-popup-components>
-                                    </b-popover>
+                                    <small class="col-12 text-truncate">{{ user.firstName }}</small>
+                                    <small class="col-12 text-truncate">{{ user.lastName }}</small>
                                 </div>
-
                             </div>
                         </b-card>
                     </div>
@@ -142,9 +102,6 @@
                 </b-button-group>
             </div>
             <div class="col-5 pr-4">
-<!--                <div class="p-4 m-2">
-
-                </div>-->
                 <div class="row d-flex pr-2">
                     <div class="col-12 mx-1 p-0">
                         <b-card class="right-header">
@@ -163,13 +120,12 @@
                                     :unchecked-value="false"
                                     v-model="user.checked"
                                 ></b-checkbox>
-                                <b-avatar class="avatar" :src="$imageUrl(user.imageUrl)"></b-avatar>
                                 <div class="row p-2">
                                  <span class="font-weight-bold col-12 text-truncate" style="max-width: 250px;">
-                                        {{ user.displayName }}
+                                        {{ user.firstName }}
                                     </span>
-                                    <small class="col-12 text-truncate">{{ user.departmentName }}</small>
-                                    <small class="col-12 text-truncate">{{ user.positionName }}</small>
+                                    <small class="col-12 text-truncate">{{ user.firstName }}</small>
+                                    <small class="col-12 text-truncate">{{ user.lastName }}</small>
                                 </div>
                             </div>
                         </b-card>
@@ -181,7 +137,7 @@
     </b-modal>
 </template>
 
-<script lang="ts" src="./user-select-modal.ts">
+<script lang="ts" src="./user-select-modal.component.ts">
 </script>
 <style>
 .header-nav > a.nav-link {

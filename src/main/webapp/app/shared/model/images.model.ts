@@ -6,7 +6,7 @@ export interface IImages {
   imageSize?: number | null;
   contentType?: string | null;
   createdAt?: Date | null;
-  studyUser?: IStudyUsers | null;
+  createdBy?: number | null;
 }
 
 export class Images implements IImages {
@@ -16,6 +16,6 @@ export class Images implements IImages {
     public imageSize?: number | null,
     public contentType?: string | null,
     public createdAt?: Date | null,
-    public studyUser?: IStudyUsers | null
+    public createdBy?: number | null
   ) {}
 }

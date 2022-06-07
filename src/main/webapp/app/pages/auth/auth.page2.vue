@@ -6,7 +6,7 @@
 
                     <div class="login-header">
                        <div>
-                           <img src="content/images/logo_tatu.png" alt="" height="80px" />
+                           <img src="content/images/logo.png" alt="" height="80px" />
 
                        </div>
                     </div>
@@ -48,14 +48,14 @@
                     </div>
                     <div class="login-footer mt-5">
                         <span >
-                            @2021 All Rights Reserved User Policy
+                            @2022 All Rights Reserved User Policy
                         </span>
                     </div>
                 </div>
 
             </div>
             <div class="p-0 right-panel">
-                <img src="content/images/auth-bg.png" alt=""/>
+                <img src="content/images/home.jpg" alt=""/>
             </div>
         </div>
 

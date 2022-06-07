@@ -10,9 +10,9 @@
           Create or edit a Article
         </h2>
         <div>
-          <div class="form-group" v-if="article.id">
+          <div class="form-group" v-if="reminder.id">
             <label for="id" v-text="$t('global.field.id')">ID</label>
-            <input type="text" class="form-control" id="id" name="id" v-model="article.id" readonly />
+            <input type="text" class="form-control" id="id" name="id" v-model="reminder.id" readonly />
           </div>
           <div class="form-group">
             <label class="form-control-label" v-text="$t('studysystemApp.article.name')" for="article-name">Name</label>
@@ -22,8 +22,8 @@
               name="name"
               id="article-name"
               data-cy="name"
-              :class="{ valid: !$v.article.name.$invalid, invalid: $v.article.name.$invalid }"
-              v-model="$v.article.name.$model"
+              :class="{ valid: !$v.reminder.title.$invalid, invalid: $v.reminder.title.$invalid }"
+              v-model="$v.reminder.title.$model"
             />
           </div>
           <div class="form-group">
@@ -36,24 +36,9 @@
                 rows="8"
                 size="sm"
                 class="form-control"
-                v-model="article.text"
+                v-model="reminder.body"
               ></b-form-textarea>
             </b-form-group>
-          </div>
-          <div class="form-group">
-            <b-form-group>
-              <b-form-file
-                id="edo-card-uploadDocument"
-                class="form-control"
-                name="edo-card-uploadDocument"
-                size="sm"
-                v-model="uploadDocument"
-                @change="onChangeAttachment"
-                accept=".jpg, .png, .jpeg"
-                placeholder=""
-              ></b-form-file>
-            </b-form-group>
-
           </div>
           <div class="form-group">
             <b-form-group
@@ -62,7 +47,7 @@
             >
               <date-picker
                 id="article-createdAt"
-                v-model="article.createdAt"
+                v-model="reminder.createdAt"
                 format="DD.MM.YYYY"
                 value-type="format"
                 type="date"
@@ -78,7 +63,7 @@
             >
               <date-picker
                 id="article-updatedAt"
-                v-model="article.updatedAt"
+                v-model="reminder.updatedAt"
                 format="DD.MM.YYYY"
                 value-type="format"
                 type="date"
@@ -88,37 +73,11 @@
             </b-form-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.article.studyUser')" for="article-studyUser">Study User</label>
-            <select class="form-control" id="article-studyUser" data-cy="studyUser" name="studyUser" v-model="article.studyUser">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="article.studyUser && studyUsersOption.id === article.studyUser.id ? article.studyUser : studyUsersOption"
-                v-for="studyUsersOption in studyUsers"
-                :key="studyUsersOption.id"
-              >
-                {{ studyUsersOption.id }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('studysystemApp.article.createdBy')" for="article-createdBy">Created By</label>
-            <select class="form-control" id="article-createdBy" data-cy="createdBy" name="createdBy" v-model="article.createdBy">
+            <select class="form-control" id="article-createdBy" data-cy="createdBy" name="createdBy" v-model="reminder.createdBy">
               <option v-bind:value="null"></option>
               <option
-                v-bind:value="article.createdBy && studyUsersOption.id === article.createdBy.id ? article.createdBy : studyUsersOption"
-                v-for="studyUsersOption in studyUsers"
-                :key="studyUsersOption.id"
-              >
-                {{ studyUsersOption.id }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('studysystemApp.article.updatedBy')" for="article-updatedBy">Updated By</label>
-            <select class="form-control" id="article-updatedBy" data-cy="updatedBy" name="updatedBy" v-model="article.updatedBy">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="article.updatedBy && studyUsersOption.id === article.updatedBy.id ? article.updatedBy : studyUsersOption"
+                v-bind:value="reminder.createdBy && studyUsersOption.id === reminder.createdBy.id ? reminder.createdBy : studyUsersOption"
                 v-for="studyUsersOption in studyUsers"
                 :key="studyUsersOption.id"
               >
@@ -135,7 +94,7 @@
             type="submit"
             id="save-entity"
             data-cy="entityCreateSaveButton"
-            :disabled="$v.article.$invalid || isSaving"
+            :disabled="$v.reminder.$invalid"
             class="btn btn-primary"
           >
             <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
@@ -145,4 +104,10 @@
     </div>
   </div>
 </template>
-<script lang="ts" src="./article-update.component.ts"></script>
+
+<script lang="ts" src="./reminder-update.component.ts">
+</script>
+
+<style scoped>
+
+</style>

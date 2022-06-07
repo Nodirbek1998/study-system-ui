@@ -3,6 +3,9 @@
 import Vue from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { setupAxiosInterceptors } from '@/shared/config/axios-interceptor';
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
+import 'vue2-datepicker/locale/ru';
 
 import App from './app.vue';
 import Vue2Filters from 'vue2-filters';
@@ -30,6 +33,11 @@ import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
 import ArticleService from "@/entities/article/article.service";
 import UserRoleService from "@/entities/study-users/modal/user-role.service";
+import FilesService from "@/entities/files/files.service";
+import ImagesService from "@/entities/images/images.service";
+import JhiDataUtils from "@/shared/data/data-utils.service";
+import ReminderService from "@/entities/reminder/reminder.service";
+import CalendarService from "@/entities/calendar/calendar.service";
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -41,14 +49,19 @@ config.initFortAwesome(Vue);
 bootstrapVueConfig.initBootstrapVue(Vue);
 Vue.use(Vue2Filters);
 Vue.use(ModalPlugin);
-// Vue.use(DatePicker);
+Vue.use(DatePicker);
 Vue.use(BootstrapVueIcons);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
 
+const dataUtils = new JhiDataUtils();
+
 Vue.prototype.$can = (...args) => accountService.canAuth(args);
+Vue.prototype.$imageUrl = (fileId: number) => dataUtils.getImageFileUrl(fileId);
+Vue.prototype.$fileUrl = (fileId: number) => dataUtils.getFileUrl(fileId);
+Vue.prototype.$currentHost = () => dataUtils.getCurrentHost();
 const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
 
@@ -188,8 +201,12 @@ const vue = new Vue({
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
     alertService: () => new AlertService(),
+    calendarService: () => new CalendarService(),
     groupsService: () => new GroupsService(),
+    reminderService: () => new ReminderService(),
     userRoleService: () => new UserRoleService(),
+    fileService: () => new FilesService(),
+    imagesService: () => new ImagesService(),
   },
   i18n,
   store,

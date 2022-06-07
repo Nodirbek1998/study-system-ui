@@ -5,11 +5,9 @@ import { ISelectModel } from '@/shared/model/select/select-model';
 import TranslationService from '@/locale/translation.service';
 
 import AccountService from '@/account/account.service';
-import EdoListBox from '@/shared/listbox/list_box.vue';
+import ListBox from '@/shared/listbox/list_box.vue';
 import JhiDataUtils from '@/shared/data/data-utils.service';
-import UserVacationPopupComponents from '@/components/user-select/user-vacation-popup.vue';
 import { mapGetters } from 'vuex';
-import DepartmentSelect from '@/components/department-selectbox/demaprtment-select.vue';
 import {IUser} from "@/shared/model/user.model";
 import UserService from "@/entities/user/user.service";
 import StudyUsersService from "@/entities/study-users/study-users.service";
@@ -17,18 +15,15 @@ import {IStudyUsers} from "@/shared/model/study-users.model";
 
 @Component({
   components: {
-    EdoListBox,
-    UserVacationPopupComponents,
-    DepartmentSelect,
+    ListBox,
   },
   computed: {
     ...mapGetters({
       branches: 'branches',
-      departments: 'currentUserDepartments',
     }),
   },
 })
-export default class UserSelectModal extends Vue {
+export default class UserSelectModalComponent extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('translationService') private translationService: () => TranslationService;
   @Inject('accountService') private accountService: () => AccountService;
@@ -36,7 +31,6 @@ export default class UserSelectModal extends Vue {
   public dataUtilsService: JhiDataUtils;
   public users: IStudyUsers[] = [];
 
-  public edoDtDepartments: ISelectModel[] = [];
   @Prop({ default: '' }) title!: string;
   @Prop({ default: false }) isSingleSelect!: boolean;
   @Prop({ default: 1 }) userType!: number;
@@ -50,12 +44,11 @@ export default class UserSelectModal extends Vue {
   public isSaving = false;
   public currentLanguage = '';
   public searchword = '';
-  public selects: IUser[] = [];
-  public currentTypeAllUsers: IUser[] = [];
+  public selects: IStudyUsers[] = [];
+  public currentTypeAllUsers: IStudyUsers[] = [];
   public headType = 'All';
   public selectDepartmentId = null;
   public selectBranchId = null;
-  public isVacationPopoverLoading = false;
   public selectAllModel = false;
   public Department = true;
   public Branch = false;
@@ -234,7 +227,7 @@ export default class UserSelectModal extends Vue {
     this.setActiveClassToCard(userId, false);
   }
 
-  public get getUserList(): IUser[] {
+  public get getUserList(): IStudyUsers[] {
     let searchList: IUser[] = [];
     if (this.searchword) {
       searchList = this.users.filter(

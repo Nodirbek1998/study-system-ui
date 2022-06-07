@@ -84,4 +84,33 @@ export default class ImagesService {
         });
     });
   }
+
+  public uploadImage(entity: File, type): Promise<IImages> {
+    const formData = new FormData();
+    formData.append('file', entity);
+    return new Promise<IImages>((resolve, reject) => {
+      axios
+        .post(`api/images-upload`, formData)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public getCurrUserAvatarUrl(userId: any): string {
+    userId = userId === undefined ? 0 : userId;
+    const protocol = location.protocol;
+    const slashes = protocol.concat('//');
+    const host = slashes.concat(window.location.hostname);
+    let port = slashes.concat(window.location.port);
+    if (port) {
+      port = port.replace('http://', '');
+      port = port.replace('https://', '');
+      return host + `:` + port + `/api/images-by-user/` + (userId || 0);
+    }
+    return host + `/api/images-by-user/` + (userId || 0);
+  }
 }

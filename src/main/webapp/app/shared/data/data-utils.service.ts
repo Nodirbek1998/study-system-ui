@@ -195,4 +195,89 @@ export default class JhiDataUtils extends Vue {
     // });
     return newArray;
   }
+
+  public getDateWithFormat(date_ob): string {
+    if (!date_ob) {
+      return '';
+    }
+    // adjust 0 before single digit date
+    const date = ('0' + date_ob.getDate()).slice(-2);
+
+    // current month
+    const month = ('0' + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    const year = date_ob.getFullYear();
+
+    // return date in dd.MM.yyyy format
+    return date + '.' + month + '.' + year;
+  }
+
+  /**
+   * Get date from dd.MM.yyyy format
+   * */
+  public getDateFromFormat(dateStr): Date {
+    if (!dateStr) {
+      return null;
+    }
+    const splitDate = dateStr.split('.');
+    if (splitDate.length === 3) {
+      const day = splitDate[0];
+      const month = splitDate[1];
+      const year = splitDate[2];
+
+      const date = new Date();
+      date.setFullYear(year, parseInt(month, 0) - 1, day);
+
+      return date;
+    }
+
+    return null;
+  }
+  public isTodayDate(date: Date): boolean {
+    if (!date) {
+      return false;
+    }
+    const curDate = new Date();
+    return curDate.getDate() === date.getDate() && curDate.getMonth() === date.getMonth() && curDate.getFullYear() === date.getFullYear();
+  }
+
+  public getCurrentHost(): string {
+    const protocol = location.protocol;
+    const slashes = protocol.concat('//');
+    const host = slashes.concat(window.location.hostname);
+    let port = slashes.concat(window.location.port);
+    if (port) {
+      port = port.replace('http://', '');
+      port = port.replace('https://', '');
+      return host + `:` + port;
+    }
+    return host;
+  }
+
+  public getFileUrl(fileId: number): string {
+    const protocol = location.protocol;
+    const slashes = protocol.concat('//');
+    const host = slashes.concat(window.location.hostname);
+    let port = slashes.concat(window.location.port);
+    if (port) {
+      port = port.replace('http://', '');
+      port = port.replace('https://', '');
+      return host + `:` + port + `/api/edo-files-download/` + (fileId || 0);
+    }
+    return host + `/api/edo-files-download/` + (fileId || 0);
+  }
+
+  public getImageFileUrl(fileId: number): string {
+    const protocol = location.protocol;
+    const slashes = protocol.concat('//');
+    const host = slashes.concat(window.location.hostname);
+    let port = slashes.concat(window.location.port);
+    if (port) {
+      port = port.replace('http://', '');
+      port = port.replace('https://', '');
+      return host + `:` + port + `/api/images/` + (fileId || 0);
+    }
+    return host + `/api/images/` + (fileId || 0);
+  }
 }

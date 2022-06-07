@@ -4,6 +4,8 @@ import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
 import {mapGetters} from "vuex";
 import {IRouteStatistic, RouteStatistic} from "@/shared/model/statistic.route";
+import FilesService from "@/entities/files/files.service";
+import ImagesService from "@/entities/images/images.service";
 
 @Component({
   computed: {
@@ -13,9 +15,9 @@ import {IRouteStatistic, RouteStatistic} from "@/shared/model/statistic.route";
   },
 })
 export default class JhiSideBar extends Vue {
-  @Inject('loginService')
-  private loginService: () => LoginService;
+  @Inject('loginService') private loginService: () => LoginService;
   @Inject('translationService') private translationService: () => TranslationService;
+  @Inject('imagesService') private imagesService: () => ImagesService;
 
   @Inject('accountService') private accountService: () => AccountService;
   public version = VERSION ? 'v' + VERSION : '';
@@ -71,6 +73,22 @@ export default class JhiSideBar extends Vue {
     sessionStorage.removeItem('jwt-token');
     this.$store.commit('logout');
     this.$router.push('/login');
+  }
+
+  public get currentUserImage(): string {
+    const imageId = this.$store.getters.account ? this.$store.getters.account.id : 0;
+    return this.imagesService().getCurrUserAvatarUrl(imageId);
+  }
+
+  public get currentUserName(): string {
+    let name = '';
+    if (this.$store.getters.account) {
+      const username = this.$store.getters.account.firstName;
+      if (username) {
+        name = username;
+      }
+    }
+    return name;
   }
 
   public openLogin(): void {

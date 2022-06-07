@@ -27,14 +27,14 @@
             />
           </div>
         </div>
-        <user-select-modal
+        <open-user-select
           :is-show="isShowUserModal"
           @hideUserModel="hideUserModal"
           @selectedUserFromModal="selectedUserFromModal"
           :title="userSelectModalTitle"
           :user-type="currentUserType"
           :selectedUsers="modalSelectedUsers"
-        ></user-select-modal>
+        ></open-user-select>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
             <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>

@@ -2,12 +2,13 @@ import axios from 'axios';
 import VueI18n from 'vue-i18n';
 import { Store } from 'vuex';
 import dayjs from 'dayjs';
+import {ISelectModel, SelectModel} from "@/shared/model/select/select-model";
 
 export default class TranslationService {
-  private store: Store<unknown>;
+  private store: Store<{}>;
   private i18n: VueI18n;
 
-  constructor(store: Store<unknown>, i18n: VueI18n) {
+  constructor(store: Store<{}>, i18n: VueI18n) {
     this.store = store;
     this.i18n = i18n;
   }
@@ -54,4 +55,35 @@ export default class TranslationService {
     }
     return '';
   }
+
+  public selectBoxOptions(list, emptyModel?: ISelectModel): ISelectModel[] {
+    const options: ISelectModel[] = [];
+    if (emptyModel) {
+      options.push(emptyModel);
+    }
+    if (list && list.length > 0) {
+      list.forEach(val => {
+        const label = this.chooseLangLabel(val.nameUz, val.nameRu, val.nameEn);
+        const docType = new SelectModel(val.id, label, val);
+        options.push(docType);
+      });
+    }
+
+    return options;
+  }
+
+  public chooseLangLabel(labUz, labRu, labEn): string {
+    const locale = this.getCurrentLanguage();
+    let lab = '';
+    if (locale.startsWith('uz')) {
+      lab = labUz;
+    } else if (locale.startsWith('en')) {
+      lab = labEn;
+    } else {
+      lab = labRu;
+    }
+
+    return lab;
+  }
+
 }

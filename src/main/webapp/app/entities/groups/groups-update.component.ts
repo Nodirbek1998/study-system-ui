@@ -10,7 +10,8 @@ import { ISubjects } from '@/shared/model/subjects.model';
 
 import { IGroups, Groups } from '@/shared/model/groups.model';
 import GroupsService from './groups.service';
-import OpenUserSelect from '@/entities/grops/select-user/user-select-modal.vue';
+import OpenUserSelect from '@/entities/groups/select-user/user-select-modal.vue';
+import {User} from "@/shared/model/user.model";
 
 const validations: any = {
   groups: {
@@ -23,7 +24,7 @@ const validations: any = {
 @Component({
   validations,
   components:{
-    OpenUserSelect
+    OpenUserSelect,
   }
 })
 export default class GroupsUpdate extends Vue {
@@ -51,6 +52,8 @@ export default class GroupsUpdate extends Vue {
   public userSelectModalTitle = '';
   public currentUserType = 1;
   public modalSelectedUsers = [];
+
+  public users: number[] = [];
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -167,5 +170,13 @@ export default class GroupsUpdate extends Vue {
   public hideUserModal(isShow): void {
     this.isShowUserModal = isShow;
   }
+
+  public selectedUserFromModal(selectedUsers: User[]): void {
+
+      this.users = selectedUsers.map(value => value.id);
+      this.groups.usersNameList = selectedUsers.map(value => value.firstName);
+
+  }
+
 
 }

@@ -1,6 +1,8 @@
 import Vue from 'vue';
+import {Store} from "vuex";
 
 export default class AlertService {
+  private store: Store<{}>;
   public showError(instance: Vue, message: string, params?: any) {
     const alertMessage = instance.$t(message, params);
     instance.$root.$bvToast.toast(alertMessage.toString(), {
@@ -47,5 +49,8 @@ export default class AlertService {
       default:
         this.showError(instance, httpErrorResponse.data.message);
     }
+  }
+  public countDownChanged(dismissCountDown: number) {
+    this.store.commit('countDownChanged', dismissCountDown);
   }
 }

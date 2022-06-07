@@ -4,11 +4,17 @@ import LoginService from '@/account/login.service';
 import ArticleService from "@/entities/article/article.service";
 import AlertService from "@/shared/alert/alert.service";
 import {IArticle} from "@/shared/model/article.model";
+import CalendarHome from "./components/calendar/calendar-home.vue";
+import ReminderHome from "./components/reminder/reminder-home.vue";
 
-@Component
+@Component({
+  components:{
+    CalendarHome,
+    ReminderHome
+  }
+})
 export default class Home extends Vue {
-  @Inject('loginService')
-  private loginService: () => LoginService;
+  @Inject('loginService') private loginService: () => LoginService;
   @Inject('articleService') private articleService: () => ArticleService;
   @Inject('alertService') private alertService: () => AlertService;
 

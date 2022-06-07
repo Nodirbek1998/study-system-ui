@@ -20,6 +20,7 @@ export interface IStudyUsers {
   taskAnswers?: ITaskAnswer[] | null;
   label?: string;
   checked?: boolean;
+  imageUrl?: string;
 }
 
 export class StudyUsers implements IStudyUsers {
@@ -39,6 +40,7 @@ export class StudyUsers implements IStudyUsers {
     public testAnswers?: ITestAnswer[] | null,
     public taskAnswers?: ITaskAnswer[] | null,
     public label?: string,
-    public checked?: boolean
+    public checked?: boolean,
+    public imageUrl?: string
   ) {}
 }
