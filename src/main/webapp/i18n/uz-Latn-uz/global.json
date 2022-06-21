@@ -17,11 +17,15 @@
         "subjects": "Fanlar",
         "units": "Mavzular",
         "groups": "Guruhlar",
+        "examples": "Misollar",
         "tests": "Testlar",
         "testQuestion": "Test savollari",
         "testAnswer": "Test javoblar",
         "task": "Vazifa",
         "taskAnswer": "Vazifa javoblar",
+        "reminder": "Eslatmalar",
+        "all": "Hamma fanlar",
+        "examplesAnswer": "Javoblaringiz",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

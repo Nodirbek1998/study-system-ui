@@ -3,6 +3,7 @@ import axios from 'axios';
 import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
 import { ITask } from '@/shared/model/task.model';
+import buildSearchQueryOpts from "@/shared/search/search";
 
 const baseApiUrl = 'api/tasks';
 
@@ -20,10 +21,10 @@ export default class TaskService {
     });
   }
 
-  public retrieve(paginationQuery?: any): Promise<any> {
+  public retrieve(paginationQuery?: any, searchForm?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(baseApiUrl + `?${buildPaginationQueryOpts(paginationQuery)}`)
+        .get(baseApiUrl + `?${buildPaginationQueryOpts(paginationQuery)}` + `&${buildSearchQueryOpts(searchForm)}`)
         .then(res => {
           resolve(res);
         })

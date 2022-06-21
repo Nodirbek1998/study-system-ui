@@ -18,10 +18,14 @@
         "units": "Units",
         "groups": "Groups",
         "tests": "Tests",
+        "examples": "Examples",
         "testQuestion": "Test Question",
         "testAnswer": "Test Answer",
         "task": "Task",
         "taskAnswer": "Task Answer",
+        "reminder": "Reminder",
+        "all": "All Subjects",
+        "examplesAnswer": "Answer examples",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

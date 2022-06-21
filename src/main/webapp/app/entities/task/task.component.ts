@@ -25,6 +25,33 @@ export default class Task extends Vue {
 
   public isFetching = false;
 
+  public fields = [
+    {key:'id', label:'Id', class: 'text-truncate'},
+    {key:'topic',label:'topic', class: 'text-truncate'},
+    {key:'deadline',label:'deadline', class: 'text-truncate'},
+    {key:'filesDTO',label:'filesDTO', class: 'text-truncate'},
+    { key: 'action', label: 'Action', class: 'text-right' },
+  ]
+
+  public tableOptions = {
+    striped: true,
+    bordered: false,
+    borderless: false,
+    outlined: false,
+    small: false,
+    hover: false,
+    dark: false,
+    fixed: false,
+    footClone: false,
+    headVariant: null,
+    tableVariant: '',
+    noCollapse: false,
+    responsive: true,
+    selectable: true,
+    selectMode: 'single',
+    stickyHeader: true,
+  };
+
   public mounted(): void {
     this.retrieveAllTasks();
   }
@@ -116,5 +143,17 @@ export default class Task extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public onSelectRowDbClick(row): void {
+    this.$router.push({ name: 'TaskView', params: { taskId: row.id } });
+  }
+
+  public onClickEdit(id): void {
+    if (id && id > 0) {
+      this.$router.push({ name: 'TaskEdit', params: { taskId: id } });
+    } else {
+      (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
+    }
   }
 }

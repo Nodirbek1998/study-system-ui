@@ -37,10 +37,44 @@
       </div>
 
       <b-list-group class="sidebar-links" v-if="isStatistics.group">
-
+        <b-list-group-item to="/user/groups"
+                           :class="$route.path.includes('/user/groups') && $route.query.subjectId?'':'active'">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.all')">All Subjects</span>
+        </b-list-group-item>
+        <b-list-group-item exact exact-active-class="active"
+                           v-for="subject in subjects" :key="subject.id"
+                           :to="{name: 'UserGroups', query: {subjectId: subject.id}}">
+          <span class="ml-2 sub-list">{{ subject.label }}</span>
+        </b-list-group-item>
+      </b-list-group>
+      <b-list-group class="sidebar-links" v-if="isStatistics.studentGroup">
+        <b-list-group-item to="/student/groups"
+                           :class="$route.path.includes('/student/groups') && $route.query.subjectId?'':'active'">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.article')">Article</span>
+        </b-list-group-item>
+      </b-list-group>
+      <b-list-group class="sidebar-links" v-if="isStatistics.article">
+        <b-list-group-item to="/article">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.article')">Article</span>
+        </b-list-group-item>
+      </b-list-group>
+      <b-list-group class="sidebar-links" v-if="isStatistics.examples">
+        <b-list-group-item to="/examples">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.examples')">Examples</span>
+        </b-list-group-item>
+        <b-list-group-item to="/examples/answer">
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.examplesAnswer')">Examples Answer</span>
+        </b-list-group-item>
       </b-list-group>
       <b-list-group class="sidebar-links" v-if="isStatistics.admin">
-        <b-list-group-item to="/admin/users" v-if="isStatistics.admin" >
+        <b-list-group-item to="/admin/users"
+                           :class="$route.path.includes('/admin')?'active':''"
+                           v-if="isStatistics.admin" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.studyUsers')">Study Users</span>
         </b-list-group-item>
@@ -59,6 +93,10 @@
         <b-list-group-item  to="/admin/article" exact exact-active-class="active" >
           <font-awesome-icon icon="asterisk" />
           <span v-text="$t('global.menu.entities.article')">Article</span>
+        </b-list-group-item>
+        <b-list-group-item  to="/admin/reminder" exact exact-active-class="active" >
+          <font-awesome-icon icon="asterisk" />
+          <span v-text="$t('global.menu.entities.reminder')">Article</span>
         </b-list-group-item>
 
 <!--        <b-list-group-item to="/images" exact exact-active-class="active" v-if="isStatistics.admin">-->

@@ -22,7 +22,8 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "studyUser": "Study User",
-      "subjects": "Subjects"
+      "subjects": "Subjects",
+      "action": "Action"
     }
   }
 }

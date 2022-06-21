@@ -1,6 +1,13 @@
 import { IStudyUsers } from '@/shared/model/study-users.model';
 import {IImages} from "@/shared/model/images.model";
 
+export enum EnumArticle {
+  PUBLISHED = 'PUBLISHED',
+  NEW = 'NEW',
+  REMOVED = 'REMOVED',
+  PENDING = 'PENDING',
+}
+
 export interface IArticle {
   id?: number;
   name?: string | null;
@@ -12,6 +19,7 @@ export interface IArticle {
   updatedBy?: IStudyUsers | null;
   imagesDTO?: IImages | null;
   imagesId?: number | null;
+  status?: string | null;
 }
 
 export class Article implements IArticle {
@@ -25,6 +33,7 @@ export class Article implements IArticle {
     public createdBy?: IStudyUsers | null,
     public updatedBy?: IStudyUsers | null,
     public imagesDTO?: IImages | null,
-    public imagesId?: number | null
+    public imagesId?: number | null,
+    public status?: string | null
   ) {}
 }

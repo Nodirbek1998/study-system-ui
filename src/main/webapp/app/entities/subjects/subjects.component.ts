@@ -54,15 +54,15 @@ export default class Subjects extends Vue {
 
 
   public mounted(): void {
-    this.retrieveAllSubjectss();
+    this.retrieveAllSubjects();
   }
 
   public clear(): void {
     this.page = 1;
-    this.retrieveAllSubjectss();
+    this.retrieveAllSubjects();
   }
 
-  public retrieveAllSubjectss(): void {
+  public retrieveAllSubjects(): void {
     this.isFetching = true;
     const paginationQuery = {
       page: this.page - 1,
@@ -109,7 +109,7 @@ export default class Subjects extends Vue {
           autoHideDelay: 5000,
         });
         this.removeId = null;
-        this.retrieveAllSubjectss();
+        this.retrieveAllSubjects();
         this.closeDialog();
       })
       .catch(error => {
@@ -133,7 +133,7 @@ export default class Subjects extends Vue {
   }
 
   public transition(): void {
-    this.retrieveAllSubjectss();
+    this.retrieveAllSubjects();
   }
 
   public changeOrder(propOrder): void {

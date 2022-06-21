@@ -1,0 +1,32 @@
+{
+  "studysystemApp": {
+    "examplesAnswer": {
+      "title": "Examples",
+      "home": {
+        "title": "Articles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Article",
+        "createOrEditLabel": "Create or edit a Article",
+        "notFound": "No Articles found"
+      },
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "createdBy": "Created By",
+        "filesName": "File Name",
+        "createdAt": "Created At",
+        "ball": "Ball",
+        "exampleName": "Example Name"
+      },
+      "create": {
+        "id": "ID",
+        "name": "Name",
+        "createdBy": "Created By",
+        "filesName": "File Name",
+        "createdAt": "Created At",
+        "ball": "Ball",
+        "exampleId": "Select Example"
+      }
+    }
+  }
+}

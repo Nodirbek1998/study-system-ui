@@ -1,0 +1,32 @@
+{
+  "studysystemApp": {
+    "examples": {
+      "title": "Misollar",
+      "home": {
+        "title": "Misollar",
+        "refreshListLabel": "Ro'yhatni yangilash",
+        "createLabel": "Misol yaratish",
+        "createOrEditLabel": "Misol o'zgartirish",
+        "notFound": "Misol Topilmadi"
+      },
+      "table": {
+        "id": "ID",
+        "name": "Nomi",
+        "createdBy": "Yaratgan",
+        "filesName": "File nomi",
+        "createdAt": "Yaratilgan vaqt",
+        "ball": "Ball",
+        "action": "Holat"
+      },
+      "create": {
+        "id": "ID",
+        "name": "Nomi",
+        "createdBy": "Yaratgan",
+        "filesName": "File nomi",
+        "createdAt": "Yaratilgan vaqt",
+        "ball": "Ball",
+        "uploadDocument": "Upload File"
+      }
+    }
+  }
+}

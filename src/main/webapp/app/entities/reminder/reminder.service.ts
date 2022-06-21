@@ -4,7 +4,7 @@ import buildPaginationQueryOpts from '@/shared/sort/sorts';
 import {IReminder} from "@/shared/model/reminder.model";
 
 
-const baseApiUrl = 'api/articles';
+const baseApiUrl = 'api/reminders';
 
 export default class ReminderService {
   public find(id: number): Promise<IReminder> {

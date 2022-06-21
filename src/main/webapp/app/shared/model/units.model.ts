@@ -8,6 +8,7 @@ export interface IUnits {
   createdAt?: Date | null;
   updatedAt?: Date | null;
   subject?: ISubjects | null;
+  groupId?: ISubjects | null;
 }
 
 export class Units implements IUnits {
@@ -18,6 +19,7 @@ export class Units implements IUnits {
     public nameEn?: string | null,
     public createdAt?: Date | null,
     public updatedAt?: Date | null,
-    public subject?: ISubjects | null
+    public subject?: ISubjects | null,
+    public groupId?: ISubjects | null
   ) {}
 }

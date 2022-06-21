@@ -38,6 +38,13 @@ import ImagesService from "@/entities/images/images.service";
 import JhiDataUtils from "@/shared/data/data-utils.service";
 import ReminderService from "@/entities/reminder/reminder.service";
 import CalendarService from "@/entities/calendar/calendar.service";
+import SubjectsService from "@/entities/subjects/subjects.service";
+import UnitsService from "@/entities/units/units.service";
+import TaskService from "@/entities/task/task.service";
+import vSelect from 'vue-select';
+import ExamplesService from "@/examples/examples.service";
+import ExamplesAnswerService from "@/examples-answer/examples-answer.service";
+import StudyUsersService from "@/entities/study-users/study-users.service";
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -55,6 +62,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
 Vue.component('infinite-loading', InfiniteLoading);
+Vue.component('v-select', vSelect);
 
 const dataUtils = new JhiDataUtils();
 
@@ -201,12 +209,19 @@ const vue = new Vue({
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
     alertService: () => new AlertService(),
+    studyUsersService: () => new StudyUsersService(),
     calendarService: () => new CalendarService(),
     groupsService: () => new GroupsService(),
     reminderService: () => new ReminderService(),
     userRoleService: () => new UserRoleService(),
     fileService: () => new FilesService(),
+    subjectsService: () => new SubjectsService(),
+    filesService: () => new FilesService(),
+    taskService: () => new TaskService(),
     imagesService: () => new ImagesService(),
+    unitsService: () => new UnitsService(),
+    examplesService: () => new ExamplesService(),
+    examplesAnswerService: () => new ExamplesAnswerService(),
   },
   i18n,
   store,

@@ -1,0 +1,21 @@
+{
+  "studysystemApp": {
+    "reminder": {
+      "title": "Eslatmani tahrirlash",
+      "table": {
+        "id": "ID",
+        "createdAt": "Yaratilgan vaqt",
+        "updatedAt": "O'zgartirilgan vaqt",
+        "body": "Malumot",
+        "title": "Sarlavha",
+        "createdBy": "Yaratgan foydalanuvchi",
+        "action": "Holat"
+      },
+      "delete": {
+        "question": "{{ id }}- Eslatmani o`chirmoqchimisiz? "
+      },
+      "created": "Identifikator bilan yangi eslatma yaratiladi {{ param }}",
+      "updated": "Eslatma identifikator bilan yangilanadi {{ param }}"
+    }
+  }
+}

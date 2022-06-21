@@ -3,10 +3,11 @@
     "article": {
       "home": {
         "title": "Maqolalar",
-        "refreshListLabel": "Refresh list",
+        "refreshListLabel": "Yangilash",
         "createLabel": "Yangi maqolalar qo`shish",
         "createOrEditLabel": "Maqolalarni tahrirlash",
-        "notFound": "Maqolalar topilmadi"
+        "notFound": "Maqolalar topilmadi",
+        "readMore": "Ko'proq o'qish"
       },
       "created": "Maqolalar bilan qo`shildi",
       "updated": "Maqolalar maqolalar saqlandi",
@@ -14,6 +15,8 @@
       "delete": {
         "question": "{{ id }}- Maqolalarni o`chirmoqchimisiz? "
       },
+      "created": "Identifikator bilan yangi maqola yaratiladi {{ param }}",
+      "updated": "Maqola identifikator bilan yangilanadi {{ param }}",
       "detail": {
         "title": "Maqolalar"
       },

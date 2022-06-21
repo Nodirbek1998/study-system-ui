@@ -19,71 +19,68 @@
     <div class="alert alert-warning" v-if="!isFetching && tasks && tasks.length === 0">
       <span v-text="$t('studysystemApp.task.home.notFound')">No tasks found</span>
     </div>
-    <div class="table-responsive" v-if="tasks && tasks.length > 0">
-      <table class="table table-striped" aria-describedby="tasks">
-        <thead>
-          <tr>
-            <th scope="row" v-on:click="changeOrder('id')">
-              <span v-text="$t('global.field.id')">ID</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('topic')">
-              <span v-text="$t('studysystemApp.task.topic')">Topic</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'topic'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('createdAt')">
-              <span v-text="$t('studysystemApp.task.createdAt')">Created At</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdAt'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('updatedAt')">
-              <span v-text="$t('studysystemApp.task.updatedAt')">Updated At</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'updatedAt'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('deadline')">
-              <span v-text="$t('studysystemApp.task.deadline')">Deadline</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'deadline'"></jhi-sort-indicator>
-            </th>
-            <th scope="row"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="task in tasks" :key="task.id" data-cy="entityTable">
-            <td>
-              <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }">{{ task.id }}</router-link>
-            </td>
-            <td>{{ task.topic }}</td>
-            <td>{{ task.createdAt }}</td>
-            <td>{{ task.updatedAt }}</td>
-            <td>{{ task.deadline }}</td>
-            <td class="text-right">
-              <div class="btn-group">
-                <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
-                    <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
-                  </button>
-                </router-link>
-                <router-link :to="{ name: 'TaskEdit', params: { taskId: task.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
-                    <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
-                  </button>
-                </router-link>
-                <b-button
-                  v-on:click="prepareRemove(task)"
-                  variant="danger"
-                  class="btn btn-sm"
-                  data-cy="entityDeleteButton"
-                  v-b-modal.removeEntity
-                >
-                  <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
-                </b-button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="table-wrapper" v-if="tasks && tasks.length > 0">
+      <b-table
+        ref="selectTable"
+        id="table"
+        :small="tableOptions.small"
+        :responsive="tableOptions.responsive"
+        :borderless="tableOptions.borderless"
+        :outlined="tableOptions.outlined"
+        :hover="tableOptions.hover"
+        :fixed="tableOptions.fixed"
+        :sticky-header="tableOptions.stickyHeader"
+        :selectable="tableOptions.selectable"
+        :select-mode="tableOptions.selectMode"
+        :fields="fields"
+        :items="tasks"
+        @sort-changed="changeOrder"
+        @row-dblclicked="onSelectRowDbClick"
+      >
+        <template #table-busy>
+          <div class="text-center text-danger my-2">
+            <b-spinner class="align-middle"></b-spinner>
+            <strong v-text="$t('global.loading')">Loading...</strong>
+          </div>
+        </template>
+        <template v-slot:head(id)="data">
+          <span v-html="$t('studysystemApp.article.id')"></span>
+        </template>
+        <template v-slot:head(topic)="data">
+          <span v-html="$t('studysystemApp.article.name')"></span>
+        </template>
+        <template v-slot:head(deadline)="data">
+          <span v-html="$t('studysystemApp.article.text')"></span>
+        </template>
+        <template v-slot:head(time)="data">
+          <span v-html="$t('studysystemApp.article.text')"></span>
+        </template>
+        <template v-slot:head(filesDTO)="data">
+          <span v-html="$t('studysystemApp.article.text')"></span>
+        </template>
+        <template v-slot:cell(id)="data"><span>{{ data.value }}</span></template>
+        <template v-slot:cell(topic)="data"><span>{{ data.value }}</span></template>
+        <template v-slot:cell(deadline)="data"><span>{{ data.value }}</span></template>
+        <template v-slot:cell(time)="data"><span>{{ data.value }}</span></template>
+        <template v-slot:cell(filesDTO)="data"><span>{{ data.value.name }}</span></template>
+        <template v-slot:cell(action)="row">
+          <span>
+            <b-dropdown no-caret variant="link" class="action-dropdown" size="lg">
+              <template #button-content>
+                  <font-awesome-icon class="icon" icon="ellipsis-v" size="xs"/>
+              </template>
+               <b-dropdown-item  class="action-dropdown-item" @click="onClickEdit(row.item.id)">
+                  <font-awesome-icon class="icon mr-1" icon="edit"/>
+                  {{$t('entity.action.edit')}}
+                </b-dropdown-item>
+                <b-dropdown-item  class="action-dropdown-item" @click="prepareRemove(row.item.id)">
+                  <font-awesome-icon class="icon mr-1" icon="trash"/>
+                  {{$t('entity.action.delete')}}
+                </b-dropdown-item>
+            </b-dropdown>
+          </span>
+        </template>
+      </b-table>
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"

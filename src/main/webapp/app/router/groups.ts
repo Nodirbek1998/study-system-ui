@@ -1,20 +1,37 @@
 
-const Groups = () => import('@/groups/user-groups.vue');
-const OpenGroup = () => import('@/groups/tasks/tasks.vue');
+const Groups = () => import('@/groups/group/groups.vue');
+const OpenGroup = () => import('@/groups/group/view/group-view.vue');
+const UserTasks = () => import('@/groups/tasks/tasks.vue');
+const CreateTask = () => import('@/groups/tasks/create/create-tasks.vue');
+const ViewTask = () => import('@/groups/tasks/view/task-details.vue');
 
 export default [
 
   {
-    path: 'groups',
-    name: 'Groups',
+    path: '/user/groups',
+    name: 'UserGroups',
     component: Groups,
-  // meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: 'user/groups/:groupId/view',
+    name: 'OpenGroup',
+    component: OpenGroup,
+  },
+  {
+    path: 'user/groups/:unitsId/tasks',
+    name: 'UserTasks',
+    component: UserTasks,
   },
 
   {
-    path: 'groups/open-group/:groupId',
-    name: 'OpenGroup',
-    component: OpenGroup,
-    // meta: { authorities: [Authority.USER] },
+    path: 'user/groups/:unitsId/tasks/create',
+    name: 'CreateTask',
+    component: CreateTask,
+  },
+
+  {
+    path: 'user/groups/:taskId/view',
+    name: 'ViewTask',
+    component: ViewTask,
   }
 ]

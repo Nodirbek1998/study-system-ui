@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('studysystemApp.article.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ArticleCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'ReminderCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -46,13 +46,16 @@
           </div>
         </template>
         <template v-slot:head(id)="data">
-          <span v-html="$t('studysystemApp.article.id')"></span>
+          <span v-html="$t('studysystemApp.reminder.table.id')"></span>
         </template>
-        <template v-slot:head(name)="data">
-          <span v-html="$t('studysystemApp.article.name')"></span>
+        <template v-slot:head(title)="data">
+          <span v-html="$t('studysystemApp.reminder.table.title')"></span>
         </template>
-        <template v-slot:head(name)="data">
-          <span v-html="$t('studysystemApp.article.text')"></span>
+        <template v-slot:head(body)="data">
+          <span v-html="$t('studysystemApp.reminder.table.body')"></span>
+        </template>
+        <template v-slot:head(action)="data">
+          <span v-html="$t('studysystemApp.reminder.table.action')"></span>
         </template>
         <template v-slot:cell(id)="data"><span>{{ data.value }}</span></template>
         <template v-slot:cell(name)="data"><span>{{ data.value }}</span></template>
@@ -79,14 +82,14 @@
         <span v-text="$t('studysystemApp.article.home.notFound')">No articles found</span>
       </div>
     </div>
-    <b-modal ref="removeEntity" id="removeEntity">
+    <b-modal ref="removeEntityReminder" id="removeEntityReminder">
       <span slot="modal-title"
-      ><span id="studysystemApp.article.delete.question" data-cy="articleDeleteDialogHeading" v-text="$t('entity.delete.title')"
+      ><span id="studysystemApp.reminder.delete.question" data-cy="articleDeleteDialogHeading" v-text="$t('entity.delete.title')"
       >Confirm delete operation</span
       ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-article-heading" v-text="$t('studysystemApp.article.delete.question', { id: removeId })">
+        <p id="jhi-delete-reminder-heading" v-text="$t('studysystemApp.reminder.delete.question', { id: removeId })">
           Are you sure you want to delete this Article?
         </p>
       </div>
@@ -95,7 +98,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          id="jhi-confirm-delete-article"
+          id="jhi-confirm-delete-reminder"
           data-cy="entityConfirmDeleteButton"
           v-text="$t('entity.action.delete')"
           v-on:click="removeReminder()"

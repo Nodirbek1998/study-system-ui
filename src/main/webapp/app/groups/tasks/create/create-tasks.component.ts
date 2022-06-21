@@ -1,49 +1,32 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import Vue from "vue";
+import {Component, Inject} from "vue-property-decorator";
+import TaskService from "@/entities/task/task.service";
+import AlertService from "@/shared/alert/alert.service";
+import Vue2Filters from "vue2-filters";
+import {ITask, Task} from "@/shared/model/task.model";
+import FilesService from "@/entities/files/files.service";
 
-import { maxLength } from 'vuelidate/lib/validators';
 
-import AlertService from '@/shared/alert/alert.service';
-
-import StudyUsersService from '@/entities/study-users/study-users.service';
-import { IStudyUsers } from '@/shared/model/study-users.model';
-
-import { IArticle, Article } from '@/shared/model/article.model';
-import ArticleService from './article.service';
-import ImagesService from "@/entities/images/images.service";
-
-const validations: any = {
-  article: {
-    name: {},
-    text: {
-      maxLength: maxLength(1000),
-    },
-    createdAt: {},
-    updatedAt: {},
-  },
-};
 
 @Component({
-  validations,
+  mixins: [Vue2Filters.mixin],
 })
-export default class ArticleUpdate extends Vue {
-  @Inject('articleService') private articleService: () => ArticleService;
+export default class Tasks extends Vue{
+  @Inject('taskService') private taskService: () => TaskService;
+  @Inject('filesService') private filesService: () => FilesService;
   @Inject('alertService') private alertService: () => AlertService;
-  @Inject('studyUsersService') private studyUsersService: () => StudyUsersService;
-  @Inject('imagesService') private imagesService: () => ImagesService;
 
-  public article: IArticle = new Article();
-
-  public studyUsers: IStudyUsers[] = [];
+  public task: ITask = new Task();
   public isSaving = false;
   public currentLanguage = '';
   public uploadDocument = null;
 
+
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if (to.params.articleId) {
-        vm.retrieveArticle(to.params.articleId);
+      if (to.params.groupId) {
+        vm.retrieveArticle(to.params.groupId);
       }
-      vm.initRelationships();
     });
   }
 
@@ -59,9 +42,10 @@ export default class ArticleUpdate extends Vue {
 
   public save(): void {
     this.isSaving = true;
-    if (this.article.id) {
-      this.articleService()
-        .update(this.article)
+    this.task.unitsId = Number(this.$route.params.unitsId);
+    if (this.task.id) {
+      this.taskService()
+        .update(this.task)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
@@ -79,8 +63,8 @@ export default class ArticleUpdate extends Vue {
           this.alertService().showHttpError(this, error.response);
         });
     } else {
-      this.articleService()
-        .create(this.article)
+      this.taskService()
+        .create(this.task)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
@@ -100,11 +84,11 @@ export default class ArticleUpdate extends Vue {
     }
   }
 
-  public retrieveArticle(articleId): void {
-    this.articleService()
-      .find(articleId)
+  public retrieveTask(taskId): void {
+    this.taskService()
+      .find(taskId)
       .then(res => {
-        this.article = res;
+        this.task = res;
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
@@ -115,14 +99,6 @@ export default class ArticleUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {
-    this.studyUsersService()
-      .retrieve()
-      .then(res => {
-        this.studyUsers = res.data;
-      });
-  }
-
   public onChangeAttachment(event): void {
     let file = null;
     if (event && event.target.files && event.target.files[0]) {
@@ -131,12 +107,12 @@ export default class ArticleUpdate extends Vue {
     if (!file) {
       return;
     }
-    this.imagesService()
-      .uploadImage(file,1)
+    this.filesService()
+      .uploadFile(file,'3')
       .then(res => {
         (<any>this.$root).showLoader(false);
         console.log(res);
-        this.article.imagesDTO = res;
+        this.task.filesDTO = res;
       })
       .catch(err => {
         (<any>this.$root).showLoader(false);
@@ -144,7 +120,4 @@ export default class ArticleUpdate extends Vue {
       });
   }
 
-  // public get currentUserImage(imageId): string {
-  //   return this.imagesService().getCurrUserAvatarUrl(imageId);
-  // }
 }

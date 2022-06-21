@@ -1,0 +1,32 @@
+{
+  "studysystemApp": {
+   "examples": {
+     "title": "Examples",
+     "home": {
+       "title": "Examples",
+       "refreshListLabel": "Refresh list",
+       "createLabel": "Create a new Examples",
+       "createOrEditLabel": "Create or edit a Examples",
+       "notFound": "No Examples found"
+     },
+     "table": {
+       "id": "ID",
+       "name": "Name",
+       "createdBy": "Created By",
+       "filesName": "File Name",
+       "createdAt": "Created At",
+       "ball": "Ball",
+       "action": "Action"
+     },
+     "create": {
+       "id": "ID",
+       "name": "Name",
+       "createdBy": "Created By",
+       "filesName": "File Name",
+       "createdAt": "Created At",
+       "ball": "Ball",
+       "uploadDocument": "Upload File"
+     }
+   }
+  }
+}

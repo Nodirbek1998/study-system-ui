@@ -6,7 +6,8 @@
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Article",
         "createOrEditLabel": "Create or edit a Article",
-        "notFound": "No Articles found"
+        "notFound": "No Articles found",
+        "readMore": "More read"
       },
       "created": "A new Article is created with identifier {{ param }}",
       "updated": "A Article is updated with identifier {{ param }}",

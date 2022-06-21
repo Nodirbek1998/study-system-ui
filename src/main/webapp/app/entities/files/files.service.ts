@@ -3,6 +3,7 @@ import axios from 'axios';
 import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
 import { IFiles } from '@/shared/model/files.model';
+import {IImages} from "@/shared/model/images.model";
 
 const baseApiUrl = 'api/files';
 
@@ -84,4 +85,34 @@ export default class FilesService {
         });
     });
   }
+
+  public uploadFile(entity: File, type): Promise<IFiles> {
+    const formData = new FormData();
+    formData.append('file', entity);
+    formData.append('type', type);
+    return new Promise<IFiles>((resolve, reject) => {
+      axios
+        .post(`api/files-upload`, formData)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public getFileUrl(fileId: number): string {
+    const protocol = location.protocol;
+    const slashes = protocol.concat('//');
+    const host = slashes.concat(window.location.hostname);
+    let port = slashes.concat(window.location.port);
+    if (port) {
+      port = port.replace('http://', '');
+      port = port.replace('https://', '');
+      return host + `:` + port + `/api/files-download/` + (fileId || 0);
+    }
+    return host + `/api/files-download/` + (fileId || 0);
+  }
+
 }

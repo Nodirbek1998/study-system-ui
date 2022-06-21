@@ -50,6 +50,8 @@ import Vue2Filters from 'vue2-filters';
 import * as filters from '@/shared/date/filters';
 import { accountStore } from '@/shared/config/store/account-store';
 import { translationStore } from '@/shared/config/store/translation-store';
+import { sidebarStore } from '@/shared/config/store/sidebar-store';
+import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 const dateTimeFormats: DateTimeFormats = {
   en: {
@@ -150,7 +152,9 @@ export function initFortAwesome(vue) {
     faUserPlus,
     faUsers,
     faUsersCog,
-    faWrench
+    faWrench,
+    faChevronRight,
+    faChevronLeft,
   );
 }
 
@@ -169,10 +173,11 @@ export function initVueXStore(vue) {
     modules: {
       accountStore,
       translationStore,
+      sidebarStore,
     },
     plugins: [
       createPersistedState({
-        paths: ['accountStore', 'translationStore', ],
+        paths: ['accountStore', 'translationStore', 'sidebarStore'],
       }),
     ],
   });

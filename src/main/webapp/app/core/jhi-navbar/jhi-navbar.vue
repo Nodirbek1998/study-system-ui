@@ -12,10 +12,28 @@
                     <span v-text="$t('global.menu.home')">Home</span>
                   </span>
               </b-nav-item>
-            <b-nav-item to="/groups" active-class='active'>
+            <b-nav-item to="/user/groups" active-class='active' v-if="$can('NavbarTeacherGroup', 'admin')" >
                   <span>
                     <font-awesome-icon icon="user-group" />
                     <span v-text="$t('global.menu.entities.groups')">Groups</span>
+                  </span>
+            </b-nav-item>
+            <b-nav-item to="/student/groups" active-class='active' v-if="$can('NavbarStudentGroup', 'admin')" >
+                  <span>
+                    <font-awesome-icon icon="user-group" />
+                    <span v-text="$t('global.menu.entities.groups')">Group</span>
+                  </span>
+            </b-nav-item>
+            <b-nav-item to="/articles" active-class='active'>
+                  <span>
+                    <font-awesome-icon icon="user-group" />
+                    <span v-text="$t('global.menu.entities.article')">Article</span>
+                  </span>
+            </b-nav-item>
+            <b-nav-item to="/examples" active-class='active'>
+                  <span>
+                    <font-awesome-icon icon="user-group" />
+                    <span v-text="$t('global.menu.entities.examples')">Examples</span>
                   </span>
             </b-nav-item>
             <b-nav-item to='/admin' v-if="$can('NavbarAdmin', 'admin')" key='internal'  active-class='active' >

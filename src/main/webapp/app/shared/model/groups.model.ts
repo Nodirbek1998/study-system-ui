@@ -9,6 +9,7 @@ export interface IGroups {
   studyUsers?: IStudyUsers[] | null;
   subjects?: ISubjects[] | null;
   usersNameList?: string[];
+  groupsUsersList?: IStudyUsers[] | null;
 }
 
 export class Groups implements IGroups {
@@ -19,6 +20,7 @@ export class Groups implements IGroups {
     public updatedAt?: Date | null,
     public studyUsers?: IStudyUsers[] | null,
     public subjects?: ISubjects[] | null,
-    public usersNameList?: string[]
+    public usersNameList?: string[],
+    public groupsUsersList?: IStudyUsers[]
   ) {}
 }

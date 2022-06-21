@@ -1,6 +1,6 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { IArticle } from '@/shared/model/article.model';
+import {EnumArticle, IArticle} from '@/shared/model/article.model';
 import ArticleService from './article.service';
 import AlertService from '@/shared/alert/alert.service';
 
@@ -10,6 +10,7 @@ export default class ArticleDetails extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
 
   public article: IArticle = {};
+  public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -43,5 +44,30 @@ export default class ArticleDetails extends Vue {
       }
     }
     return makeUrl;
+  }
+
+  public save(): void {
+    this.isSaving = true;
+    this.article.status = EnumArticle.PUBLISHED;
+    if (this.article.id) {
+      this.articleService()
+        .update(this.article)
+        .then(param => {
+          this.isSaving = false;
+          this.$router.go(-1);
+          const message = this.$t('studysystemApp.article.updated', { param: param.id });
+          return this.$root.$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Info',
+            variant: 'info',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    }
   }
 }

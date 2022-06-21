@@ -2,11 +2,11 @@
   "studysystemApp": {
     "groups": {
       "home": {
-        "title": "Groups",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Yangi Groups qo`shish",
-        "createOrEditLabel": "Groupsni tahrirlash",
-        "notFound": "No Groups found"
+        "title": "Guruhlar",
+        "refreshListLabel": "Ro'yhatni Yangilash",
+        "createLabel": "Yangi Guruh qo`shish",
+        "createOrEditLabel": "Guruhni tahrirlash",
+        "notFound": "Guruh topilmadi"
       },
       "created": "Groups {{ param }} bilan qo`shildi",
       "updated": "{{ param }}- Groups saqlandi",
@@ -15,14 +15,15 @@
         "question": "{{ id }}- Groupsni o`chirmoqchimisiz? "
       },
       "detail": {
-        "title": "Groups"
+        "title": "Guruhlar"
       },
       "id": "ID",
-      "name": "Name",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "studyUser": "Study User",
-      "subjects": "Subjects"
+      "name": "Nomi",
+      "createdAt": "Yaratilgan vaqt",
+      "updatedAt": "O'zgartirilgan vaqt",
+      "studyUser": "Foydalanuvchi",
+      "subjects": "Fanlar",
+      "action": "Holat"
     }
   }
 }

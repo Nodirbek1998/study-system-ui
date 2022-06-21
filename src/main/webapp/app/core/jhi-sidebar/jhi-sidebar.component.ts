@@ -4,13 +4,13 @@ import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
 import {mapGetters} from "vuex";
 import {IRouteStatistic, RouteStatistic} from "@/shared/model/statistic.route";
-import FilesService from "@/entities/files/files.service";
 import ImagesService from "@/entities/images/images.service";
+import AlertService from "@/shared/alert/alert.service";
 
 @Component({
   computed: {
     ...mapGetters({
-
+        subjects: 'subjects'
     }),
   },
 })
@@ -20,6 +20,7 @@ export default class JhiSideBar extends Vue {
   @Inject('imagesService') private imagesService: () => ImagesService;
 
   @Inject('accountService') private accountService: () => AccountService;
+  @Inject('alertService') private alertService: () => AlertService;
   public version = VERSION ? 'v' + VERSION : '';
   private currentLanguage = this.$store.getters.currentLanguage;
   private languages: any = this.$store.getters.languages;
@@ -29,9 +30,18 @@ export default class JhiSideBar extends Vue {
   public isCollapseInternalMenu1 = false;
   public isCollapseInternalMenu2 = false;
 
+  public isFetching = false;
+  public itemsPerPage = 20;
+  public queryCount: number = null;
+  public page = 1;
+  public previousPage = 1;
+  public propOrder = 'id';
+  public reverse = false;
+  public totalItems = 0;
 
   created() {
     this.translationService().refreshTranslation(this.currentLanguage);
+    this.$store.dispatch('fetchSubjects', { translationService: this.translationService() });
   }
 
 
@@ -43,7 +53,10 @@ export default class JhiSideBar extends Vue {
     this.isStatistics.main = newVal && newVal.path.includes('/home');
     this.isStatistics.subject = newVal && newVal.path.includes('/subject');
     this.isStatistics.admin = newVal && newVal.path.includes('/admin');
-    this.isStatistics.group = newVal && newVal.path.includes('/groups');
+    this.isStatistics.group = newVal && newVal.path.includes('/user/groups');
+    this.isStatistics.studentGroup = newVal && newVal.path.includes('/student/groups');
+    this.isStatistics.article = newVal && newVal.path.includes('/articles');
+    this.isStatistics.examples = newVal && newVal.path.includes('/examples');
 
   }
 
@@ -59,6 +72,21 @@ export default class JhiSideBar extends Vue {
       return this.$route.path.indexOf(path) === 0; // current path starts with this path string
     });
   }
+
+
+
+  public sort(): Array<any> {
+    const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];
+    if (this.propOrder !== 'id') {
+      result.push('id');
+    }
+    return result;
+  }
+
+  public get currentUser(): number {
+    return this.$store.getters.account ? this.$store.getters.account.id : 0;
+  }
+
 
   public changeLanguage(newLanguage: string): void {
     this.translationService().refreshTranslation(newLanguage);

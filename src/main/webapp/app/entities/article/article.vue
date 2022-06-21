@@ -7,17 +7,6 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('studysystemApp.article.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ArticleCreate' }" custom v-slot="{ navigate }">
-          <button
-            @click="navigate"
-            id="jh-create-entity"
-            data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-article"
-          >
-            <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('studysystemApp.article.home.createLabel')"> Create a new Article </span>
-          </button>
-        </router-link>
       </div>
     </h2>
     <br />
@@ -52,6 +41,9 @@
           <span v-html="$t('studysystemApp.article.name')"></span>
         </template>
         <template v-slot:head(name)="data">
+          <span v-html="$t('studysystemApp.article.text')"></span>
+        </template>
+        <template v-slot:head(action)="data">
           <span v-html="$t('studysystemApp.article.text')"></span>
         </template>
         <template v-slot:cell(id)="data"><span>{{ data.value }}</span></template>

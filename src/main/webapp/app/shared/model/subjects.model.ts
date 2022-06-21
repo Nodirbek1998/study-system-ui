@@ -8,6 +8,7 @@ export interface ISubjects {
   createdAt?: Date | null;
   updatedAt?: Date | null;
   groups?: IGroups[] | null;
+  groupsDTOS?: IGroups[] | null;
 }
 
 export class Subjects implements ISubjects {
@@ -18,6 +19,7 @@ export class Subjects implements ISubjects {
     public nameEn?: string | null,
     public createdAt?: Date | null,
     public updatedAt?: Date | null,
-    public groups?: IGroups[] | null
+    public groups?: IGroups[] | null,
+    public groupsDTOS?: IGroups[] | null
   ) {}
 }

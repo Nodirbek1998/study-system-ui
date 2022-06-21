@@ -30,8 +30,6 @@ const RoleStaticPermissionDetails = () => import('@/entities/role-static-permiss
 // prettier-ignore
 const Article = () => import('@/entities/article/article.vue');
 // prettier-ignore
-const ArticleUpdate = () => import('@/entities/article/article-update.vue');
-// prettier-ignore
 const ArticleDetails = () => import('@/entities/article/article-details.vue');
 // prettier-ignore
 const Images = () => import('@/entities/images/images.vue');
@@ -93,6 +91,12 @@ const TaskAnswer = () => import('@/entities/task-answer/task-answer.vue');
 const TaskAnswerUpdate = () => import('@/entities/task-answer/task-answer-update.vue');
 // prettier-ignore
 const TaskAnswerDetails = () => import('@/entities/task-answer/task-answer-details.vue');
+
+const Reminder = () => import('@/entities/reminder/reminder.vue');
+
+const ReminderCreate = () => import('@/entities/reminder/reminder-update.vue');
+
+const ReminderView = () => import('@/entities/reminder/reminder-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -101,6 +105,7 @@ export default {
   children: [
     {
       path: 'users',
+      alias: '/',
       name: 'StudyUser',
       component: Users,
       // meta: { authorities: [Authority.USER] },
@@ -196,26 +201,14 @@ export default {
       // meta: { authorities: [Authority.USER] },
     },
     {
-      path: 'article',
-      name: 'Article',
+      path: '/admin/article',
+      name: 'AdminArticle',
       component: Article,
       // meta: { authorities: [Authority.USER] },
     },
     {
-      path: 'article/new',
-      name: 'ArticleCreate',
-      component: ArticleUpdate,
-      // meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'article/:articleId/edit',
-      name: 'ArticleEdit',
-      component: ArticleUpdate,
-      // meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'article/:articleId/view',
-      name: 'ArticleView',
+      path: '/admin/article/:articleId/view',
+      name: 'AdminArticleView',
       component: ArticleDetails,
       // meta: { authorities: [Authority.USER] },
     },
@@ -317,7 +310,7 @@ export default {
     },
     {
       path: 'groups',
-      name: 'Groups',
+      name: 'AdminGroups',
       component: Groups,
       // meta: { authorities: [Authority.USER] },
     },
@@ -457,6 +450,30 @@ export default {
       path: 'task-answer/:taskAnswerId/view',
       name: 'TaskAnswerView',
       component: TaskAnswerDetails,
+      // meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'reminder',
+      name: 'Reminder',
+      component: Reminder,
+      // meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'reminder/new',
+      name: 'ReminderCreate',
+      component: ReminderCreate,
+      // meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'reminder/:reminderId/edit',
+      name: 'ReminderEdit',
+      component: ReminderCreate,
+      // meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'reminder/:reminderId/view',
+      name: 'ReminderView',
+      component: ReminderView,
       // meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -89,10 +89,10 @@ export default class ReminderComponent extends Vue {
     this.clear();
   }
 
-  public prepareRemove(instance: IArticle): void {
-    this.removeId = instance.id;
-    if (<any>this.$refs.removeEntity) {
-      (<any>this.$refs.removeEntity).show();
+  public prepareRemove(instance): void {
+    this.removeId = instance;
+    if (<any>this.$refs.removeEntityReminder) {
+      (<any>this.$refs.removeEntityReminder).show();
     }
   }
 
@@ -100,7 +100,7 @@ export default class ReminderComponent extends Vue {
     this.reminderService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('studysystemApp.article.deleted', { param: this.removeId });
+        const message = this.$t('studysystemApp.reminder.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',
@@ -143,7 +143,7 @@ export default class ReminderComponent extends Vue {
   }
 
   public closeDialog(): void {
-    (<any>this.$refs.removeEntity).hide();
+    (<any>this.$refs.removeEntityReminder).hide();
   }
 
 
@@ -157,5 +157,26 @@ export default class ReminderComponent extends Vue {
     } else {
       (<any>this.$root).toastWarning(this.$t('global.messages.warning.rowNotSelect'));
     }
+  }
+
+  public removeArticle(): void {
+    this.reminderService()
+      .delete(this.removeId)
+      .then(() => {
+        const message = this.$t('studysystemApp.reminder.deleted', { param: this.removeId });
+        this.$bvToast.toast(message.toString(), {
+          toaster: 'b-toaster-top-center',
+          title: 'Info',
+          variant: 'danger',
+          solid: true,
+          autoHideDelay: 5000,
+        });
+        this.removeId = null;
+        this.retrieveAllReminder();
+        this.closeDialog();
+      })
+      .catch(error => {
+        this.alertService().showHttpError(this, error.response);
+      });
   }
 }

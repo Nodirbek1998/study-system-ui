@@ -147,7 +147,7 @@ export default class Article extends Vue {
 
 
   public onSelectRowDbClick(row): void {
-    this.$router.push({ name: 'ArticleView', params: { articleId: row.id } });
+    this.$router.push({ name: 'AdminArticleView', params: { articleId: row.id } });
   }
 
   public onClickEdit(id): void {

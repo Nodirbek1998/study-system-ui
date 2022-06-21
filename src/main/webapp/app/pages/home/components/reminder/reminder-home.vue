@@ -3,7 +3,7 @@
         <template v-slot:header>
             <div class="d-flex w-100 align-items-center justify-content-between">
                 <div>
-                    {{$t("pages.home.reminders.title")}}
+                    {{$t("home.reminder")}}
                 </div>
                 <div>
                     <router-link class="create-document cursor-pointer"

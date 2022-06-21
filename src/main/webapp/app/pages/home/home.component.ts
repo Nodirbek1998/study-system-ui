@@ -3,7 +3,7 @@ import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import ArticleService from "@/entities/article/article.service";
 import AlertService from "@/shared/alert/alert.service";
-import {IArticle} from "@/shared/model/article.model";
+import {EnumArticle, IArticle} from "@/shared/model/article.model";
 import CalendarHome from "./components/calendar/calendar-home.vue";
 import ReminderHome from "./components/reminder/reminder-home.vue";
 
@@ -41,8 +41,11 @@ export default class Home extends Vue {
       size: this.itemsPerPage,
       sort: this.sort(),
     };
+    const searchForm = {
+      status : EnumArticle.PUBLISHED
+    }
     this.articleService()
-      .retrieve(paginationQuery)
+      .retrieve(paginationQuery, searchForm)
       .then(
         res => {
           this.articles = res.data;
