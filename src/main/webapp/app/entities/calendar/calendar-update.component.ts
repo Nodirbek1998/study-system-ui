@@ -2,12 +2,10 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import { numeric, required, minLength, maxLength, minValue, maxValue } from 'vuelidate/lib/validators';
 
-import EdoCompanyService from '../edo-company/edo-company.service';
-import { IEdoCompany } from '@/shared/model/edo-company.model';
 
 import AlertService from '@/shared/alert/alert.service';
-import { IEdoCalendar, EdoCalendar } from '@/shared/model/edo-calendar.model';
 import CalendarService from './calendar.service';
+import {Calendar, ICalendar} from "@/shared/calendar.model";
 
 const validations: any = {
   edoCalendar: {
@@ -35,11 +33,8 @@ const validations: any = {
 export default class EdoCalendarUpdate extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('edoCalendarService') private edoCalendarService: () => CalendarService;
-  public edoCalendar: IEdoCalendar = new EdoCalendar();
+  public edoCalendar: ICalendar = new Calendar();
 
-  @Inject('edoCompanyService') private edoCompanyService: () => EdoCompanyService;
-
-  public edoCompanies: IEdoCompany[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -79,7 +74,7 @@ export default class EdoCalendarUpdate extends Vue {
           this.isSaving = false;
           this.$router.go(-1);
           const message = this.$t('kdbemdocsuiApp.edoCalendar.updated', { param: param.id });
-          this.alertService().showAlert(message, 'info');
+          // this.alertService().showAlert(message, 'info');
         })
         .catch(err => {
           (<any>this.$root).showLoader(false);
@@ -96,7 +91,7 @@ export default class EdoCalendarUpdate extends Vue {
           this.isSaving = false;
           this.$router.go(-1);
           const message = this.$t('kdbemdocsuiApp.edoCalendar.created', { param: param.id });
-          this.alertService().showAlert(message, 'success');
+          // this.alertService().showAlert(message, 'success');
         })
         .catch(err => {
           (<any>this.$root).showLoader(false);
@@ -123,11 +118,11 @@ export default class EdoCalendarUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {
-    this.edoCompanyService()
-      .retrieve()
-      .then(res => {
-        this.edoCompanies = res.data;
-      });
-  }
+  // public initRelationships(): void {
+  //   this.edoCompanyService()
+  //     .retrieve()
+  //     .then(res => {
+  //       this.edoCompanies = res.data;
+  //     });
+  // }
 }
