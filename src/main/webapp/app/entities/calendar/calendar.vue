@@ -27,10 +27,10 @@
                      @dismiss-count-down="countDownChanged">
                 {{alertMessage}}
             </b-alert>
-            <div class="alert alert-warning" v-if="!isFetching && edoCalendars && edoCalendars.length === 0">
+            <div class="alert alert-warning" v-if="!isFetching && calendars && calendars.length === 0">
                 <span v-text="$t('kdbemdocsuiApp.edoCalendar.home.notFound')">No edoCalendars found</span>
             </div>
-            <div class="table-wrapper" v-if="edoCalendars && edoCalendars.length > 0">
+            <div class="table-wrapper" v-if="calendars && calendars.length > 0">
                 <b-table
                     ref="selectTable"
                     id="table"
@@ -46,7 +46,7 @@
                     :per-page="itemsPerPage"
 
                     :fields="fields"
-                    :items="edoCalendars"
+                    :items="calendars"
                     @row-selected="onSelectRow"
                     @row-dblclicked="onDbClickEdit"
                 >

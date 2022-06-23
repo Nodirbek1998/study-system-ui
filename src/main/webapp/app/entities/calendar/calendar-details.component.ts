@@ -1,12 +1,12 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
-import { IEdoCalendar } from '@/shared/model/edo-calendar.model';
 import CalendarService from './calendar.service';
+import {ICalendar} from "@/shared/calendar.model";
 
 @Component
 export default class EdoCalendarDetails extends Vue {
   @Inject('edoCalendarService') private edoCalendarService: () => CalendarService;
-  public edoCalendar: IEdoCalendar = {};
+  public calendar: ICalendar = {};
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -20,7 +20,7 @@ export default class EdoCalendarDetails extends Vue {
     this.edoCalendarService()
       .find(edoCalendarId)
       .then(res => {
-        this.edoCalendar = res;
+        this.calendar = res;
       });
   }
 

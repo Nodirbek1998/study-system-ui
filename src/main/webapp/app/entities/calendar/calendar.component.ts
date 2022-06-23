@@ -21,7 +21,7 @@ export default class Calendar extends mixins(AlertMixin) {
   public reverse = true;
   public totalItems = 0;
 
-  public edoCalendars: ICalendar[] = [];
+  public calendars: ICalendar[] = [];
 
   public isFetching = false;
   public fields = [
@@ -74,7 +74,7 @@ export default class Calendar extends mixins(AlertMixin) {
       .then(
         res => {
           (<any>this.$root).showLoader(false);
-          this.edoCalendars = res.data;
+          this.calendars = res.data;
           this.totalItems = Number(res.headers['x-total-count']);
           this.queryCount = this.totalItems;
           this.isFetching = false;
